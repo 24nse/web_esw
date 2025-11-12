@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:web_site/theme/tokens.dart';
 import 'package:web_site/widgets/common/nav_item.dart';
 
+import '../about/about.dart';
+
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
 
@@ -36,19 +38,26 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                   ),
                   const SizedBox(width: 12),
                   Text(
-                    'شركة المقاولات والعقارات',
-                    style: GoogleFonts.cairo(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.text,
-                    ),
+                    'شركة الوعل المقاولات والعقارات',
+                    // style: GoogleFonts.cairo(
+                    //   fontSize: 20,
+                    //   fontWeight: FontWeight.w700,
+                    //   color: AppColors.text,
+                    // ),
                   ),
                 ],
               ),
             ),
             const Spacer(),
             // Nav items (simplified)
-            const NavItem(title: 'خدماتنا'),
+             NavItem(title: 'خدماتنا',onTap :() {
+               Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => const AboutPage()),
+               );
+             },),
+
+
             const NavItem(title: 'مشاريعنا'),
             const NavItem(title: 'باقاتنا'),
             const NavItem(title: 'تواصل معنا'),

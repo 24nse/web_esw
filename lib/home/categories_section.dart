@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:web_site/theme/tokens.dart';
 
+import '../widgets/common/title_section.dart';
+
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
 
@@ -20,21 +22,15 @@ class CategoriesSection extends StatelessWidget {
 
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 24),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: Column(
+      padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
+      child:  Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'قطاعات أعمالنا',
-                style: GoogleFonts.cairo(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.text,
-                ),
+
+              TitleSection(
+                title:    'قطاعات أعمالنا',
               ),
+
               const SizedBox(height: 24),
               LayoutBuilder(
                 builder: (context, constraints) {
@@ -58,7 +54,7 @@ class CategoriesSection extends StatelessWidget {
                       return Container(
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                         decoration: BoxDecoration(
-                          color: AppColors.bg,
+                          color: AppColors.bgG,
                           borderRadius: AppRadii.md,
                           border: Border.all(color: AppColors.border),
                         ),
@@ -81,12 +77,14 @@ class CategoriesSection extends StatelessWidget {
                                 children: [
                                   Text(
                                     name,
-                                    style: GoogleFonts.cairo(
-                                      fontWeight: FontWeight.w800,
-                                      color: AppColors.text,
-                                    ),
+                                    // style: GoogleFonts.cairo(
+                                    //   fontWeight: FontWeight.w800,
+                                    //   color: AppColors.text,
+                                    // ),
                                   ),
-                                  Text('$count مشروع', style: GoogleFonts.cairo(color: AppColors.textMuted)),
+                                  Text('$count مشروع',
+                                      // style: GoogleFonts.cairo(color: AppColors.textMuted)
+                                  ),
                                 ],
                               ),
                             ),
@@ -99,9 +97,7 @@ class CategoriesSection extends StatelessWidget {
                 },
               ),
             ],
-          ),
-        ),
-      ),
-    );
+          ));
+
   }
 }

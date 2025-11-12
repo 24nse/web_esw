@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Primary brand colors (approximation; easy to change)
-  static const Color primary = Color(0xFF4C6FFF); // Indigo/blue
+  // static const Color primary = Color(0xFF4C6FFF); // Indigo/blue
+  static const Color primary = Color(0xFFFF6B2C); // Indigo/ornage
   static const Color primaryDark = Color(0xFF2B4BE8);
   static const Color accent = Color(0xFFFFAA00);
+  static const Color gray = Color(0xFF64748B);
 
   // Neutrals
-  static const Color bg = Color(0xFFF8FAFF);
+  static const Color bgW = Color(0xFFF8FAFF);
+  static const Color bgG = Color(0xFFf2f4f5);
   static const Color surface = Colors.white;
   static const Color text = Color(0xFF0F172A);
   static const Color textMuted = Color(0xFF64748B);

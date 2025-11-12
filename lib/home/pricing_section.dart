@@ -44,30 +44,27 @@ class PricingSection extends StatelessWidget {
     ];
 
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 24),
-      child: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: Column(
+      color: AppColors.bgG,
+      padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
+      child:  Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 'باقات الخدمات',
-                style: GoogleFonts.cairo(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.text,
-                ),
+                // style: GoogleFonts.cairo(
+                //   fontSize: 28,
+                //   fontWeight: FontWeight.w800,
+                //   color: AppColors.text,
+                // ),
               ),
               const SizedBox(height: 12),
               Text(
                 'اختر الباقة المناسبة لمشروعك؛ جميع الباقات قابلة للتخصيص وفقاً لنطاق العمل والميزانية.',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.cairo(
-                  fontSize: 16,
-                  color: AppColors.textMuted,
-                ),
+                // style: GoogleFonts.cairo(
+                //   fontSize: 16,
+                //   color: AppColors.textMuted,
+                // ),
               ),
               const SizedBox(height: 24),
               LayoutBuilder(
@@ -104,28 +101,28 @@ class PricingSection extends StatelessWidget {
                           children: [
                             Text(
                               plan.title,
-                              style: GoogleFonts.cairo(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: highlighted ? Colors.white : AppColors.text,
-                              ),
+                              // style: GoogleFonts.cairo(
+                              //   fontSize: 20,
+                              //   fontWeight: FontWeight.w800,
+                              //   color: highlighted ? Colors.white : AppColors.text,
+                              // ),
                             ),
                             const SizedBox(height: 8),
                             Text(
                               plan.description,
-                              style: GoogleFonts.cairo(
-                                fontSize: 14,
-                                color: highlighted ? Colors.white70 : AppColors.textMuted,
-                              ),
+                              // style: GoogleFonts.cairo(
+                              //   fontSize: 14,
+                              //   color: highlighted ? Colors.white70 : AppColors.textMuted,
+                              // ),
                             ),
                             const SizedBox(height: 16),
                             Text(
                               plan.price,
-                              style: GoogleFonts.cairo(
-                                fontSize: 28,
-                                fontWeight: FontWeight.w800,
-                                color: highlighted ? Colors.white : AppColors.text,
-                              ),
+                              // style: GoogleFonts.cairo(
+                              //   fontSize: 28,
+                              //   fontWeight: FontWeight.w800,
+                              //   color: highlighted ? Colors.white : AppColors.text,
+                              // ),
                             ),
                             const SizedBox(height: 16),
                             ...plan.features.map((f) => Padding(
@@ -138,9 +135,9 @@ class PricingSection extends StatelessWidget {
                                       Expanded(
                                         child: Text(
                                           f,
-                                          style: GoogleFonts.cairo(
-                                            color: highlighted ? Colors.white : AppColors.text,
-                                          ),
+                                          // style: GoogleFonts.cairo(
+                                          //   color: highlighted ? Colors.white : AppColors.text,
+                                          // ),
                                         ),
                                       ),
                                     ],
@@ -167,8 +164,7 @@ class PricingSection extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
+
     );
   }
 }
