@@ -86,7 +86,6 @@ class NewsletterSection extends StatelessWidget {
                             'انضم إلى نشرتنا للحصول على ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Cairo',
                               fontSize: isWide ? 40 : 30,
                               fontWeight: FontWeight.w800,
                               color: navy,
@@ -97,7 +96,6 @@ class NewsletterSection extends StatelessWidget {
                             'عروض حصرية ورؤى إنشائية!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontFamily: 'Cairo',
                               fontSize: isWide ? 40 : 30,
                               fontWeight: FontWeight.w800,
                               color: AppColors.primary,
@@ -138,7 +136,6 @@ class _AccentTag extends StatelessWidget {
         Text(
           text,
           style: const TextStyle(
-            fontFamily: 'Cairo',
             fontSize: 14,
             color: Color(0xFF1E3A8A), // أزرق داكن قريب لما في الصورة
             fontWeight: FontWeight.w600,
@@ -201,7 +198,6 @@ class _SubscribeBarState extends State<_SubscribeBar> {
                 controller: controller,
                 textAlign: TextAlign.right,
                 style: const TextStyle(
-                  fontFamily: 'Cairo',
                   color: AppColors.text,
                   fontSize: 14,
                 ),
@@ -209,7 +205,6 @@ class _SubscribeBarState extends State<_SubscribeBar> {
                   isDense: true,
                   hintText: 'أدخل بريدك الإلكتروني',
                   hintStyle: TextStyle(
-                    fontFamily: 'Cairo',
                     color: AppColors.textMuted,
                     fontSize: 14,
                   ),
@@ -228,7 +223,7 @@ class _SubscribeBarState extends State<_SubscribeBar> {
         // UI فقط للتجربة
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('تم الاشتراك (تجريبي)', style: TextStyle(fontFamily: 'Cairo')),
+            content: Text('تم الاشتراك (تجريبي)', style: TextStyle()),
             duration: Duration(seconds: 1),
           ),
         );
@@ -298,7 +293,6 @@ class _PrimaryPillButtonState extends State<_PrimaryPillButton> {
         child: Text(
           widget.label,
           style: const TextStyle(
-            fontFamily: 'Cairo',
             fontSize: 14,
             fontWeight: FontWeight.w700,
             color: Colors.white,
@@ -332,5 +326,7 @@ class _DecorImage extends StatelessWidget {
     );
   }
 }
+
+
 
 

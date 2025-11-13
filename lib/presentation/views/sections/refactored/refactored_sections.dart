@@ -3,40 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart'; // يفترض أن tokens.dart يحتوي AppColors, AppRadii, AppShadows, AppSpaces
 
 /// ---------------------------
-/// Reusable text styles (local font "Cairo" assumed)
-/// ---------------------------
-class AppTextStyles {
-  static const String fontFamily = 'Cairo';
-
-  static const TextStyle sectionTitle = TextStyle(
-    fontFamily: fontFamily,
-    fontSize: 28,
-    fontWeight: FontWeight.w800,
-    color: AppColors.text,
-  );
-
-  static const TextStyle sectionSub = TextStyle(
-    fontFamily: fontFamily,
-    fontSize: 16,
-    color: AppColors.textMuted,
-  );
-
-  static const TextStyle cardTitle = TextStyle(
-    fontFamily: fontFamily,
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
-    color: AppColors.text,
-  );
-
-  static const TextStyle cardBody = TextStyle(
-    fontFamily: fontFamily,
-    fontSize: 14,
-    color: AppColors.textMuted,
-    height: 1.6,
-  );
-}
-
-/// ---------------------------
 /// Section header (reusable)
 /// ---------------------------
 class SectionHeader extends StatelessWidget {
@@ -53,13 +19,23 @@ class SectionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final cross = align == TextAlign.start ? CrossAxisAlignment.start : CrossAxisAlignment.center;
     return Column(
       crossAxisAlignment: cross,
       children: [
-        Text(title, textAlign: align, style: AppTextStyles.sectionTitle),
+        Text(
+          title,
+          textAlign: align,
+          style: textTheme.headlineMedium?.copyWith(color: AppColors.text),
+        ),
         if (subtitle != null) const SizedBox(height: 12),
-        if (subtitle != null) Text(subtitle!, textAlign: align, style: AppTextStyles.sectionSub),
+        if (subtitle != null)
+          Text(
+            subtitle!,
+            textAlign: align,
+            style: textTheme.bodyLarge?.copyWith(color: AppColors.textMuted),
+          ),
       ],
     );
   }
@@ -86,7 +62,7 @@ class PillButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: AppRadii.lg),
       ),
-      child: Text(label, style: const TextStyle(fontFamily: AppTextStyles.fontFamily)),
+      child: Text(label, style: const TextStyle()),
     );
   }
 }
@@ -128,9 +104,9 @@ class TileCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, fontWeight: FontWeight.w800, color: AppColors.text)),
+                  Text(title, style: const TextStyle( fontWeight: FontWeight.w800, color: AppColors.text)),
                   const SizedBox(height: 2),
-                  Text(subtitle, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, color: AppColors.textMuted)),
+                  Text(subtitle, style: const TextStyle( color: AppColors.textMuted)),
                 ],
               ),
             ),
@@ -230,13 +206,13 @@ class ServiceCardWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF0A1E4D))),
+                  Text(title, style: const TextStyle( fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF0A1E4D))),
                   const SizedBox(height: 8),
-                  Text(description, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 13, color: Color(0xFF6B7280), height: 1.5)),
+                  Text(description, style: const TextStyle( fontSize: 13, color: Color(0xFF6B7280), height: 1.5)),
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      Text('إعرف المزيد', style: TextStyle(color: highlighted ? AppColors.primary : const Color(0xFF0A1E4D), fontFamily: AppTextStyles.fontFamily, fontWeight: FontWeight.w600)),
+                      Text('إعرف المزيد', style: TextStyle(color: highlighted ? AppColors.primary : const Color(0xFF0A1E4D), fontWeight: FontWeight.w600)),
                       const SizedBox(width: 8),
                       Icon(Icons.arrow_forward, size: 16, color: highlighted ? AppColors.primary : const Color(0xFF0A1E4D)),
                     ],
@@ -362,11 +338,11 @@ class _PlanCardView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(plan.title, style: TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 20, fontWeight: FontWeight.w800, color: titleColor)),
+          Text(plan.title, style: TextStyle( fontSize: 20, fontWeight: FontWeight.w800, color: titleColor)),
           const SizedBox(height: 8),
-          Text(plan.description, style: TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 14, color: bodyColor)),
+          Text(plan.description, style: TextStyle( fontSize: 14, color: bodyColor)),
           const SizedBox(height: 16),
-          Text(plan.price, style: TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 28, fontWeight: FontWeight.w800, color: titleColor)),
+          Text(plan.price, style: TextStyle( fontSize: 28, fontWeight: FontWeight.w800, color: titleColor)),
           const SizedBox(height: 16),
           ...plan.features.map((f) => Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
@@ -374,7 +350,7 @@ class _PlanCardView extends StatelessWidget {
               children: [
                 Icon(Icons.check_circle, size: 18, color: highlighted ? Colors.white : AppColors.success),
                 const SizedBox(width: 8),
-                Expanded(child: Text(f, style: TextStyle(fontFamily: AppTextStyles.fontFamily, color: highlighted ? Colors.white : AppColors.text))),
+                Expanded(child: Text(f, style: TextStyle( color: highlighted ? Colors.white : AppColors.text))),
               ],
             ),
           )),
@@ -388,7 +364,7 @@ class _PlanCardView extends StatelessWidget {
               minimumSize: const Size(double.infinity, 48),
               shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
             ),
-            child: const Text('اطلب عرض سعر', style: TextStyle(fontFamily: AppTextStyles.fontFamily)),
+            child: const Text('اطلب عرض سعر', style: TextStyle()),
           ),
         ],
       ),
@@ -436,11 +412,11 @@ class _FAQSectionRefactoredState extends State<FAQSectionRefactored> {
                   child: ExpansionTile(
                     tilePadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                     trailing: Icon(isOpen ? Icons.remove : Icons.add, color: isOpen ? Colors.white : const Color(0xFF1A1A2E)),
-                    title: Text(item.question, textDirection: TextDirection.rtl, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isOpen ? Colors.white : const Color(0xFF1A1A2E), fontFamily: AppTextStyles.fontFamily)),
+                    title: Text(item.question, textDirection: TextDirection.rtl, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isOpen ? Colors.white : const Color(0xFF1A1A2E))),
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-                        child: Text(item.answer, textDirection: TextDirection.rtl, textAlign: TextAlign.right, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 14, height: 1.6, color: Colors.white70)),
+                        child: Text(item.answer, textDirection: TextDirection.rtl, textAlign: TextAlign.right, style: const TextStyle( fontSize: 14, height: 1.6, color: Colors.white70)),
                       )
                     ],
                     onExpansionChanged: (open) {
@@ -487,7 +463,7 @@ class FooterRefactored extends StatelessWidget {
               const SizedBox(height: 16),
               Row(
                 children: [
-                  Text('© ${DateTime.now().year} شركتنا. جميع الحقوق محفوظة.', style: const TextStyle(fontFamily: AppTextStyles.fontFamily, color: Colors.white70)),
+                  Text('© ${DateTime.now().year} شركتنا. جميع الحقوق محفوظة.', style: const TextStyle( color: Colors.white70)),
                   const Spacer(),
                   Row(children: const [Icon(Icons.facebook, color: Colors.white70), SizedBox(width: 12), Icon(Icons.alternate_email, color: Colors.white70), SizedBox(width: 12), Icon(Icons.play_circle, color: Colors.white70)])
                 ],
@@ -516,9 +492,9 @@ class _FooterColumn extends StatelessWidget {
     return SizedBox(
       width: 220,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
+        Text(title, style: const TextStyle( fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold)),
         const SizedBox(height: 12),
-        ...items.map((e) => Padding(padding: const EdgeInsets.symmetric(vertical: 6.0), child: Text(e, style: const TextStyle(fontFamily: AppTextStyles.fontFamily, color: Colors.white70)))),
+        ...items.map((e) => Padding(padding: const EdgeInsets.symmetric(vertical: 6.0), child: Text(e, style: const TextStyle( color: Colors.white70)))),
       ]),
     );
   }
@@ -532,3 +508,5 @@ class FAQItem {
   final String answer;
   const FAQItem({required this.question, required this.answer});
 }
+
+

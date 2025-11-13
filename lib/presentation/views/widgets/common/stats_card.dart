@@ -59,8 +59,7 @@ class StatsCard extends StatelessWidget {
               style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontFamily: "Cairo"
+                  color: Colors.white
 
               ),
             ),
@@ -71,8 +70,7 @@ class StatsCard extends StatelessWidget {
             style: const TextStyle(
                 fontSize: 12,
                 color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontFamily: "Cairo"
+                fontWeight: FontWeight.w500
             ),
           ),
         ],
@@ -96,3 +94,4 @@ class StatsCard extends StatelessWidget {
     );
   }
 }
+

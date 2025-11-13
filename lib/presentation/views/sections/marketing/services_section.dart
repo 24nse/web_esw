@@ -66,7 +66,6 @@ class ServicesSection extends StatelessWidget {
                     child: Text(
                       'الاطلاع على جميع الخدمات',
                       style: TextStyle(
-                        fontFamily: 'Cairo',
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -215,7 +214,6 @@ class _ServiceCardState extends State<ServiceCard> {
                                     style: TextStyle(
                                       color: Color(0xFF0A1E4D),
                                       fontSize: 14,
-                                      fontFamily: 'Cairo',
                                       fontWeight: FontWeight.bold,
                                       height: 1.3,
                                     ),
@@ -224,7 +222,6 @@ class _ServiceCardState extends State<ServiceCard> {
                                   Text(
                                     widget.description,
                                     style: TextStyle(
-                                      fontFamily: 'Cairo',
                                       color: Color(0xFF6B7280),
                                       fontSize: 12,
                                       height: 1.6,
@@ -236,7 +233,6 @@ class _ServiceCardState extends State<ServiceCard> {
                                       Text(
                                         'إعرف المزيد',
                                         style: TextStyle(
-                                          fontFamily: 'Cairo',
                                           color: widget.isHighlighted
                                               ? AppColors.primary
                                               : Color(0xFF0A1E4D),
@@ -366,3 +362,4 @@ class _ServiceSliderState extends State<ServiceSlider> {
     );
   }
 }
+

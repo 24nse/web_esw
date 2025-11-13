@@ -13,6 +13,8 @@ final  Color? colordse2;
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final headingStyle = textTheme.headlineLarge?.copyWith(height: 1.3);
     return  Column(
       children: [
         Row(
@@ -26,10 +28,8 @@ final  Color? colordse2;
             SizedBox(width: 10),
             Text(
              title,
-              style: TextStyle(
-                fontFamily: "Cairo",
-                color: Color(0xFF6B7280),
-                fontSize: 16,
+              style: textTheme.bodyMedium?.copyWith(
+                color: const Color(0xFF6B7280),
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -46,23 +46,15 @@ final  Color? colordse2;
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            style: TextStyle(
-              fontSize: 42,
-              fontWeight: FontWeight.bold,
-              height: 1.3,
-            ),
+            style: headingStyle,
             children: [
               TextSpan(
                 text: des1,
-                style: TextStyle(
-                    fontFamily: "Cairo",
-                    color:colordse1?? Color(0xFF0A1E4D)),
+                style: headingStyle?.copyWith(color: colordse1 ?? const Color(0xFF0A1E4D)),
               ),
               TextSpan(
                 text: des2,
-                style: TextStyle(
-                    fontFamily: "Cairo",
-                    color:colordse2 ?? AppColors.primary),
+                style: headingStyle?.copyWith(color: colordse2 ?? AppColors.primary),
               ),
             ],
           ),
@@ -73,3 +65,5 @@ final  Color? colordse2;
 
   }
 }
+
+

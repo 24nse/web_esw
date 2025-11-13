@@ -10,6 +10,7 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return   Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -32,11 +33,9 @@ class SectionTitle extends StatelessWidget {
                   const SizedBox(width: 12),
                    Text(
                    title,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: "Cairo"
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -49,12 +48,10 @@ class SectionTitle extends StatelessWidget {
                 children: [
                   Text(
                     subTitle,
-                    style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xFF001F5C),
-                        height: 1.2,
-                        fontFamily: "Cairo"
+                    style: textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF001F5C),
+                      height: 1.2,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -64,13 +61,10 @@ class SectionTitle extends StatelessWidget {
                     ).createShader(bounds),
                     child: Text(
                       subTitle1,
-                      style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          height: 1.2,
-                          fontFamily: "Cairo"
-
+                      style: textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        height: 1.2,
                       ),
                     ),
                   ),
@@ -87,12 +81,11 @@ class SectionTitle extends StatelessWidget {
               color: AppColors.primary,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: const Text(
+            child: Text(
               "اعرف المزيد",
-              style: TextStyle(
-                fontFamily: "Cairo",
+              style: textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: Colors.white, // إضافة اللون الأبيض للنص
+                color: Colors.white,
               ),
             ),
           ),
@@ -117,3 +110,5 @@ class SectionTitle extends StatelessWidget {
       );
   }
 }
+
+

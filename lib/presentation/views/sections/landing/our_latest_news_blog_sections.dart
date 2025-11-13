@@ -177,7 +177,7 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
                                     children: [
                                       Icon(Icons.calendar_month, color: AppColors.primary,size: 12,),
                                       SizedBox(width: 5,),
-                                      Text("نوفمبر 7,2025",style: TextStyle(fontFamily: "Cairo",fontSize: 12,color: AppColors.textMuted),)
+                                      Text("نوفمبر 7,2025",style: TextStyle(fontSize: 12,color: AppColors.textMuted),)
                                     ],
                                   ),
                                   SizedBox(height: 10,),
@@ -187,7 +187,6 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
                                     style: TextStyle(
                                       color: Color(0xFF0A1E4D),
                                       fontSize: 14,
-                                      fontFamily: 'Cairo',
                                       fontWeight: FontWeight.bold,
                                       height: 1.3,
                                     ),
@@ -196,7 +195,6 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
                                   Text(
                                     widget.description,
                                     style: TextStyle(
-                                      fontFamily: 'Cairo',
                                       color: Color(0xFF6B7280),
                                       fontSize: 12,
                                       height: 1.6,
@@ -208,7 +206,6 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
                                       Text(
                                         'إعرف المزيد',
                                         style: TextStyle(
-                                          fontFamily: 'Cairo',
                                           color: widget.isHighlighted
                                               ? AppColors.primary
                                               : Color(0xFF0A1E4D),
@@ -251,7 +248,7 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
                 color: Color(0xFF01165a),
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(16),bottomLeft: Radius.circular(16)),
               ),
-             child: Text("إدارة المشاريع",style: TextStyle(color: Colors.white,fontFamily: "Cairo"),),
+             child: Text("إدارة المشاريع",style: TextStyle(color: Colors.white),),
 
 
             ),
@@ -349,3 +346,4 @@ class _ServiceSliderState extends State<ServiceSlider> {
     );
   }
 }
+

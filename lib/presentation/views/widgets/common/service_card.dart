@@ -86,8 +86,7 @@ class ServiceCard extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             title,
-            style: const TextStyle(
-              fontFamily: 'Cairo', // Replace with your local font name
+            style: const TextStyle( // Replace with your local font name
               fontSize: 18,
               fontWeight: FontWeight.w800,
               color: AppColors.text,
@@ -96,8 +95,7 @@ class ServiceCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             description,
-            style: const TextStyle(
-              fontFamily: 'Cairo', // Replace with your local font name
+            style: const TextStyle( // Replace with your local font name
               fontSize: 14,
               color: AppColors.textMuted,
             ),
@@ -107,3 +105,5 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
+
+

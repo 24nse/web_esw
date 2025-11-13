@@ -82,8 +82,7 @@ class RotatingContactCircle extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Cairo"
+                    fontWeight: FontWeight.bold
                   ),
                 ),
                 const Text(
@@ -91,8 +90,7 @@ class RotatingContactCircle extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 10,
-                    fontWeight: FontWeight.w500,
-                      fontFamily: "Cairo"
+                    fontWeight: FontWeight.w500
 
                   ),
                 ),

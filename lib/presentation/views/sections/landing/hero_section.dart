@@ -191,8 +191,7 @@ class _HeroSectionState extends State<HeroSection>
                           style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Cairo"
+                              fontWeight: FontWeight.w500
                           ),
                         ),
                       ],
@@ -212,8 +211,7 @@ class _HeroSectionState extends State<HeroSection>
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFF001F5C),
-                              height: 1.2,
-                              fontFamily: "Cairo"
+                              height: 1.2
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -227,8 +225,7 @@ class _HeroSectionState extends State<HeroSection>
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
-                                height: 1.2,
-                                fontFamily: "Cairo"
+                                height: 1.2
 
                             ),
                           ),
@@ -293,8 +290,7 @@ class _HeroSectionState extends State<HeroSection>
                     style: TextStyle(
                         color: Colors.grey[700],
                         fontSize: 14,
-                        height: 1.6,
-                        fontFamily: "Cairo"
+                        height: 1.6
                     ),
                   ),
                 ),
@@ -412,6 +408,7 @@ class _HeroSectionState extends State<HeroSection>
     );
   }
 }
+
 
 
 

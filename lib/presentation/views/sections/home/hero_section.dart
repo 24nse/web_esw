@@ -186,7 +186,7 @@
 //                       Text(
 //                         'نبني أحلامكم ونُنجز مشاريعكم باحترافية',
 //                         style: const TextStyle(
-//                           fontFamily: 'Cairo',
+//,
 //                           fontSize: 40,
 //                           fontWeight: FontWeight.w800,
 //                           color: Colors.white,
@@ -197,7 +197,7 @@
 //                       Text(
 //                         'شركة متخصصة في المقاولات العامة وتطوير العقارات؛ تنفيذ وتشطيب وصيانة وإدارة أملاك بمعايير جودة عالية ومواعيد دقيقة.',
 //                         style: TextStyle(
-//                           fontFamily: 'Cairo',
+//,
 //                           fontSize: 18,
 //                           color: Colors.white.withOpacity(0.95),
 //                         ),
@@ -215,7 +215,7 @@
 //                               padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
 //                               shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
 //                             ),
-//                             child: const Text('اطلب عرض سعر', style: TextStyle(fontFamily: 'Cairo')),
+//                             child: const Text('اطلب عرض سعر', style: TextStyle()),
 //                           ),
 //                           OutlinedButton(
 //                             onPressed: () {},
@@ -225,7 +225,7 @@
 //                               padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
 //                               shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
 //                             ),
-//                             child: const Text('تواصل معنا', style: TextStyle(fontFamily: 'Cairo')),
+//                             child: const Text('تواصل معنا', style: TextStyle()),
 //                           ),
 //                         ],
 //                       ),
@@ -281,7 +281,7 @@
 //           Text(
 //             value,
 //             style: const TextStyle(
-//               fontFamily: 'Cairo',
+//,
 //               color: Colors.white,
 //               fontSize: 20,
 //               fontWeight: FontWeight.bold,
@@ -290,7 +290,7 @@
 //           Text(
 //             title,
 //             style: const TextStyle(
-//               fontFamily: 'Cairo',
+//,
 //               color: Colors.white70,
 //             ),
 //           ),
@@ -312,3 +312,4 @@
 //     );
 //   }
 // }
+

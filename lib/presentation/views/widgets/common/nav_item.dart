@@ -15,14 +15,14 @@ class NavItem extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           title,
-          style: const TextStyle(
-            fontFamily: "Cairo", // 👈 استبدلها باسم الخط اللي عرّفته في pubspec.yaml
-            color: AppColors.text,
-            fontWeight: FontWeight.w600,
-            fontSize: 16,
-          ),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                color: AppColors.text,
+                fontWeight: FontWeight.w600,
+              ),
         ),
       ),
     );
   }
 }
+
+

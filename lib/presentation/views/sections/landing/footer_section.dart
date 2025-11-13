@@ -9,7 +9,6 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // خلفية داكنة من لوحتك (نستخدم لون النص الداكن كخلفية)
-    const Color footerBg = AppColors.text;
     const Color onDark = Colors.white;
 
     final textTheme = Theme.of(context).textTheme;
@@ -53,7 +52,6 @@ class FooterSection extends StatelessWidget {
                       // العنوان + زر تواصل
                       _HeaderRow(
                         titleStyle: textTheme.headlineMedium?.copyWith(
-                          fontFamily: 'Cairo',
                           color: onDark,
                         ),
                       ),
@@ -101,7 +99,6 @@ class FooterSection extends StatelessWidget {
                       child: Text(
                         '© 2025 موسسة الوعل للمقاولات العامة والعقارات. جميع الحقوق محفوظة.',
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          fontFamily: 'Cairo',
                           color: Colors.white,
                         ),
                         maxLines: 1,
@@ -185,7 +182,6 @@ class _BrandColumn extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: t.titleMedium?.copyWith(
-                  fontFamily: 'Cairo',
                   color: Colors.white,
                   fontWeight: FontWeight.w800,
                 ),
@@ -197,7 +193,6 @@ class _BrandColumn extends StatelessWidget {
         Text(
           'نقدّم حلولاً احترافية في المقاولات العامة وتطوير العقارات مع الالتزام بالجودة والموثوقية.',
           style: t.bodyMedium?.copyWith(
-            fontFamily: 'Cairo',
             color: Colors.white70,
             height: 1.6,
           ),
@@ -214,10 +209,6 @@ class _NavColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tit = Theme.of(context).textTheme.titleMedium?.copyWith(
-      fontFamily: 'Cairo',
-      color: Colors.white,
-    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
@@ -282,7 +273,6 @@ class _SectionTitle extends StatelessWidget {
       child: Text(
         text,
         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-          fontFamily: 'Cairo',
           color: Colors.white,
           fontWeight: FontWeight.w700,
         ),
@@ -364,7 +354,6 @@ class _ContactLine extends StatelessWidget {
             child: Text(
               text,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontFamily: 'Cairo',
                 color: Colors.white70,
               ),
             ),
@@ -389,7 +378,6 @@ class _LinkTextState extends State<_LinkText> {
   @override
   Widget build(BuildContext context) {
     final style = Theme.of(context).textTheme.bodyMedium?.copyWith(
-      fontFamily: 'Cairo',
       color: Colors.white,
     );
     return MouseRegion(
@@ -440,7 +428,6 @@ class _PrimaryPillState extends State<_PrimaryPill> {
         child: Text(
           widget.label,
           style: Theme.of(context).textTheme.labelLarge?.copyWith(
-            fontFamily: 'Cairo',
             color: Colors.white,
           ),
         ),
@@ -485,13 +472,13 @@ class _EmailFieldState extends State<_EmailField> {
               child: TextField(
                 controller: controller,
                 textAlign: TextAlign.right,
-                style: const TextStyle(color: Colors.white, fontFamily: 'Cairo'),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 decoration: const InputDecoration(
                   isDense: true,
                   border: InputBorder.none,
                   hintText: 'البريد الإلكتروني',
-                  hintStyle: TextStyle(color: Colors.white70, fontFamily: 'Cairo'),
+                  hintStyle: TextStyle(color: Colors.white70),
                 ),
               ),
             ),
@@ -499,7 +486,7 @@ class _EmailFieldState extends State<_EmailField> {
             _SendBtn(onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('تم الإرسال (تجريبي)', style: TextStyle(fontFamily: 'Cairo')),
+                  content: Text('تم الإرسال (تجريبي)', style: TextStyle()),
                   duration: Duration(seconds: 1),
                 ),
               );
@@ -564,7 +551,6 @@ class _BottomLinkState extends State<_BottomLink> {
       child: Text(
         widget.label,
         style: Theme.of(context).textTheme.labelLarge?.copyWith(
-          fontFamily: 'Cairo',
           color: Colors.white,
           decoration: _hover ? TextDecoration.underline : TextDecoration.none,
         ),
@@ -572,3 +558,5 @@ class _BottomLinkState extends State<_BottomLink> {
     );
   }
 }
+
+

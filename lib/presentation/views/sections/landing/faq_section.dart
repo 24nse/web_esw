@@ -16,7 +16,6 @@ class _FaqSectionState extends State<FaqSection> {
 
   @override
   Widget build(BuildContext context) {
-    const Color navy = Color(0xFF0C2754); // كحلي مطابق للصورة
     final isWide = MediaQuery.sizeOf(context).width >= 1000;
 
     final items = <_FaqItemData>[
@@ -64,7 +63,7 @@ class _FaqSectionState extends State<FaqSection> {
                 //     Text(
                 //       'سؤال؟ ',
                 //       style: TextStyle(
-                //         fontFamily: 'Cairo',
+                //,
                 //         fontSize: 40,
                 //         fontWeight: FontWeight.w800,
                 //         color: navy,
@@ -74,7 +73,7 @@ class _FaqSectionState extends State<FaqSection> {
                 //     Text(
                 //       'انظر هنا.',
                 //       style: TextStyle(
-                //         fontFamily: 'Cairo',
+                //,
                 //         fontSize: 40,
                 //         fontWeight: FontWeight.w800,
                 //         color: AppColors.primary,
@@ -134,30 +133,6 @@ class _FaqSectionState extends State<FaqSection> {
 
 /* ======================= Widgets: Header Elements ======================= */
 
-class _AccentTag extends StatelessWidget {
-  final String text;
-  const _AccentTag({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(width: 28, height: 3, color: AppColors.primary),
-        const SizedBox(width: AppSpaces.sm),
-        Text(
-          text,
-          style: const TextStyle(
-            fontFamily: 'Cairo',
-            fontSize: 14,
-            color: AppColors.textMuted,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 /* ======================= Widgets: FAQ List / Item ======================= */
 
 class _FaqItemData {
@@ -197,6 +172,7 @@ class _FaqItemState extends State<_FaqItem> {
     final Color iconBg = expanded ? Colors.white10 : Colors.white;
     final Color iconColor = expanded ? Colors.white : navy;
 
+    final textTheme = Theme.of(context).textTheme;
     return MouseRegion(
       onEnter: (_) => setState(() => _hover = true),
       onExit: (_) => setState(() => _hover = false),
@@ -229,9 +205,7 @@ class _FaqItemState extends State<_FaqItem> {
                       Expanded(
                         child: Text(
                           widget.data.title,
-                          style: TextStyle(
-                            fontFamily: 'Cairo',
-                            fontSize: 18,
+                          style: textTheme.titleLarge?.copyWith(
                             fontWeight: FontWeight.w800,
                             color: textColor,
                           ),
@@ -276,7 +250,6 @@ class _FaqItemState extends State<_FaqItem> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                          fontFamily: 'Cairo',
                           fontSize: 14,
                           height: 1.6,
                           color: Colors.white70,
@@ -303,6 +276,7 @@ class _QuestionsCTA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const Color navy = Color(0xFF0C2754);
+    final textTheme = Theme.of(context).textTheme;
 
     return Container(
       decoration: BoxDecoration(
@@ -328,23 +302,19 @@ class _QuestionsCTA extends StatelessWidget {
               child: const Icon(Icons.chat_bubble, color: AppColors.primary, size: 30),
             ),
             const SizedBox(height: AppSpaces.lg),
-            const Text(
+             Text(
               'لديك أسئلة مختلفة؟',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Cairo',
-                fontSize: 18,
+              style: textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w800,
                 color: Colors.white,
               ),
             ),
             const SizedBox(height: AppSpaces.sm),
-            const Text(
-              'سيرد فريقنا على جميع أسئلتك\nونضمن استجابة سريعة.',
+            Text(
+              "???????? ???????????? ?????? ???????? ???????????\n?????????? ?????????????? ??????????",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Cairo',
-                fontSize: 14,
+              style: textTheme.bodyMedium?.copyWith(
                 color: Colors.white70,
                 height: 1.6,
               ),
@@ -396,7 +366,6 @@ class _ServiceCard extends StatelessWidget {
                 Text(
                   'راحتكم أولويتنا',
                   style: TextStyle(
-                    fontFamily: 'Cairo',
                     fontSize: 12,
                     color: AppColors.textMuted,
                   ),
@@ -405,7 +374,6 @@ class _ServiceCard extends StatelessWidget {
                 Text(
                   'خدمة 24/7',
                   style: TextStyle(
-                    fontFamily: 'Cairo',
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
                     color: AppColors.text,
@@ -415,7 +383,6 @@ class _ServiceCard extends StatelessWidget {
                 Text(
                   '(000) 000-0000',
                   style: TextStyle(
-                    fontFamily: 'Cairo',
                     fontSize: 14,
                     color: AppColors.textMuted,
                   ),
@@ -463,7 +430,6 @@ class _PrimaryPillButtonState extends State<_PrimaryPillButton> {
         child: Text(
           widget.label,
           style: const TextStyle(
-            fontFamily: 'Cairo',
             fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w700,
@@ -564,7 +530,7 @@ class _StripedBackground extends CustomPainter {
 //               Text(
 //                 'الأسئلة الشائعة',
 //                 style: TextStyle(
-//                   fontFamily: "Cairo",
+//,
 //                   color: Color(0xFF6B7280),
 //                   fontSize: 16,
 //                   fontWeight: FontWeight.w500,
@@ -655,7 +621,7 @@ class _StripedBackground extends CustomPainter {
 //                                     fontSize: 14,
 //                                     color: Colors.white.withOpacity(0.8),
 //                                     height: 1.6,
-//                                       fontFamily: "Cairo"
+//
 //                                   ),
 //                                 ),
 //                               ),
@@ -712,7 +678,7 @@ class _StripedBackground extends CustomPainter {
 //                               fontSize: 22,
 //                               fontWeight: FontWeight.bold,
 //                               color: Colors.white,
-//                                 fontFamily: "Cairo"
+//
 //                             ),
 //                           ),
 //                           const SizedBox(height: 12),
@@ -724,7 +690,7 @@ class _StripedBackground extends CustomPainter {
 //                               fontSize: 14,
 //                               color: Colors.white.withOpacity(0.7),
 //                               height: 1.6,
-//                                 fontFamily: "Cairo"
+//
 //                             ),
 //                           ),
 //                           const SizedBox(height: 24),
@@ -743,7 +709,7 @@ class _StripedBackground extends CustomPainter {
 //                                 color: Colors.white,
 //                                 fontSize: 16,
 //                                 fontWeight: FontWeight.bold,
-//                                   fontFamily: "Cairo"
+//
 //                               ),
 //                             ),
 //                           ),
@@ -778,7 +744,7 @@ class _StripedBackground extends CustomPainter {
 //                                   style: TextStyle(
 //                                     fontSize: 14,
 //                                     color: Colors.grey[600],
-//                                       fontFamily: "Cairo"
+//
 //                                   ),
 //                                 ),
 //                                 const SizedBox(height: 4),
@@ -789,7 +755,7 @@ class _StripedBackground extends CustomPainter {
 //                                     fontSize: 20,
 //                                     fontWeight: FontWeight.bold,
 //                                     color: Color(0xFF1A1A2E),
-//                                       fontFamily: "Cairo"
+//
 //                                   ),
 //                                 ),
 //                                 const SizedBox(height: 4),
@@ -798,7 +764,7 @@ class _StripedBackground extends CustomPainter {
 //                                   style: TextStyle(
 //                                     fontSize: 14,
 //                                     color: Colors.grey[600],
-//                                       fontFamily: "Cairo"
+//
 //                                   ),
 //                                 ),
 //                               ],
@@ -840,3 +806,4 @@ class _StripedBackground extends CustomPainter {
 //     required this.answer,
 //   });
 // }
+

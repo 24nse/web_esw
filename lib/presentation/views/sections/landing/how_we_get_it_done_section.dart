@@ -28,7 +28,6 @@ class HowWeGetItDoneSection extends StatelessWidget {
               Text(
                 'الخدمات التي نقدمها',
                 style: TextStyle(
-                  fontFamily: "Cairo",
                   color: Color(0xFF6B7280),
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -54,7 +53,6 @@ class HowWeGetItDoneSection extends StatelessWidget {
                     Text(
                       'How We Works',
                       style: TextStyle(
-                        fontFamily: "Cairo",
                         fontSize: 16,
                         color: Colors.grey[600],
                         fontWeight: FontWeight.w500,
@@ -260,3 +258,4 @@ class ProcessStep extends StatelessWidget {
     );
   }
 }
+

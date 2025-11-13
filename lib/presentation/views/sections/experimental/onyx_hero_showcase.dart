@@ -512,7 +512,7 @@
 //                             color: Colors.grey,
 //                             fontSize: 16,
 //                             fontWeight: FontWeight.w500,
-//                             fontFamily: "Cairo"
+//
 //                           ),
 //                         ),
 //                       ],
@@ -533,7 +533,7 @@
 //                               fontWeight: FontWeight.bold,
 //                               color: const Color(0xFF001F5C),
 //                               height: 1.2,
-//                               fontFamily: "Cairo"
+//
 //                           ),
 //                         ),
 //                         const SizedBox(height: 8),
@@ -548,7 +548,7 @@
 //                                 fontWeight: FontWeight.bold,
 //                                 color: Colors.white,
 //                                 height: 1.2,
-//                                 fontFamily: "Cairo"
+//
 //
 //                             ),
 //                           ),
@@ -614,7 +614,7 @@
 //                       color: Colors.grey[700],
 //                       fontSize: 14,
 //                       height: 1.6,
-//                       fontFamily: "Cairo"
+//
 //                     ),
 //                   ),
 //                 ),
@@ -768,7 +768,7 @@
 //             color: _isHovered ? const Color(0xFFFF6B2C) : Colors.grey[700],
 //             fontSize: 12,
 //             fontWeight: FontWeight.w600,
-//             fontFamily: "Cairo"
+//
 //           ),
 //         ),
 //       ),
@@ -836,7 +836,7 @@
 //                 fontSize: 14,
 //                 fontWeight: FontWeight.bold,
 //                 color: Colors.white,
-//                   fontFamily: "Cairo"
+//
 //
 //               ),
 //             ),
@@ -848,7 +848,7 @@
 //               fontSize: 12,
 //               color: Colors.white,
 //               fontWeight: FontWeight.w500,
-//               fontFamily: "Cairo"
+//
 //             ),
 //           ),
 //         ],

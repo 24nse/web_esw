@@ -228,7 +228,6 @@ class WhoAreYou extends StatelessWidget {
                             child: const Text(
                               "25+ سنة خبرة",
                               style: TextStyle(
-                                fontFamily: "Cairo",
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -362,7 +361,6 @@ class MissionContainer extends StatelessWidget {
                 child: Text(
                   'نحن شركة رائدة في مجال المقاولات العامة، نقدم حلولاً متكاملة لمشاريع البناء والتشييد. نلتزم بأعلى معايير الجودة والسلامة في تنفيذ المشاريع السكنية والتجارية والصناعية بكفاءة واحترافية عالية.',                  style: TextStyle(
                     color: Colors.white70,
-                  fontFamily: "Cairo",
                     fontSize: 14,
                     height: 1.6,
                     letterSpacing: 0.3,
@@ -381,7 +379,6 @@ class MissionContainer extends StatelessWidget {
 
                       'مهمتنا',
                       style: TextStyle(
-                        fontFamily: "Cairo",
                         color: AppColors.primary, // اللون البرتقالي
                         // color: Color(0xFFFF6B4A), // اللون البرتقالي
                         fontSize: 20,
@@ -443,3 +440,5 @@ class MissionContainer extends StatelessWidget {
     );
   }
 }
+
+

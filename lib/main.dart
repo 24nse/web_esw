@@ -1,6 +1,6 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:web_site/common/constants/theme/app_typography.dart';
 import 'package:web_site/common/constants/theme/material_theme.dart';
 import 'package:web_site/presentation/views/sections/company/who_are_you_section.dart';
 import 'package:web_site/presentation/views/sections/home/header.dart';
@@ -26,26 +26,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final materialTheme = MaterialTheme(AppTypography.textTheme);
     return MaterialApp(
       title: 'شركة المقاولات والعقارات',
-      //theme: ThemeData(
-     //   colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
-     //   scaffoldBackgroundColor: Colors.white,
-        // textTheme: GoogleFonts.cairoTextTheme(Theme.of(context).textTheme).apply(
-        //   bodyColor: AppColors.text,
-        //   displayColor: AppColors.text,
-        // ),
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: AppColors.p),
-      //   scaffoldBackgroundColor: Colors.white,
-      //   fontFamily: 'Cairo', // Set Cairo as the default font for the entire app
-      //   textTheme: Theme.of(context).textTheme.apply(
-      //     bodyColor: AppColors.text,
-      //     displayColor: AppColors.text,
-      //   ),
-      // ),
-
-
+      theme: materialTheme.light(),
+      darkTheme: materialTheme.dark(),
       locale: const Locale('ar'),
       supportedLocales: const [
         Locale('ar'),
@@ -113,7 +98,7 @@ class HomePage extends StatelessWidget {
 //   final List<String> units = [
 //     '23432 - اسم الوحدة المالية',
 //     '224 - اسم الوحدة المالية',
-//     '654 - اسم الوحدة المالية',
+//
 //   ];
 //
 //   @override
@@ -130,7 +115,7 @@ class HomePage extends StatelessWidget {
 //               children: [
 //                 // Label
 //                 const Text(
-//                   'الوحدة المالية *',
+//                  'الوحدة المالية *',
 //                   style: TextStyle(
 //                     fontSize: 14,
 //                     color: Colors.black87,
@@ -266,3 +251,7 @@ class HomePage extends StatelessWidget {
 //     ),
 //   ));
 // }
+
+
+
+

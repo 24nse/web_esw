@@ -44,8 +44,7 @@ class _AnimatedServiceButtonState extends State<AnimatedServiceButton> {
           style: TextStyle(
               color: _isHovered ? const Color(0xFFFF6B2C) : Colors.grey[700],
               fontSize: 12,
-              fontWeight: FontWeight.w600,
-              fontFamily: "Cairo"
+              fontWeight: FontWeight.w600
           ),
         ),
       ),

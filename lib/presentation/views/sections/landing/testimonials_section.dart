@@ -244,8 +244,7 @@ class TestimonialCard extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                    fontFamily: "Cairo"
+                  color: Colors.white
 
                 ),
               ),
@@ -260,8 +259,7 @@ class TestimonialCard extends StatelessWidget {
             style: const TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
-                fontFamily: "Cairo"
+              color: Colors.white
 
             ),
           ),
@@ -275,8 +273,7 @@ class TestimonialCard extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               color: Colors.white.withOpacity(0.7),
-              height: 1.6,
-                fontFamily: "Cairo"
+              height: 1.6
 
             ),
           ),
@@ -320,8 +317,7 @@ class TestimonialCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                        fontFamily: "Cairo"
+                      color: Colors.white
 
                     ),
                   ),
@@ -331,8 +327,7 @@ class TestimonialCard extends StatelessWidget {
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.white.withOpacity(0.6),
-                        fontFamily: "Cairo"
+                      color: Colors.white.withOpacity(0.6)
 
                     ),
                   ),

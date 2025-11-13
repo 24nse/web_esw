@@ -94,8 +94,7 @@ class SectorTile extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontFamily: "Cairo", // 👈 خط محلي
+                  style: const TextStyle( // 👈 خط محلي
                     fontWeight: FontWeight.w800,
                     color: AppColors.text,
                   ),
@@ -103,7 +102,6 @@ class SectorTile extends StatelessWidget {
                 Text(
                   meta,
                   style: const TextStyle(
-                    fontFamily: "Cairo",
                     color: AppColors.textMuted,
                   ),
                 ),
@@ -116,3 +114,5 @@ class SectorTile extends StatelessWidget {
     );
   }
 }
+
+
