@@ -1,29 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:web_site/sections/completed_projects_section.dart';
-import 'package:web_site/sections/contact_section.dart';
-import 'package:web_site/sections/faq_section.dart';
-import 'package:web_site/sections/footer_section.dart';
-import 'package:web_site/sections/hero_section.dart';
-import 'package:web_site/sections/how_we_getIt_done_section.dart';
-import 'package:web_site/sections/news_letter_section.dart';
-import 'package:web_site/sections/our_latest_news_blog_sections.dart';
-import 'package:web_site/sections/team_section.dart';
-import 'package:web_site/sections/testimonials_section.dart';
-import 'package:web_site/sections/why_choose_us_section.dart';
-import 'package:web_site/ser.dart';
-import 'package:web_site/theme/tokens.dart' hide AppColors;
-import 'package:web_site/who_are_you.dart';
-import 'package:web_site/widgets/d.dart';
-
-import 'home/about_section.dart';
-import 'home/categories_section.dart';
-import 'home/features_section.dart';
-import 'home/footer.dart';
-import 'home/header.dart';
-import 'home/hero_section.dart';
-import 'home/pricing_section.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:web_site/common/constants/theme/material_theme.dart';
+import 'package:web_site/presentation/views/sections/company/who_are_you_section.dart';
+import 'package:web_site/presentation/views/sections/home/header.dart';
+import 'package:web_site/presentation/views/sections/landing/completed_projects_section.dart';
+import 'package:web_site/presentation/views/sections/landing/contact_section.dart';
+import 'package:web_site/presentation/views/sections/landing/faq_section.dart';
+import 'package:web_site/presentation/views/sections/landing/footer_section.dart';
+import 'package:web_site/presentation/views/sections/landing/hero_section.dart';
+import 'package:web_site/presentation/views/sections/landing/newsletter_section.dart';
+import 'package:web_site/presentation/views/sections/landing/our_latest_news_blog_sections.dart';
+import 'package:web_site/presentation/views/sections/landing/team_section.dart';
+import 'package:web_site/presentation/views/sections/landing/testimonials_section.dart';
+import 'package:web_site/presentation/views/sections/landing/why_choose_us_section.dart';
+import 'package:web_site/presentation/views/sections/marketing/services_section.dart';
 
 
 void main() {
