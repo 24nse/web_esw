@@ -187,8 +187,7 @@ class _ContactSectionState extends State<ContactSection> {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontFamily: "Cairo"
+                          color: Colors.white
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -231,8 +230,7 @@ class _ContactSectionState extends State<ContactSection> {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF1A1A2E),
-            fontFamily: "Cairo"
+            color: Color(0xFF1A1A2E)
           ),
         ),
         const SizedBox(height: 8),
@@ -244,8 +242,7 @@ class _ContactSectionState extends State<ContactSection> {
             hintText: hint,
             hintStyle: TextStyle(
               color: Colors.grey[400],
-              fontSize: 14,
-                fontFamily: "Cairo"
+              fontSize: 14
 
             ),
             filled: true,
@@ -291,8 +288,7 @@ class _ContactSectionState extends State<ContactSection> {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
-              fontFamily: "Cairo"
+            color: Colors.white
 
           ),
         ),
@@ -304,8 +300,7 @@ class _ContactSectionState extends State<ContactSection> {
           style: TextStyle(
             fontSize: 12,
             color: Colors.white.withOpacity(0.8),
-            height: 1.6,
-              fontFamily: "Cairo"
+            height: 1.6
 
           ),
         ),

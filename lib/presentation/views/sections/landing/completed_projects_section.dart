@@ -129,7 +129,6 @@ class CompletedProjectsSection extends StatelessWidget {
                       child: Text(
                         'عرض جميع المشاريع',
                         style: TextStyle(
-                          fontFamily: 'Cairo',
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -293,8 +292,7 @@ class ProjectCard extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
-                  fontFamily: "Cairo"
+                color: Colors.white
               ),
             ),
             const SizedBox(height: 12),
@@ -304,8 +302,7 @@ class ProjectCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.white.withOpacity(0.7),
-                height: 1.6,
-                  fontFamily: "Cairo"
+                height: 1.6
               ),
             ),
             const SizedBox(height: 20),
@@ -324,8 +321,7 @@ class ProjectCard extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     color: const Color(0xFFFF6B35),
-                    fontWeight: FontWeight.bold,
-                      fontFamily: "Cairo"
+                    fontWeight: FontWeight.bold
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -392,8 +388,7 @@ class ProjectCard extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             color: Colors.white.withOpacity(0.9),
-            fontWeight: FontWeight.w500,
-              fontFamily: "Cairo"
+            fontWeight: FontWeight.w500
 
           ),
         ),
@@ -423,3 +418,4 @@ class ProjectCard extends StatelessWidget {
     );
   }
 }
+
