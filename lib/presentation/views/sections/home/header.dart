@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
-import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
-
 import 'package:web_site/presentation/views/pages/about/about_page.dart';
+import 'package:web_site/presentation/views/pages/projects/projects_page.dart';
+import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
@@ -38,27 +38,32 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                   const SizedBox(width: 12),
                   Text(
                     'شركة الوعل المقاولات والعقارات',
-                    // style: GoogleFonts.cairo(
-                    //   fontSize: 20,
-                    //   fontWeight: FontWeight.w700,
-                    //   color: AppColors.text,
-                    // ),
                   ),
                 ],
               ),
             ),
             const Spacer(),
             // Nav items (simplified)
-             NavItem(title: 'خدماتنا',onTap :() {
-               Navigator.push(
-                 context,
-                 MaterialPageRoute(builder: (context) => const AboutPage()),
-               );
-             },),
-
-
-            const NavItem(title: 'مشاريعنا'),
+            NavItem(
+              title: 'خدماتنا',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutPage()),
+                );
+              },
+            ),
+            NavItem(
+              title: 'مشاريعنا',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProjectsPage()),
+                );
+              },
+            ),
             const NavItem(title: 'باقاتنا'),
+            const NavItem(title: 'تواصل معنا'),
             const NavItem(title: 'تواصل معنا'),
             const SizedBox(width: 16),
             TextButton(

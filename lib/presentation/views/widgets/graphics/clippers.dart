@@ -39,6 +39,7 @@ class TopCornerClipper extends CustomClipper<Path> {
     } else if (isLeft) {
       // قص الزاوية العليا اليسرى
       path.moveTo(clipSize, 0);
+      // path.lineTo(size.height - clipSize - topRadius, 0);
       path.quadraticBezierTo(
         clipSize - topRadius, 0,
         clipSize - topRadius, topRadius,
