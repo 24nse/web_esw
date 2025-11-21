@@ -4,6 +4,8 @@ import 'package:web_site/presentation/views/pages/about/about_page.dart';
 import 'package:web_site/presentation/views/pages/projects/projects_page.dart';
 import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 
+import '../../pages/projects_dtl.dart';
+
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
 
@@ -58,7 +60,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const ProjectsPage()),
+                  MaterialPageRoute(builder: (context) =>  ProjectDetailsPage()),
                 );
               },
             ),
