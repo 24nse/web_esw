@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/sections/home/header.dart';
-
+import '../../widgets/common/page_hero_section.dart';
 import '../../widgets/graphics/clippers.dart';
 import '../../widgets/graphics/unified_ruler_ticks_painter.dart';
 
@@ -10,14 +10,21 @@ class ProjectsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const Header(),
-      body: const SingleChildScrollView(
+    return const Scaffold(
+      appBar: Header(),
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            _ProjectsHero(),
+            // Use PageHeroSection instead of _ProjectsHero
+            PageHeroSection(
+              title: 'المشاريع',
+              breadcrumbItems: [
+                BreadcrumbItem(label: 'الرئيسية'),
+                BreadcrumbItem(label: 'المشاريع', isActive: true),
+              ],
+            ),
             CustomPaint(
-                foregroundPainter:  UnifiedRulerTicksPainter(
+                foregroundPainter: UnifiedRulerTicksPainter(
                   // أعلى أفقي
                   drawTop: true,
                   topMode: UnifiedRulerTicksMode.horizontal,
@@ -44,107 +51,6 @@ class ProjectsPage extends StatelessWidget {
   }
 }
 
-class _ProjectsHero extends StatelessWidget {
-  const _ProjectsHero();
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Column(
-      children: [
-        CustomPaint(
-    foregroundPainter:  UnifiedRulerTicksPainter(
-      drawBottom: false,
-    // أعلى أفقي
-    drawTop: true,
-      topMode: UnifiedRulerTicksMode.horizontal,
-      topStep: 10,
-      topPatternHeights: const [14, 6, 10, 6, 14],
-      topMargin: 0,
-      topStrokeWidth: 1,
-      topColor: Color(0xFFD1D5DB),
-
-    ),
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 64, horizontal: 24),
-            color: AppColors.bgG,
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1100),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'المشاريع',
-                      style: textTheme.displaySmall?.copyWith(
-                        color: const Color(0xFF0A1E4D),
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Home',
-                          style: textTheme.bodyLarge?.copyWith(
-                            color: const Color(0xFF0A1E4D),
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const Text('  /  '),
-                        Text(
-                          'Projects',
-                          style: textTheme.bodyLarge?.copyWith(
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 56,
-          width: double.infinity,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xFF001E62), Color(0xFF0A2F78)],
-                  ),
-                ),
-              ),
-              CustomPaint(
-                foregroundPainter:  UnifiedRulerTicksPainter(
-                  drawTop: false,
-
-                  // أسفل مائل
-                  drawBottom: true,
-                  bottomMode: UnifiedRulerTicksMode.diagonal,
-                  bottomStep: 12,
-                  bottomPatternHeights: const [20],
-                  bottomAngleDeg: 60,
-                  bottomDirection: DiagonalDirection.downLeft,
-                  bottomMargin: 0,
-                  bottomStrokeWidth: 1,
-                  bottomColor: Color(0xFF5F83C8),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
 
 class _ProjectsBody extends StatelessWidget {
   const _ProjectsBody();

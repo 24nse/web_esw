@@ -16,9 +16,7 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
       year: '2023',
       heroImageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200',
       description: '''مشروع عصري متكامل يجمع بين التصميم المعماري الحديث والوظائف المتطورة. يقع المشروع في قلب العاصمة الرياض، ويمثل نموذجاً للتطور العمراني المستدام.
-
 تم تصميم المشروع بأعلى معايير الجودة والكفاءة، مع التركيز على توفير بيئة عمل مريحة وحديثة. يتميز المبنى بواجهات زجاجية عصرية وأنظمة ذكية للطاقة والأمن.
-
 يعد هذا المشروع إضافة نوعية للمشهد العمراني في المنطقة، ويعكس رؤيتنا في تقديم حلول عقارية متميزة تلبي احتياجات السوق المحلي والإقليمي.''',
       
       challengeTitle: 'التحدي',
@@ -27,6 +25,21 @@ class ProjectDetailsRepositoryImpl implements ProjectDetailsRepository {
       solutionTitle: 'الحل',
       solutionDescription: '''طور فريقنا نهجاً شاملاً يجمع بين التقنيات المتطورة وممارسات البناء المستدامة. قمنا بتطبيق أنظمة إدارة مشاريع متقدمة وتعاونا بشكل وثيق مع الجهات المختصة لضمان الامتثال لجميع اللوائح.''',
       solutionPoints: [
+        SolutionPoint(
+          icon: 'check',
+          title: 'تصميم مبتكر',
+          description: 'تطبيق حلول معمارية حديثة تعظم كفاءة استغلال المساحات.',
+        ),
+        SolutionPoint(
+          icon: 'settings',
+          title: 'تقنيات متقدمة',
+          description: 'استخدام أحدث تقنيات ومواد البناء المتطورة.',
+        ),
+        SolutionPoint(
+          icon: 'eco',
+          title: 'نهج مستدام',
+          description: 'دمج ممارسات صديقة للبيئة طوال عملية الإنشاء.',
+        ),
         SolutionPoint(
           icon: 'check',
           title: 'تصميم مبتكر',

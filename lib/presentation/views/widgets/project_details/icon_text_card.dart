@@ -58,3 +58,53 @@ class IconTextCard extends StatelessWidget {
     );
   }
 }
+
+
+class IconTextRowCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String description;
+
+  const IconTextRowCard({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Orange circular icon
+        Container(
+          width: 25,
+          height: 25,
+          decoration: const BoxDecoration(
+            color: AppColors.primary,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 18,
+          ),
+        ),
+        const SizedBox(width: 16),
+
+        // Title
+        Text(
+          title,
+          style: textTheme.titleMedium?.copyWith(
+            color: AppColors.text,
+          ),
+        ),
+
+      ],
+    );
+  }
+}
+

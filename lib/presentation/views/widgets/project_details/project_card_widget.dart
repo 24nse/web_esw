@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 
+import '../graphics/clippers.dart';
+
 class ProjectCardWidget extends StatelessWidget {
   final String title;
   final String imageUrl;
@@ -19,84 +21,93 @@ class ProjectCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: AppShadows.card,
+    return ClipPath(
+      clipper: TopCornerClipper(
+          clipSize: 70,
+          topRadius: 8,
+          sideRadius: 8,
+          isRight: true
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Project Image
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-            child: Image.network(
-              imageUrl,
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  height: 200,
-                  color: AppColors.bgG,
-                  child: const Center(
-                    child: Icon(Icons.image, size: 64, color: AppColors.textMuted),
-                  ),
-                );
-              },
-            ),
-          ),
-          
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Tags
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: tags.map((tag) => _TagChip(label: tag)).toList(),
+
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0XFFfefefe),
+          borderRadius: BorderRadius.circular(18),
+          border:Border.all(width: 2,color: Color(0XFFf0f0f0)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Project Image
+              ClipRRect(
+                borderRadius:  BorderRadius.circular(18),
+                child: Image.network(
+                  imageUrl,
+                  height: 400,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 200,
+                      color: AppColors.bgG,
+                      child: const Center(
+                        child: Icon(Icons.image, size: 64, color: AppColors.textMuted),
+                      ),
+                    );
+                  },
                 ),
-                const SizedBox(height: 16),
-                
-                // Project Title and Arrow
-                Row(
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Text(
-                        title,
-                        style: textTheme.titleMedium?.copyWith(
-                          color: AppColors.primaryDark,
-                        ),
-                      ),
+                    // Tags
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: tags.map((tag) => _TagChip(label: tag)).toList(),
                     ),
-                    const SizedBox(width: 12),
-                    
-                    // Arrow Circle
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        color: AppColors.primaryDark,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 20,
-                      ),
+                    const SizedBox(height: 16),
+
+                    // Project Title and Arrow
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            title,
+                            style: textTheme.titleMedium?.copyWith(
+                              color: AppColors.primaryDark,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+
+                        // Arrow Circle
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            color: AppColors.primaryDark,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

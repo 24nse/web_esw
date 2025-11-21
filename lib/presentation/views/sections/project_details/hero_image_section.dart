@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/graphics/clippers.dart';
+import '../company/who_are_you_section.dart';
+
 class HeroImageSection extends StatelessWidget {
   final String imageUrl;
 
@@ -11,7 +14,12 @@ class HeroImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: _TopLeftClipper(),
+      clipper: TopCornerClipper(
+          clipSize: 70,
+          topRadius: 8,
+          sideRadius: 8,
+          isRight: true
+      ),
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
           topRight: Radius.circular(16),

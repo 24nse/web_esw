@@ -18,13 +18,13 @@ class SolutionSection extends StatelessWidget {
   IconData _getIconData(String iconName) {
     switch (iconName) {
       case 'check':
-        return Icons.check_circle;
+        return Icons.check;
       case 'settings':
-        return Icons.settings;
+        return Icons.check;
       case 'eco':
-        return Icons.eco;
+        return Icons.check;
       default:
-        return Icons.star;
+        return Icons.check;
     }
   }
 
@@ -55,21 +55,24 @@ class SolutionSection extends StatelessWidget {
         const SizedBox(height: 32),
         
         // 3 Key Points
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        GridView.count(
+
+          mainAxisSpacing: 1,       // المسافة بين الصفوف (قللها كما تريد)
+          crossAxisSpacing: 1,
+          childAspectRatio: 5,// المسافة بين الأعمدة (اختياري)
+          crossAxisCount: 4,                 // عدد العناصر في كل صف
+          shrinkWrap: true,                  // عشان ياخذ الارتفاع اللي يحتاجه فقط
           children: points.map((point) {
-            return Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: IconTextCard(
-                  icon: _getIconData(point.icon),
-                  title: point.title,
-                  description: point.description,
-                ),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: IconTextRowCard(
+                icon: _getIconData(point.icon),
+                title: point.title,
+                description: point.description,
               ),
             );
           }).toList(),
-        ),
+        )
       ],
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 
+import '../company/who_are_you_section.dart';
+
 class GallerySection extends StatelessWidget {
   final List<String> imageUrls;
 
@@ -35,28 +37,35 @@ class _GalleryImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppShadows.card,
+    return ClipPath(
+      clipper: TopRightCornerClipper(
+        clipSize: 70, // حجم القص
+        topRadius: 8, // نصف قطر النقطة العلوية
+        rightRadius: 8, // نصف قطر النقطة اليسرى
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: Image.network(
-          imageUrl,
-          height: 280,
-          width: double.infinity,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              height: 280,
-              color: AppColors.bgG,
-              child: const Center(
-                child: Icon(Icons.image, size: 64, color: AppColors.textMuted),
-              ),
-            );
-          },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: AppShadows.card,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Image.network(
+            imageUrl,
+            height: 280,
+            width: double.infinity,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
+                height: 280,
+                color: AppColors.bgG,
+                child: const Center(
+                  child: Icon(Icons.image, size: 64, color: AppColors.textMuted),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

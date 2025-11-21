@@ -47,19 +47,19 @@ class OtherProjectsSection extends StatelessWidget {
         
         // Main Heading
         RichText(
-          text: const TextSpan(
-            style: TextStyle(
+          text:  TextSpan(
+            style: textTheme.headlineMedium?.copyWith(
               fontSize: 36,
               fontWeight: FontWeight.bold,
             ),
             children: [
               TextSpan(
                 text: 'شاهد ',
-                style: TextStyle(color: AppColors.primaryDark),
+                style: textTheme.headlineMedium?.copyWith(color: AppColors.primaryDark),
               ),
               TextSpan(
                 text: 'مشاريع أخرى',
-                style: TextStyle(color: AppColors.primary),
+                style: textTheme.headlineMedium?.copyWith(color: AppColors.primary),
               ),
             ],
           ),

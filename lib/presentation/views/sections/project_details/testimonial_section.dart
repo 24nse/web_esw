@@ -18,15 +18,16 @@ class TestimonialSection extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(40),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.bgW,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: AppShadows.card,
+        border: Border.all(color: AppColors.bgG,width: 3,),
+        // boxShadow: AppShadows.card,
       ),
       child: Stack(
         children: [
           // Decorative quotation marks in background
           Positioned(
-            right: 40,
+            left: 40,
             top: 20,
             child: Opacity(
               opacity: 0.05,
