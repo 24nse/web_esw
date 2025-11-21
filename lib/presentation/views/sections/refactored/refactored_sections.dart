@@ -11,11 +11,11 @@ class SectionHeader extends StatelessWidget {
   final TextAlign align;
 
   const SectionHeader({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.align = TextAlign.start,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class PillButton extends StatelessWidget {
   final VoidCallback? onTap;
   final bool outlined;
 
-  const PillButton({Key? key, required this.label, this.onTap, this.outlined = false}) : super(key: key);
+  const PillButton({super.key, required this.label, this.onTap, this.outlined = false});
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +77,12 @@ class TileCard extends StatelessWidget {
   final VoidCallback? onTap;
 
   const TileCard({
-    Key? key,
+    super.key,
     required this.leading,
     required this.title,
     required this.subtitle,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +127,7 @@ class HoverCard extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
 
-  const HoverCard({Key? key, required this.child, this.width = 300, this.height = 260, this.onTap}) : super(key: key);
+  const HoverCard({super.key, required this.child, this.width = 300, this.height = 260, this.onTap});
 
   @override
   State<HoverCard> createState() => _HoverCardState();
@@ -176,13 +176,13 @@ class ServiceCardWidget extends StatelessWidget {
   final bool highlighted;
 
   const ServiceCardWidget({
-    Key? key,
+    super.key,
     required this.image,
     required this.icon,
     required this.title,
     required this.description,
     this.highlighted = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +234,7 @@ class ServiceSlider extends StatelessWidget {
   final List<ServiceCardData> items;
   final double spacing;
 
-  const ServiceSlider({Key? key, required this.items, this.spacing = 20}) : super(key: key);
+  const ServiceSlider({super.key, required this.items, this.spacing = 20});
 
   @override
   Widget build(BuildContext context) {
@@ -275,7 +275,7 @@ class ServiceCardData {
 class PricingSection extends StatelessWidget {
   final List<Plan> plans;
 
-  const PricingSection({Key? key, required this.plans}) : super(key: key);
+  const PricingSection({super.key, required this.plans});
 
   @override
   Widget build(BuildContext context) {
@@ -324,7 +324,7 @@ class Plan {
 class _PlanCardView extends StatelessWidget {
   final Plan plan;
   final bool highlighted;
-  const _PlanCardView({Key? key, required this.plan, this.highlighted = false}) : super(key: key);
+  const _PlanCardView({required this.plan, this.highlighted = false});
 
   @override
   Widget build(BuildContext context) {
@@ -377,7 +377,7 @@ class _PlanCardView extends StatelessWidget {
 /// ---------------------------
 class FAQSectionRefactored extends StatefulWidget {
   final List<FAQItem> items;
-  const FAQSectionRefactored({Key? key, required this.items}) : super(key: key);
+  const FAQSectionRefactored({super.key, required this.items});
 
   @override
   State<FAQSectionRefactored> createState() => _FAQSectionRefactoredState();
@@ -426,7 +426,7 @@ class _FAQSectionRefactoredState extends State<FAQSectionRefactored> {
                     },
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),
@@ -440,7 +440,7 @@ class _FAQSectionRefactoredState extends State<FAQSectionRefactored> {
 /// ---------------------------
 class FooterRefactored extends StatelessWidget {
   final List<_FooterColumnData> columns;
-  const FooterRefactored({Key? key, required this.columns}) : super(key: key);
+  const FooterRefactored({super.key, required this.columns});
 
   @override
   Widget build(BuildContext context) {
@@ -485,7 +485,7 @@ class _FooterColumnData {
 class _FooterColumn extends StatelessWidget {
   final String title;
   final List<String> items;
-  const _FooterColumn({Key? key, required this.title, required this.items}) : super(key: key);
+  const _FooterColumn({required this.title, required this.items});
 
   @override
   Widget build(BuildContext context) {

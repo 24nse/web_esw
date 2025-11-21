@@ -6,7 +6,7 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 class WhyChooseUsSection extends StatelessWidget {
-  const WhyChooseUsSection({Key? key}) : super(key: key);
+  const WhyChooseUsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -293,11 +293,11 @@ class FeatureItem extends StatelessWidget {
   final String description;
 
   const FeatureItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

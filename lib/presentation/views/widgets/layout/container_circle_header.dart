@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ContainerCircleHeader extends StatelessWidget {
   final AnimationController controller;
 
-  const ContainerCircleHeader({Key? key, required this.controller}) : super(key: key);
+  const ContainerCircleHeader({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

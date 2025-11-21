@@ -7,7 +7,7 @@ import 'package:web_site/presentation/views/widgets/graphics/diagonal_lines_pain
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 
 class CompletedProjectsSection extends StatelessWidget {
-  const CompletedProjectsSection({Key? key}) : super(key: key);
+  const CompletedProjectsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +211,7 @@ class ProjectCard extends StatelessWidget {
   final CustomClipper<Path>? clipper;
 
   const ProjectCard({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.title,
     required this.description,
@@ -223,7 +223,7 @@ class ProjectCard extends StatelessWidget {
     required this.category,
     required this.imagePosition,
     this.clipper,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

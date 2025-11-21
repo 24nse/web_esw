@@ -9,6 +9,8 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class OurLatestNewsBlogSections extends StatelessWidget {
+  const OurLatestNewsBlogSections({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -65,7 +67,7 @@ class OurLatestNewsBlogCard extends StatefulWidget {
   final String description;
   final bool isHighlighted;
 
-  const OurLatestNewsBlogCard({
+  const OurLatestNewsBlogCard({super.key, 
     required this.image,
     required this.icon,
     required this.title,
@@ -274,6 +276,8 @@ class _OurLatestNewsBlogCardState extends State<OurLatestNewsBlogCard> {
 
 
 class ServiceSlider extends StatefulWidget {
+  const ServiceSlider({super.key});
+
   @override
   _ServiceSliderState createState() => _ServiceSliderState();
 }

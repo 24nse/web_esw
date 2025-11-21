@@ -15,6 +15,7 @@ import 'package:web_site/presentation/views/sections/landing/team_section.dart';
 import 'package:web_site/presentation/views/sections/landing/testimonials_section.dart';
 import 'package:web_site/presentation/views/sections/landing/why_choose_us_section.dart';
 import 'package:web_site/presentation/views/sections/marketing/services_section.dart';
+import 'package:web_site/presentation/views/pages/project_details/project_details_page.dart';
 
 
 void main() {
@@ -41,7 +42,11 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: const HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/project-details': (context) => const ProjectDetailsPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }

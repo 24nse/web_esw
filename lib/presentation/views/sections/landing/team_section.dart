@@ -5,10 +5,11 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
-import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class TeamSection extends StatelessWidget {
+  const TeamSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -63,7 +64,7 @@ class ServiceCard extends StatefulWidget {
   final String description;
   final bool isHighlighted;
 
-  const ServiceCard({
+  const ServiceCard({super.key, 
     required this.image,
     required this.icon,
     required this.title,
@@ -314,6 +315,8 @@ class _ServiceCardState extends State<ServiceCard> {
 
 
 class ServiceSlider extends StatefulWidget {
+  const ServiceSlider({super.key});
+
   @override
   _ServiceSliderState createState() => _ServiceSliderState();
 }

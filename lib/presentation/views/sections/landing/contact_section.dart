@@ -5,7 +5,7 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class ContactSection extends StatefulWidget {
-  const ContactSection({Key? key}) : super(key: key);
+  const ContactSection({super.key});
 
   @override
   State<ContactSection> createState() => _ContactSectionState();

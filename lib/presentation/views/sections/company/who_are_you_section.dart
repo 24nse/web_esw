@@ -313,6 +313,8 @@ class TopRightCornerClipper extends CustomClipper<Path> {
 
 
 class MissionContainer extends StatelessWidget {
+  const MissionContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

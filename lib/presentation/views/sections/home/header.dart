@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/pages/about/about_page.dart';
-import 'package:web_site/presentation/views/pages/projects/projects_page.dart';
 import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 
-import '../../pages/projects_dtl.dart';
+import '../../pages/project_details/project_details_page.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
@@ -58,13 +57,17 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
             NavItem(
               title: 'مشاريعنا',
               onTap: () {
+               
+              },
+            ),
+             NavItem(title: 'باقاتنا',
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) =>  ProjectDetailsPage()),
                 );
               },
             ),
-            const NavItem(title: 'باقاتنا'),
             const NavItem(title: 'تواصل معنا'),
             const NavItem(title: 'تواصل معنا'),
             const SizedBox(width: 16),

@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ import 'package:web_site/presentation/views/widgets/common/stats_card.dart';
 
 
 class HeroSection extends StatefulWidget {
-  const HeroSection({Key? key}) : super(key: key);
+  const HeroSection({super.key});
 
   @override
   State<HeroSection> createState() => _HeroSectionState();

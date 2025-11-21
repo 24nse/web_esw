@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AnimatedServiceButton extends StatefulWidget {
   final String text;
 
-  const AnimatedServiceButton({Key? key, required this.text}) : super(key: key);
+  const AnimatedServiceButton({super.key, required this.text});
 
   @override
   State<AnimatedServiceButton> createState() => _AnimatedServiceButtonState();

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class RotatingContactCircle extends StatelessWidget {
   final AnimationController controller;
 
-  const RotatingContactCircle({Key? key, required this.controller}) : super(key: key);
+  const RotatingContactCircle({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

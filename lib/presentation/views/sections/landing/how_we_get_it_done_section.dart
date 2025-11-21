@@ -5,7 +5,7 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 
 
 class HowWeGetItDoneSection extends StatelessWidget {
-  const HowWeGetItDoneSection({Key? key}) : super(key: key);
+  const HowWeGetItDoneSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -177,14 +177,14 @@ class ProcessStep extends StatelessWidget {
   final bool showArrow;
 
   const ProcessStep({
-    Key? key,
+    super.key,
     required this.stepNumber,
     required this.title,
     required this.description,
     required this.icon,
     required this.iconColor,
     required this.showArrow,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 class PlayButton extends StatefulWidget {
-  const PlayButton({Key? key}) : super(key: key);
+  const PlayButton({super.key});
 
   @override
   State<PlayButton> createState() => _PlayButtonState();

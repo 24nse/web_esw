@@ -7,7 +7,7 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class TestimonialsSection extends StatefulWidget {
-  const TestimonialsSection({Key? key}) : super(key: key);
+  const TestimonialsSection({super.key});
 
   @override
   State<TestimonialsSection> createState() => _TestimonialsSectionState();
@@ -203,9 +203,9 @@ class TestimonialCard extends StatelessWidget {
   final TestimonialData data;
 
   const TestimonialCard({
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:web_site/presentation/views/widgets/graphics/star_painter.dart';
 
 
 class DecorativeStars extends StatelessWidget {
-  const DecorativeStars({Key? key}) : super(key: key);
+  const DecorativeStars({super.key});
 
   @override
   Widget build(BuildContext context) {

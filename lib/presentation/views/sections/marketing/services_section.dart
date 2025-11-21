@@ -6,6 +6,8 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class ServicesSection extends StatelessWidget {
+  const ServicesSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -102,7 +104,7 @@ class ServiceCard extends StatefulWidget {
   final String description;
   final bool isHighlighted;
 
-  const ServiceCard({
+  const ServiceCard({super.key, 
     required this.image,
     required this.icon,
     required this.title,
@@ -290,6 +292,8 @@ class _ServiceCardState extends State<ServiceCard> {
 
 
 class ServiceSlider extends StatefulWidget {
+  const ServiceSlider({super.key});
+
   @override
   _ServiceSliderState createState() => _ServiceSliderState();
 }
