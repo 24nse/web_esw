@@ -5,6 +5,8 @@ class BlogPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       children: [
         const SizedBox(height: 60),
@@ -21,7 +23,7 @@ class BlogPageHeader extends StatelessWidget {
             const SizedBox(width: 12),
             Text(
               'الأخبار والمدونة',
-              style: TextStyle(
+              style: textTheme.headlineMedium?.copyWith(
                 fontSize: 14,
                 color: Colors.grey[600],
                 fontWeight: FontWeight.w500,
@@ -35,8 +37,8 @@ class BlogPageHeader extends StatelessWidget {
         // Main Title
         RichText(
           textAlign: TextAlign.center,
-          text: const TextSpan(
-            style: TextStyle(
+          text:  TextSpan(
+            style: textTheme.headlineMedium?.copyWith(
               fontSize: 42,
               fontWeight: FontWeight.bold,
               height: 1.2,
@@ -44,11 +46,11 @@ class BlogPageHeader extends StatelessWidget {
             children: [
               TextSpan(
                 text: 'آخر ',
-                style: TextStyle(color: Color(0xFF0A2463)),
+                style: textTheme.headlineMedium?.copyWith(color: Color(0xFF0A2463)),
               ),
               TextSpan(
                 text: 'الأخبار والمقالات',
-                style: TextStyle(color: Color(0xFFFF6B35)),
+                style: textTheme.headlineMedium?.copyWith(color: Color(0xFFFF6B35)),
               ),
             ],
           ),

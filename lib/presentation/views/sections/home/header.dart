@@ -3,6 +3,8 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/pages/about/about_page.dart';
 import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 
+import '../../pages/blog_details/blog_details_page.dart';
+import '../../pages/blogs/news_blog_page.dart';
 import '../../pages/project_details/project_details_page.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
@@ -64,7 +66,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  ProjectDetailsPage()),
+                  MaterialPageRoute(builder: (context) =>  BlogDetailsPage()),
                 );
               },
             ),

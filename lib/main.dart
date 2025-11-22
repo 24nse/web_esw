@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:web_site/common/constants/theme/app_typography.dart';
 import 'package:web_site/common/constants/theme/material_theme.dart';
+import 'package:web_site/presentation/views/pages/blogs/news_blog_page.dart';
 import 'package:web_site/presentation/views/sections/company/who_are_you_section.dart';
 import 'package:web_site/presentation/views/sections/home/header.dart';
 import 'package:web_site/presentation/views/sections/landing/completed_projects_section.dart';
@@ -16,6 +17,7 @@ import 'package:web_site/presentation/views/sections/landing/testimonials_sectio
 import 'package:web_site/presentation/views/sections/landing/why_choose_us_section.dart';
 import 'package:web_site/presentation/views/sections/marketing/services_section.dart';
 import 'package:web_site/presentation/views/pages/project_details/project_details_page.dart';
+import 'package:web_site/presentation/views/pages/blog_details/blog_details_page.dart';
 
 
 void main() {
@@ -46,6 +48,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/project-details': (context) => const ProjectDetailsPage(),
+        '/news-blog': (context) => const NewsBlogPage(),
+        '/blog-details': (context) => const BlogDetailsPage(),
       },
       debugShowCheckedModeBanner: false,
     );

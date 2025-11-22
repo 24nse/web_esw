@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/page_hero_section.dart';
-import '../../../../domain/repositories/blog_repository.dart';
-import '../../../../data/repositories/blog_repository_impl.dart';
-import '../../../../domain/entities/blog_post.dart';
-import '../../../../domain/entities/blog_category.dart';
-import '../sections/blog/blog_page_header.dart';
-import '../sections/landing/footer_section.dart';
-import '../widgets/blog/blog_pagination.dart';
-import '../widgets/blog/featured_post_card.dart';
-import '../widgets/blog/post_card.dart';
-import '../widgets/blog/sidebar_categories.dart';
-import '../widgets/blog/sidebar_cta_card.dart';
-import '../widgets/blog/sidebar_recent_posts.dart';
-import '../widgets/blog/sidebar_search.dart';
+import '../../../../../domain/repositories/blog_repository.dart';
+import '../../../../../data/repositories/blog_repository_impl.dart';
+import '../../../../../domain/entities/blog_post.dart';
+import '../../../../../domain/entities/blog_category.dart';
+import '../../sections/blog/blog_page_header.dart';
+import '../../sections/landing/footer_section.dart';
+import '../../widgets/blog/blog_pagination.dart';
+import '../../widgets/blog/featured_post_card.dart';
+import '../../widgets/blog/post_card.dart';
+import '../../widgets/blog/sidebar_categories.dart';
+import '../../widgets/blog/sidebar_cta_card.dart';
+import '../../widgets/blog/sidebar_recent_posts.dart';
+import '../../widgets/blog/sidebar_search.dart';
+import '../../widgets/graphics/unified_ruler_ticks_painter.dart';
 
 class NewsBlogPage extends StatefulWidget {
   const NewsBlogPage({super.key});
@@ -53,7 +55,7 @@ class _NewsBlogPageState extends State<NewsBlogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFffffff),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -66,7 +68,20 @@ class _NewsBlogPageState extends State<NewsBlogPage> {
             ),
 
             // Page Header
-            const BlogPageHeader(),
+            CustomPaint(
+                foregroundPainter: UnifiedRulerTicksPainter(
+                  drawBottom: false,
+                  // أعلى أفقي
+                  drawTop: true,
+                  topMode: UnifiedRulerTicksMode.horizontal,
+                  topStep: 10,
+                  topPatternHeights: const [14, 6, 10, 6, 14],
+                  topMargin: 0,
+                  topStrokeWidth: 1,
+                  topColor: const Color(0xFFD1D5DB),
+                ),
+
+                child: const BlogPageHeader()),
 
             // Main Content
             Center(
