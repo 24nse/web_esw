@@ -11,12 +11,14 @@ class AppColors {
   static const Color gray = Color(0xFF64748B);
 
   /// Neutral surfaces that pair with the MaterialTheme color scheme.
-  static const Color bgW = Color(0xFFF8FAFF);
+  static const Color bgW = Color(0xFFFFFFFF);
+  // static const Color bgW = Color(0xFFF8FAFF);
   // static const Color bgG = Color(0xFFF1F4FA);
   static const Color bgG = Color(0xFFf2f4f5);
 
   static const Color surface = Colors.white;
   static const Color darkSurface = Color(0xFF0B121F);
+  static const Color black =Colors.black;
   static const Color text = Color(0xFF0F172A);
   static const Color textMuted = Color(0xFF64748B);
   static const Color border = Color(0xFFE2E8F0);

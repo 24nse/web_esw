@@ -213,7 +213,7 @@ class _ContactFormSectionState extends State<ContactFormSection> {
 
               // Submit button
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: _handleSubmit,
                   style: ElevatedButton.styleFrom(

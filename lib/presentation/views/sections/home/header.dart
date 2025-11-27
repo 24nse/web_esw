@@ -6,6 +6,7 @@ import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 import '../../pages/blog_details/blog_details_page.dart';
 import '../../pages/blogs/news_blog_page.dart';
 import '../../pages/project_details/project_details_page.dart';
+import '../../pages/team_details/team_details_page.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
@@ -66,7 +67,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  BlogDetailsPage()),
+                  MaterialPageRoute(builder: (context) =>   TeamDetailsPage(memberId: '1')),
                 );
               },
             ),

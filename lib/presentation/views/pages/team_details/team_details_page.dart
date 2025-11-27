@@ -3,11 +3,12 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/data/repositories/team_repository_impl.dart';
 import 'package:web_site/domain/entities/team_member.dart';
 import 'package:web_site/domain/usecases/get_team_member_details.dart';
-import 'package:web_site/presentation/views/sections/project_details/footer_section.dart';
 import 'package:web_site/presentation/views/sections/team_details/contact_form_section.dart';
 import 'package:web_site/presentation/views/sections/team_details/profile_card_section.dart';
 import 'package:web_site/presentation/views/sections/team_details/skills_section.dart';
 import 'package:web_site/presentation/views/widgets/common/page_hero_section.dart';
+
+import '../../sections/landing/footer_section.dart';
 
 /// Team Details page displaying team member profile, skills, and contact form
 class TeamDetailsPage extends StatefulWidget {
@@ -72,10 +73,10 @@ class _TeamDetailsPageState extends State<TeamDetailsPage> {
                           children: [
                             // Page header with breadcrumb
                             PageHeroSection(
-                              title: 'Team Details',
+                              title: 'تفاصيل الفريق',
                               breadcrumbItems: const [
-                                BreadcrumbItem(label: 'Home', ),
-                                BreadcrumbItem(label: 'Team Details'),
+                                BreadcrumbItem(label: 'الرئيسية', ),
+                                BreadcrumbItem(label: 'تفاصيل الفريق'),
                               ],
                             ),
 
@@ -107,6 +108,7 @@ class _TeamDetailsPageState extends State<TeamDetailsPage> {
 
                             // Footer
                             const FooterSection(),
+
                           ],
                         ),
                       ),
