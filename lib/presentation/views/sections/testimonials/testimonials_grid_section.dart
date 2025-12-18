@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import '../../widgets/common/base_section.dart';
 import '../../widgets/common/title_section.dart';
 
 /// Testimonials section displaying client reviews in a grid layout
-/// Design based on the "Experience Shared by Our Clients" UI pattern
+/// Uses WhiteSection for consistent styling
 class TestimonialsGridSection extends StatelessWidget {
   const TestimonialsGridSection({super.key});
 
@@ -11,60 +12,14 @@ class TestimonialsGridSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final testimonials = _getTestimonials();
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 60),
-      color: AppColors.bgW,
-      child: Column(
-        children: [
-          // Header with decorative crane
-          _buildHeaderWithDecoration(context),
-          const SizedBox(height: 50),
-          // Testimonials Grid
-          Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1100),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: _buildTestimonialsGrid(context, testimonials),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Builds the header section with decorative crane image
-  Widget _buildHeaderWithDecoration(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
+    return WhiteSection(
+      sectionTitle: 'آراء العملاء',
+      titleDescription1: 'تجارب يشاركها\n',
+      titleDescription2: 'عملاؤنا',
+      titleSpacing: 50,
       children: [
-        Center(
-          child: TitleSection(
-            title: 'آراء العملاء',
-            des1: 'تجارب يشاركها\n',
-            des2: 'عملاؤنا',
-          ),
-        ),
-        // Decorative crane on the right (only on larger screens)
-        if (MediaQuery.of(context).size.width > 800)
-          Positioned(
-            right: 80,
-            top: -20,
-            child: _buildCraneDecoration(),
-          ),
+        _buildTestimonialsGrid(context, testimonials),
       ],
-    );
-  }
-
-  /// Builds the decorative crane hook
-  Widget _buildCraneDecoration() {
-    return Container(
-      width: 120,
-      height: 150,
-      child: CustomPaint(
-        painter: CraneHookPainter(),
-      ),
     );
   }
 
@@ -285,74 +240,6 @@ class TestimonialsGridSection extends StatelessWidget {
       ),
     ];
   }
-}
-
-/// Custom painter for the crane hook decoration
-class CraneHookPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final orangePaint = Paint()
-      ..color = AppColors.primary
-      ..style = PaintingStyle.fill;
-
-    final darkPaint = Paint()
-      ..color = AppColors.primaryDark
-      ..style = PaintingStyle.fill;
-
-    final grayPaint = Paint()
-      ..color = Colors.grey[400]!
-      ..style = PaintingStyle.fill;
-
-    final centerX = size.width / 2;
-
-    // Draw cable/chain
-    for (int i = 0; i < 8; i++) {
-      final y = i * 12.0;
-      final isEven = i % 2 == 0;
-      
-      canvas.drawOval(
-        Rect.fromCenter(
-          center: Offset(centerX, y + 6),
-          width: 8,
-          height: 12,
-        ),
-        grayPaint,
-      );
-    }
-
-    // Draw pulley wheel
-    canvas.drawCircle(
-      Offset(centerX, 100),
-      25,
-      orangePaint,
-    );
-    canvas.drawCircle(
-      Offset(centerX, 100),
-      15,
-      darkPaint,
-    );
-    canvas.drawCircle(
-      Offset(centerX, 100),
-      8,
-      orangePaint,
-    );
-
-    // Draw hook
-    final hookPath = Path();
-    hookPath.moveTo(centerX - 5, 125);
-    hookPath.lineTo(centerX + 5, 125);
-    hookPath.lineTo(centerX + 5, 140);
-    hookPath.quadraticBezierTo(centerX + 20, 145, centerX + 15, 160);
-    hookPath.quadraticBezierTo(centerX + 10, 175, centerX - 5, 165);
-    hookPath.quadraticBezierTo(centerX - 15, 155, centerX - 10, 145);
-    hookPath.lineTo(centerX - 5, 140);
-    hookPath.close();
-    
-    canvas.drawPath(hookPath, grayPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 /// Model class for testimonial items

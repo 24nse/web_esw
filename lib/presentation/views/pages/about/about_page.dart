@@ -1,77 +1,59 @@
 import 'package:flutter/material.dart';
-
-import '../../../../common/constants/theme/tokens.dart';
+import '../base/base_page.dart';
 import '../../sections/about/awards_section.dart';
 import '../../sections/about/video_showcase_section.dart';
 import '../../sections/company/who_are_you_section.dart';
-import '../../sections/landing/footer_section.dart';
 import '../../sections/landing/how_we_get_it_done_section.dart';
-import '../../widgets/buttons/play_button.dart';
 import '../../widgets/common/page_hero_section.dart';
-import '../../widgets/graphics/clippers.dart';
 
-/// Team Details page displaying team member profile, skills, and contact form
-class AboutPage extends StatefulWidget {
+/// About page displaying company information, video showcase, and awards
+/// Uses BasePage template for consistent layout
+class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  Widget build(BuildContext context) {
+    return BasePage(
+      title: 'من نحن',
+      breadcrumbItems: const [
+        BreadcrumbItem(label: 'الرئيسية'),
+        BreadcrumbItem(label: 'من نحن', isActive: true),
+      ],
+      constrainContent: false, // Sections handle their own constraints
+      children: const [
+        // Who Are You Section (constrained)
+        _ConstrainedContent(
+          child: Column(
+            children: [
+              WhoAreYou(),
+              SizedBox(height: 30),
+              VideoShowcaseSection(),
+              SizedBox(height: 60),
+              HowWeGetItDoneSection(),
+            ],
+          ),
+        ),
+        // Awards Section (full width with dark background)
+        AwardsSection(),
+      ],
+    );
+  }
 }
 
-class _AboutPageState extends State<AboutPage> {
-  bool _isLoading = true;
-  String? _error;
+/// Helper widget for constrained content within BasePage
+class _ConstrainedContent extends StatelessWidget {
+  final Widget child;
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
+  const _ConstrainedContent({required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bgW,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Page header with breadcrumb
-              PageHeroSection(
-                title: 'من نحن',
-                breadcrumbItems: const [
-                  BreadcrumbItem(label: 'الرئيسية'),
-                  BreadcrumbItem(label: 'من نحن'),
-                ],
-              ),
-
-              // Main content with max width constraint
-              Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1100),
-                  child: Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-
-                        const WhoAreYou(),
-                        SizedBox(height: 30,),
-                        const VideoShowcaseSection(),
-                        SizedBox(height: 60,), // Extra space for the statistics bar
-                        HowWeGetItDoneSection()],
-                    ),
-                  ),
-                ),
-              ),
-
-              // Awards Section (full-width dark background)
-              const AwardsSection(),
-
-              // Footer
-              const FooterSection(),
-            ],
-          ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1100),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: child,
         ),
       ),
     );

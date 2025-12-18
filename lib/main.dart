@@ -3,24 +3,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:web_site/common/constants/theme/app_typography.dart';
 import 'package:web_site/common/constants/theme/material_theme.dart';
 import 'package:web_site/presentation/views/pages/blogs/news_blog_page.dart';
-import 'package:web_site/presentation/views/sections/company/who_are_you_section.dart';
-import 'package:web_site/presentation/views/sections/home/header.dart';
-import 'package:web_site/presentation/views/sections/landing/completed_projects_section.dart';
-import 'package:web_site/presentation/views/sections/landing/contact_section.dart';
-import 'package:web_site/presentation/views/sections/landing/faq_section.dart';
-import 'package:web_site/presentation/views/sections/landing/footer_section.dart';
-import 'package:web_site/presentation/views/sections/landing/hero_section.dart';
-import 'package:web_site/presentation/views/sections/landing/newsletter_section.dart';
-import 'package:web_site/presentation/views/sections/landing/our_latest_news_blog_sections.dart';
-import 'package:web_site/presentation/views/sections/landing/team_section.dart';
-import 'package:web_site/presentation/views/sections/landing/testimonials_section.dart';
-import 'package:web_site/presentation/views/sections/landing/why_choose_us_section.dart';
-import 'package:web_site/presentation/views/sections/marketing/services_section.dart';
+import 'package:web_site/presentation/views/pages/home/home_page.dart';
 import 'package:web_site/presentation/views/pages/project_details/project_details_page.dart';
 import 'package:web_site/presentation/views/pages/blog_details/blog_details_page.dart';
 import 'package:web_site/presentation/views/pages/team_details/team_details_page.dart';
 import 'package:web_site/presentation/views/pages/testimonials/testimonials_page.dart';
 
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(const MyApp());
@@ -46,6 +35,15 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      builder: (context, child) => ResponsiveBreakpoints.builder(
+        child: child!,
+        breakpoints: [
+          const Breakpoint(start: 0, end: 450, name: MOBILE),
+          const Breakpoint(start: 451, end: 800, name: TABLET),
+          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+        ],
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
@@ -57,42 +55,6 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
     );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const Header(),
-      body: SingleChildScrollView(
-
-        child:  Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // OnyxHeroSection(),
-              const HeroSection(),
-              const WhoAreYou(),
-              // // AboutSection(),
-              ServicesSection(),
-              CompletedProjectsSection(),
-              // // const FeaturesSection(),
-              WhyChooseUsSection(),
-              ContactSection(),
-              TeamSection(),
-              TestimonialsSection(),
-              OurLatestNewsBlogSections(),
-              FaqSection(),
-              // const CategoriesSection(),
-              // const PricingSection(),
-              const NewsletterSection(),
-              const FooterSection(),
-            ],
-
-
-    )));
   }
 }
 //
