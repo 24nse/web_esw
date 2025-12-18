@@ -35,4 +35,72 @@ class TeamRepositoryImpl implements TeamRepository {
       ],
     );
   }
+
+
+  @override
+  Future<List<TeamMember>> getAllTeamMembers() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    return [
+      const TeamMember(
+        id: '1',
+        name: 'نوح سعيد',
+        title: 'الرئيس التنفيذي',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'nooh@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+      const TeamMember(
+        id: '2',
+        name: ' عمر أحمد',
+        title: 'مديرة التسويق',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'sara@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+      const TeamMember(
+        id: '3',
+        name: 'محمد علي',
+        title: 'مهندس برمجيات',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'mohammed@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+      const TeamMember(
+        id: '4',
+        name: ' حسن',
+        title: 'مصممة جرافيك',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'laila@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+      const TeamMember(
+        id: '5',
+        name: 'خالد عمر',
+        title: 'مدير مشاريع',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'khaled@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+      const TeamMember(
+        id: '6',
+        name: 'عبدالله سعيد',
+        title: 'محاسبة',
+        description: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+        imageUrl: 'assets/images/eng1.png',
+        contactInfo: ContactInfo(phone: '+966 50 000 0000', email: 'noura@example.com'),
+        socialMedia: SocialMedia(facebook: '', twitter: '', linkedin: '', instagram: ''),
+        skills: [],
+      ),
+    ];
+  }
 }

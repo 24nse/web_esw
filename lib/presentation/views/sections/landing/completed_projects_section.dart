@@ -6,6 +6,9 @@ import 'package:web_site/presentation/views/widgets/graphics/clippers.dart';
 import 'package:web_site/presentation/views/widgets/graphics/diagonal_lines_painter.dart';
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 
+import '../../pages/project_details/project_details_page.dart';
+import '../../pages/projects/projects_page.dart';
+
 class CompletedProjectsSection extends StatelessWidget {
   const CompletedProjectsSection({super.key});
 
@@ -17,8 +20,6 @@ class CompletedProjectsSection extends StatelessWidget {
         Positioned.fill(
           child: CustomPaint(
             painter: DiagonalLinesPainter(
-
-
             ),
           ),
         ),
@@ -68,6 +69,7 @@ class CompletedProjectsSection extends StatelessWidget {
                   des1:'مشاريعنا ',
                   des2: 'المكتملة',
                   colordse1: AppColors.bgG,
+
 
                 ),
 
@@ -136,17 +138,25 @@ class CompletedProjectsSection extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 15),
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF0A1E4D),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 24,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ProjectsPage()),
+                        );
+                      },
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF0A1E4D),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 24,
+                        ),
                       ),
                     ),
                   ],
@@ -337,27 +347,35 @@ class ProjectCard extends StatelessWidget {
       ),
     );
 
-    return ClipPath(
-      clipper:clipper,
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.05),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: Colors.white.withOpacity(0.1),
-            width: 1,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProjectDetailsPage()),
+        );
+      },
+      child: ClipPath(
+        clipper:clipper,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.1),
+              width: 1,
+            ),
           ),
-        ),
-        child: Row(
-          textDirection: imagePosition == ImagePosition.right
-              ? TextDirection.ltr
-              : TextDirection.rtl,
-          children: [
-            imageWidget,
-            const SizedBox(width: 20),
-            contentWidget,
-          ],
+          child: Row(
+            textDirection: imagePosition == ImagePosition.right
+                ? TextDirection.ltr
+                : TextDirection.rtl,
+            children: [
+              imageWidget,
+              const SizedBox(width: 20),
+              contentWidget,
+            ],
+          ),
         ),
       ),
     );

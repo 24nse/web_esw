@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/presentation/views/pages/blog_details/blog_details_page.dart';
 import 'package:web_site/presentation/views/widgets/common/page_hero_section.dart';
 import '../../../../../domain/repositories/blog_repository.dart';
 import '../../../../../data/repositories/blog_repository_impl.dart';
@@ -136,8 +137,12 @@ class _NewsBlogPageState extends State<NewsBlogPage> {
                 FeaturedPostCard(
                   post: _posts.first,
                   onTap: () {
-                    // TODO: Navigate to post detail
-                  },
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const BlogDetailsPage()),
+                      );
+                                    },
                 ),
               
               const SizedBox(height: 32),

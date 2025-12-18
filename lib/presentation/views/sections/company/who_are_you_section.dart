@@ -144,6 +144,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/presentation/views/pages/about/about_page.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
@@ -186,6 +187,12 @@ class WhoAreYou extends StatelessWidget {
               title: 'من نحن',
               subTitle:'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية',
               subTitle1: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
+              onTap:   () {
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AboutPage()),
+      );
+      },
             ),
             Expanded(
               child: Row(

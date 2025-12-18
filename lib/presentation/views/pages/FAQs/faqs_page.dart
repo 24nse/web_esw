@@ -1,26 +1,26 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../../../../common/constants/theme/tokens.dart';
-import '../../sections/about/awards_section.dart';
-import '../../sections/about/video_showcase_section.dart';
 import '../../sections/company/who_are_you_section.dart';
+import '../../sections/landing/faq_section.dart';
 import '../../sections/landing/footer_section.dart';
 import '../../sections/landing/how_we_get_it_done_section.dart';
-import '../../widgets/buttons/play_button.dart';
 import '../../widgets/common/page_hero_section.dart';
-import '../../widgets/graphics/clippers.dart';
 
 /// Team Details page displaying team member profile, skills, and contact form
-class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+class FaqsPage extends StatefulWidget {
+
+  const FaqsPage({
+    super.key,
+  });
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<FaqsPage> createState() => _FaqsPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
-  bool _isLoading = true;
-  String? _error;
+class _FaqsPageState extends State<FaqsPage> {
 
   @override
   void initState() {
@@ -33,14 +33,16 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       backgroundColor: AppColors.bgW,
       body: SafeArea(
-        child: SingleChildScrollView(
+        child:
+
+        SingleChildScrollView(
           child: Column(
             children: [
               // Page header with breadcrumb
               PageHeroSection(
-                title: 'من نحن',
+                title: 'اسئلة',
                 breadcrumbItems: const [
-                  BreadcrumbItem(label: 'الرئيسية'),
+                  BreadcrumbItem(label: 'الرئيسية', ),
                   BreadcrumbItem(label: 'من نحن'),
                 ],
               ),
@@ -54,22 +56,16 @@ class _AboutPageState extends State<AboutPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-
-                        const WhoAreYou(),
-                        SizedBox(height: 30,),
-                        const VideoShowcaseSection(),
-                        SizedBox(height: 60,), // Extra space for the statistics bar
-                        HowWeGetItDoneSection()],
+                         FaqSection( backgroundColor: AppColors.bgW,),
+                      ],
                     ),
                   ),
                 ),
               ),
 
-              // Awards Section (full-width dark background)
-              const AwardsSection(),
-
               // Footer
               const FooterSection(),
+
             ],
           ),
         ),

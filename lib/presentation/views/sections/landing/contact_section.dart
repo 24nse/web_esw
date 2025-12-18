@@ -5,8 +5,8 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 class ContactSection extends StatefulWidget {
-  const ContactSection({super.key});
-
+  const ContactSection({super.key, this.backgroundColor = AppColors.bgG,});
+  final Color backgroundColor;
   @override
   State<ContactSection> createState() => _ContactSectionState();
 }
@@ -22,7 +22,7 @@ class _ContactSectionState extends State<ContactSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: AppColors.bgG,
+        color:widget.backgroundColor,
         padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
 
         child:  Column(

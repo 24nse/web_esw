@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/presentation/views/pages/project_details/project_details_page.dart';
 import 'package:web_site/presentation/views/sections/home/header.dart';
 import '../../widgets/common/page_hero_section.dart';
 import '../../widgets/graphics/clippers.dart';
@@ -99,16 +100,24 @@ class _ProjectsBody extends StatelessWidget {
               const SizedBox(height: 48),
               ...List.generate(
                 _projects.length,
-                (index) => _CompletedProjectCard(
-                  clipper: TopCornerClipper(
-      clipSize: 70,
-          topRadius: 8,
-          sideRadius: 8,
-                    isRight: index.isOdd,
-                    isLeft: index.isEven
-      ),
-                  project: _projects[index],
-                  reversed: index.isOdd,
+                (index) => GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProjectDetailsPage()),
+                    );
+                  },
+                  child: _CompletedProjectCard(
+                    clipper: TopCornerClipper(
+                        clipSize: 70,
+                            topRadius: 8,
+                            sideRadius: 8,
+                      isRight: index.isOdd,
+                      isLeft: index.isEven
+                        ),
+                    project: _projects[index],
+                    reversed: index.isOdd,
+                  ),
                 ),
               ),
               Row(

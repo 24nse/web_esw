@@ -6,7 +6,8 @@ class SectionTitle extends StatelessWidget {
   final String title;
   final String subTitle;
   final String subTitle1;
-  const SectionTitle({super.key, required this.title, required this.subTitle, required this.subTitle1});
+  final void Function()? onTap;
+  const SectionTitle({super.key, required this.title, required this.subTitle, required this.subTitle1, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -75,17 +76,20 @@ class SectionTitle extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Text(
-              "اعرف المزيد",
-              style: textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 18),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Text(
+                "اعرف المزيد",
+                style: textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

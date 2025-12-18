@@ -5,7 +5,8 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 class FaqSection extends StatefulWidget {
-  const FaqSection({super.key});
+  final Color? backgroundColor;
+  const FaqSection({super.key, this.backgroundColor});
 
   @override
   State<FaqSection> createState() => _FaqSectionState();
@@ -32,7 +33,7 @@ class _FaqSectionState extends State<FaqSection> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        color: AppColors.bgG,
+        color:widget.backgroundColor?? AppColors.bgG,
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpaces.xl,
           vertical: AppSpaces.xxl,

@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:web_site/presentation/views/pages/team_details/team_details_page.dart';
+import 'package:web_site/presentation/views/pages/teams/teams_page.dart';
 import 'package:web_site/presentation/views/widgets/graphics/clippers.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 
@@ -43,6 +45,12 @@ class TeamSection extends StatelessWidget {
               title: 'تعرف على فريقنا',
               subTitle: "",
               subTitle1: '',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TeamsPage()),
+                );
+              },
             ),
 
 
@@ -63,13 +71,15 @@ class ServiceCard extends StatefulWidget {
   final String title;
   final String description;
   final bool isHighlighted;
+  final void Function()? onTap;
+
 
   const ServiceCard({super.key, 
     required this.image,
     required this.icon,
     required this.title,
     required this.description,
-    required this.isHighlighted,
+    required this.isHighlighted, this.onTap,
   });
 
   @override
@@ -81,9 +91,15 @@ class _ServiceCardState extends State<ServiceCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+    return GestureDetector(
+      onTap:widget.onTap??   () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  TeamDetailsPage(memberId: "1")),
+      );
+    },
+      // onEnter: (_) => setState(() => _isHovered = true),
+      // onExit: (_) => setState(() => _isHovered = false),
       child: Stack(
         clipBehavior: Clip.none,
         children: [

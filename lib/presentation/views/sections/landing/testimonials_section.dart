@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/presentation/views/pages/testimonials/testimonials_page.dart';
 
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
@@ -173,6 +174,49 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
                   ),
                 ),
               ),
+            ),
+            const SizedBox(height: 40),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 16),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    'عرض جميع المشاريع',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 15),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const TestimonialsPage()),
+                    );
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF0A1E4D),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

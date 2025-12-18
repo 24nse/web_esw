@@ -19,6 +19,7 @@ import 'package:web_site/presentation/views/sections/marketing/services_section.
 import 'package:web_site/presentation/views/pages/project_details/project_details_page.dart';
 import 'package:web_site/presentation/views/pages/blog_details/blog_details_page.dart';
 import 'package:web_site/presentation/views/pages/team_details/team_details_page.dart';
+import 'package:web_site/presentation/views/pages/testimonials/testimonials_page.dart';
 
 
 void main() {
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         '/news-blog': (context) => const NewsBlogPage(),
         '/blog-details': (context) => const BlogDetailsPage(),
         '/team-details': (context) => const TeamDetailsPage(memberId: '1'),
+        '/testimonials': (context) => const TestimonialsPage(),
       },
       debugShowCheckedModeBanner: false,
     );
