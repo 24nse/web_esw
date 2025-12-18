@@ -9,197 +9,103 @@ import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks
 import '../../pages/project_details/project_details_page.dart';
 import '../../pages/projects/projects_page.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class CompletedProjectsSection extends StatelessWidget {
   const CompletedProjectsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
+    return DarkSection(
+      sectionTitle: 'أحدث المشاريع',
+      titleDescription1: 'مشاريعنا ',
+      titleDescription2: 'المكتملة',
+      titleColor1: AppColors.bgG,
       children: [
-        Positioned.fill(
-          child: CustomPaint(
-            painter: DiagonalLinesPainter(
-            ),
+        const SizedBox(height: 50),
+        ProjectCard(
+          clipper: TopCornerClipper(
+            clipSize: 70,
+            topRadius: 8,
+            sideRadius: 8,
+            isRight: true,
           ),
+          imagePath: 'assets/business_hub.jpg',
+          title: 'مركز الأعمال الرئيسي',
+          description: 'مشروع عقاري متكامل يجمع بين التصميم العصري والوظائف المتعددة، يوفر بيئة عمل مثالية للشركات الكبرى',
+          location: 'الرياض، المملكة العربية السعودية',
+          area: '45,000 متر مربع',
+          duration: '24 شهر',
+          year: '2023',
+          type: 'تجاري',
+          category: 'مباني تجارية',
+          imagePosition: ImagePosition.left,
         ),
-        CustomPaint(
-          foregroundPainter: UnifiedRulerTicksPainter(
-    // أعلى مائل
-    drawTop: true,
-    topMode: UnifiedRulerTicksMode.diagonal,
-    topStep: 12,
-    topPatternHeights: const [20],
-    topAngleDeg: 60,
-    topDirection: DiagonalDirection.downLeft,
-    topMargin: 0,
-    topStrokeWidth: 1,
-    topColor: Color(0xFF5F83C8),
-
-    // أسفل مائل
-    drawBottom: true,
-    bottomMode: UnifiedRulerTicksMode.diagonal,
-    bottomStep: 12,
-    bottomPatternHeights: const [20],
-    bottomAngleDeg: 60,
-    bottomDirection: DiagonalDirection.downLeft,
-    bottomMargin: 0,
-    bottomStrokeWidth: 1,
-    bottomColor: Color(0xFF5F83C8),
-    ),
-
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFF001656),
-                  // Color(0xFF0A1F44),
-                  Color(0xFF132D5E),
-                ],
-              ),
-            ),    child: Column(
-              children: [
-                // Header
-                TitleSection(
-                  title: 'أحدث المشاريع',
-                  des1:'مشاريعنا ',
-                  des2: 'المكتملة',
-                  colordse1: AppColors.bgG,
-
-
-                ),
-
-
-                const SizedBox(height: 50),
-
-                // First Project - The Business Hub
-                ProjectCard(
-                  clipper: TopCornerClipper(
-                    clipSize: 70,
-                    topRadius: 8,
-                    sideRadius: 8,
-                    isRight: true
-                  ),
-                  imagePath: 'assets/business_hub.jpg',
-                  title: 'مركز الأعمال الرئيسي',
-                  description: 'مشروع عقاري متكامل يجمع بين التصميم العصري والوظائف المتعددة، يوفر بيئة عمل مثالية للشركات الكبرى',
-                  location: 'الرياض، المملكة العربية السعودية',
-                  area: '45,000 متر مربع',
-                  duration: '24 شهر',
-                  year: '2023',
-                  type: 'تجاري',
-                  category: 'مباني تجارية',
-                  imagePosition: ImagePosition.left,
-                ),
-
-                const SizedBox(height: 30),
-
-                // Second Project - Sky Haven
-                ProjectCard(
-                  clipper: TopCornerClipper(
-                    clipSize: 70,
-                    topRadius: 8,
-                    sideRadius: 8,
-                    isLeft: true
-                  ),
-                  imagePath: 'assets/images/c.png',
-                  title: 'أبراج السماء',
-                  description: 'مجمع سكني فاخر يتميز بإطلالات بانورامية ومرافق حديثة، يضم وحدات سكنية راقية بأعلى معايير الجودة',
-                  location: 'جدة، المملكة العربية السعودية',
-                  area: '32,500 متر مربع',
-                  duration: '18 شهر',
-                  year: '2024',
-                  type: 'سكني',
-                  category: 'مباني سكنية',
-                  imagePosition: ImagePosition.right,
-                ),
-
-                const SizedBox(height: 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 16),
-                      decoration: BoxDecoration(
-                        color: AppColors.primary,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Text(
-                        'عرض جميع المشاريع',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 15),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ProjectsPage()),
-                        );
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF0A1E4D),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                          size: 24,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-              ],
-            )
+        const SizedBox(height: 30),
+        ProjectCard(
+          clipper: TopCornerClipper(
+            clipSize: 70,
+            topRadius: 8,
+            sideRadius: 8,
+            isLeft: true,
           ),
+          imagePath: 'assets/images/c.png',
+          title: 'أبراج السماء',
+          description: 'مجمع سكني فاخر يتميز بإطلالات بانورامية ومرافق حديثة، يضم وحدات سكنية راقية بأعلى معايير الجودة',
+          location: 'جدة، المملكة العربية السعودية',
+          area: '32,500 متر مربع',
+          duration: '18 شهر',
+          year: '2024',
+          type: 'سكني',
+          category: 'مباني سكنية',
+          imagePosition: ImagePosition.right,
         ),
-        Positioned(
-          right: -20,
-          top: -127,
-          child: SizedBox(
-            width: 150,
-            height: 150,
-            // child: DecoratedBox(
-            //   decoration: BoxDecoration(
-            //
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.black.withOpacity(0.12),
-            //         blurRadius: 12,
-            //         offset: const Offset(0, 6),
-            //       )
-            //     ],
-            //   ),
-              child: ClipOval(
-                child: Image.asset(
-                  "assets/images/p1.png",
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      Icons.person,
-                      color: Colors.grey[400],
-                      size: 40,
-                    );
-                  },
+        const SizedBox(height: 40),
+        Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ProjectsPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'عرض جميع المشاريع',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-            ),
+              const SizedBox(width: 15),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF0A1E4D),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+            ],
           ),
-        // ),
-
+        ),
       ],
     );
   }
@@ -237,12 +143,13 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
+
     final imageWidget = ClipPath(
-      clipper:clipper,
-      // borderRadius: BorderRadius.circular(20),
+      clipper: clipper,
       child: Container(
-        width: 380,
-        height: 280,
+        width: isMobile ? double.infinity : 380,
+        height: isMobile ? 200 : 280,
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.1),
           borderRadius: BorderRadius.circular(20),
@@ -254,32 +161,16 @@ class ProjectCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            // Placeholder for image
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Colors.blue.withOpacity(0.3),
-                    Colors.blue.withOpacity(0.1),
-                  ],
-                ),
-              ),
-              child: Center(
-                child:Image.asset('assets/images/c.png',fit: BoxFit.cover,)
-              ),
-            ),
-            // Badges at bottom
+            Image.asset('assets/images/c.png', fit: BoxFit.cover),
             Positioned(
               bottom: 16,
               right: 16,
-              child: Row(
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 8,
                 children: [
                   _buildBadge(year),
-                  const SizedBox(width: 8),
                   _buildBadge(type),
-                  const SizedBox(width: 8),
                   _buildBadge(category),
                 ],
               ),
@@ -289,95 +180,96 @@ class ProjectCard extends StatelessWidget {
       ),
     );
 
-    final contentWidget = Expanded(
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              textDirection: TextDirection.rtl,
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),
+    final contentWidget = Container(
+      padding: EdgeInsets.all(isMobile ? 16 : 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              fontSize: isMobile ? 22 : 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
-            const SizedBox(height: 12),
-            Text(
-              description,
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white.withOpacity(0.7),
-                height: 1.6
-              ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            description,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white.withOpacity(0.7),
+              height: 1.6,
             ),
-            const SizedBox(height: 20),
-            _buildInfoRow(Icons.location_on, location),
-            const SizedBox(height: 10),
-            _buildInfoRow(Icons.square_foot, area),
-            const SizedBox(height: 10),
-            _buildInfoRow(Icons.access_time, duration),
-            const SizedBox(height: 20),
-            Row(
+          ),
+          const SizedBox(height: 20),
+          _buildInfoRow(Icons.location_on, location),
+          const SizedBox(height: 10),
+          _buildInfoRow(Icons.square_foot, area),
+          const SizedBox(height: 10),
+          _buildInfoRow(Icons.access_time, duration),
+          const SizedBox(height: 20),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProjectDetailsPage()),
+              );
+            },
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-
                 Text(
                   'اقرأ المزيد',
                   style: TextStyle(
                     fontSize: 14,
-                    color: const Color(0xFFFF6B35),
-                    fontWeight: FontWeight.bold
+                    color: Color(0xFFFF6B35),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 Icon(
-                  Icons.arrow_forward,
-                  color: const Color(0xFFFF6B35),
+                  Icons.arrow_back,
+                  color: Color(0xFFFF6B35),
                   size: 18,
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
 
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ProjectDetailsPage()),
-        );
-      },
-      child: ClipPath(
-        clipper:clipper,
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.white.withOpacity(0.1),
-              width: 1,
-            ),
-          ),
-          child: Row(
-            textDirection: imagePosition == ImagePosition.right
-                ? TextDirection.ltr
-                : TextDirection.rtl,
-            children: [
-              imageWidget,
-              const SizedBox(width: 20),
-              contentWidget,
-            ],
-          ),
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.1),
+          width: 1,
         ),
       ),
+      child: isMobile
+          ? Column(
+              children: [
+                imageWidget,
+                contentWidget,
+              ],
+            )
+          : Row(
+              textDirection: imagePosition == ImagePosition.right
+                  ? TextDirection.ltr
+                  : TextDirection.rtl,
+              children: [
+                imageWidget,
+                const SizedBox(width: 20),
+                Expanded(child: contentWidget),
+              ],
+            ),
     );
   }
 
@@ -389,8 +281,7 @@ class ProjectCard extends StatelessWidget {
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             color: const Color(0xFFFF6B35),
-            // shape: BoxShape.circle,
-            borderRadius: BorderRadiusGeometry.circular(4)
+            borderRadius: BorderRadius.circular(4),
           ),
           child: Icon(
             icon,
@@ -399,15 +290,15 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-
-        Text(
-          text,
-          textDirection: TextDirection.rtl,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.white.withOpacity(0.9),
-            fontWeight: FontWeight.w500
-
+        Expanded(
+          child: Text(
+            text,
+            textDirection: TextDirection.rtl,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white.withOpacity(0.9),
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
       ],
@@ -428,7 +319,7 @@ class ProjectCard extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          fontSize: 12,
+          fontSize: 10,
           color: Colors.white,
           fontWeight: FontWeight.w600,
         ),

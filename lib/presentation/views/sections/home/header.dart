@@ -13,6 +13,8 @@ import '../../pages/team_details/team_details_page.dart';
 import '../../pages/testimonials/testimonials_page.dart';
 import '../landing/faq_section.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
 
@@ -21,6 +23,8 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
+
     return Material(
       color: Colors.white,
       elevation: 0,
@@ -32,90 +36,83 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           children: [
             // Logo
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Row(
-                children: [
-                  Container(
-                    width: 32,
-                    height: 32,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: AppGradients.hero,
+            InkWell(
+              onTap: () => Navigator.pushNamed(context, '/'),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 18),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 32,
+                      height: 32,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: AppGradients.hero,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    'شركة الوعل المقاولات والعقارات',
-                  ),
-                ],
+                    const SizedBox(width: 12),
+                    Text(
+                      isMobile ? 'الوعل' : 'شركة الوعل المقاولات والعقارات',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             const Spacer(),
-            // Nav items (simplified)
-            NavItem(
-              title: 'خدماتنا',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TestimonialsPage()),
-                );
-              },
-            ),
-            NavItem(
-              title: 'مدونتنا',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const NewsBlogPage()),
-                );
-              },
-            ),
-            NavItem(
-              title: 'مشاريعنا',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProjectsPage()),
-                );
-              },
-            ),
-             NavItem(title: 'باقاتنا',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) =>   TeamDetailsPage(memberId: '1')),
-                );
-              },
-            ),
-             NavItem(title: 'تواصل معنا',
-              onTap: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const ContactUsPage()),
-    );
-    },
-            ),
-            const SizedBox(width: 16),
-            TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                foregroundColor: AppColors.text,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+            
+            if (!isMobile) ...[
+              // Nav items
+              NavItem(
+                title: 'خدماتنا',
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TestimonialsPage())),
               ),
-              child: const Text('تواصل'),
-            ),
-            const SizedBox(width: 8),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-                shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
+              NavItem(
+                title: 'مدونتنا',
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const NewsBlogPage())),
               ),
-              child: const Text('اطلب عرض سعر'),
-            ),
+              NavItem(
+                title: 'مشاريعنا',
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProjectsPage())),
+              ),
+              NavItem(
+                title: 'باقاتنا',
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TeamDetailsPage(memberId: '1'))),
+              ),
+              NavItem(
+                title: 'تواصل معنا',
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactUsPage())),
+              ),
+              const SizedBox(width: 16),
+              TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  foregroundColor: AppColors.text,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                ),
+                child: const Text('تواصل'),
+              ),
+              const SizedBox(width: 8),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                  shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
+                ),
+                child: const Text('اطلب عرض سعر'),
+              ),
+            ] else
+              IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+              ),
           ],
         ),
       ),

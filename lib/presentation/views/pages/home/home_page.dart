@@ -14,6 +14,8 @@ import '../../sections/landing/testimonials_section.dart';
 import '../../sections/landing/why_choose_us_section.dart';
 import '../../sections/marketing/services_section.dart';
 
+import '../../widgets/common/app_drawer.dart';
+
 /// Home page / Landing page of the website
 /// Uses custom hero section instead of PageHeroSection
 /// Follows unified page structure pattern
@@ -25,6 +27,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.bgW,
       appBar: const Header(),
+      endDrawer: const AppDrawer(),
       body: const SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

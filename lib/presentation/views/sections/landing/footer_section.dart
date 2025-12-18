@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // خلفية داكنة من لوحتك (نستخدم لون النص الداكن كخلفية)
     const Color onDark = Colors.white;
-
     final textTheme = Theme.of(context).textTheme;
+    final isMobile = ResponsiveHelper.isMobile(context);
+    final isTablet = ResponsiveHelper.isTablet(context);
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: CustomPaint(
-        foregroundPainter:UnifiedRulerTicksPainter(
-          // أعلى: مائل
+        foregroundPainter: UnifiedRulerTicksPainter(
           drawTop: true,
           topMode: UnifiedRulerTicksMode.diagonal,
           topStep: 16,
@@ -26,98 +27,95 @@ class FooterSection extends StatelessWidget {
           topDirection: DiagonalDirection.downLeft,
           topMargin: 0,
           topStrokeWidth: 1,
-          topColor: Color(0xFF5F83C8),
-
-          // أسفل: غير مفعّل
+          topColor: const Color(0xFF5F83C8),
           drawBottom: false,
         ),
         child: Column(
           children: [
-            // الشريط الرئيسي الداكن
             Container(
-              color:  Color(0xFF001656),
-
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSpaces.lg,
-                vertical: AppSpaces.xl,
+              color: const Color(0xFF001656),
+              padding: EdgeInsets.symmetric(
+                horizontal: ResponsiveHelper.getHorizontalPadding(context),
+                vertical: isMobile ? AppSpaces.lg : AppSpaces.xl,
               ),
-              child: LayoutBuilder(
-                builder: (context, cons) {
-                  final isDesktop = cons.maxWidth >= 1100;
-                  final isTablet = cons.maxWidth >= 800 && cons.maxWidth < 1100;
-                  final crossAxis = isDesktop ? 4 : isTablet ? 2 : 1;
-
-                  return Column(
-                    children: [
-                      // العنوان + زر تواصل
-                      _HeaderRow(
-                        titleStyle: textTheme.headlineMedium?.copyWith(
-                          color: onDark,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpaces.md),
-                      // فاصل خفيف
-                      Divider(
-                        color: onDark.withOpacity(.2),
-                        height: AppSpaces.lg,
-                        thickness: 1,
-                      ),
-                      const SizedBox(height: AppSpaces.lg),
-                      // الشبكة
-                      GridView(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: crossAxis,
-                          mainAxisExtent: 200,
-                          crossAxisSpacing: AppSpaces.xl,
-                          mainAxisSpacing: AppSpaces.md,
-                        ),
-                        children: const [
-                          _BrandColumn(),
-                          _NavColumn(),
-                          _ContactColumn(),
-                          _SubscribeColumn(),
-                        ],
-                      ),
+              child: Column(
+                children: [
+                  _HeaderRow(
+                    titleStyle: (isMobile ? textTheme.headlineSmall : textTheme.headlineMedium)?.copyWith(
+                      color: onDark,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpaces.md),
+                  Divider(
+                    color: onDark.withOpacity(.2),
+                    height: AppSpaces.lg,
+                    thickness: 1,
+                  ),
+                  const SizedBox(height: AppSpaces.lg),
+                  GridView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 4),
+                      mainAxisExtent: isMobile ? 180 : 220,
+                      crossAxisSpacing: AppSpaces.xl,
+                      mainAxisSpacing: AppSpaces.lg,
+                    ),
+                    children: const [
+                      _BrandColumn(),
+                      _NavColumn(),
+                      _ContactColumn(),
+                      _SubscribeColumn(),
                     ],
-                  );
-                },
+                  ),
+                ],
               ),
             ),
-
-            // الشريط السفلي البرتقالي (لون الهوية AppColors.primary)
             Container(
-              height: 56,
               color: AppColors.primary,
-              padding: const EdgeInsets.symmetric(horizontal: AppSpaces.lg),
-              child: LayoutBuilder(builder: (context, c) {
-                final small = c.maxWidth < 700;
-                return Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '© 2025 موسسة الوعل للمقاولات العامة والعقارات. جميع الحقوق محفوظة.',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          color: Colors.white,
+              padding: EdgeInsets.symmetric(
+                horizontal: ResponsiveHelper.getHorizontalPadding(context),
+                vertical: 12,
+              ),
+              child: isMobile
+                  ? Column(
+                      children: [
+                        Text(
+                          '© 2025 موسسة الوعل للمقاولات العامة والعقارات.',
+                          style: textTheme.labelMedium?.copyWith(color: Colors.white),
+                          textAlign: TextAlign.center,
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                        const SizedBox(height: 8),
+                        const Wrap(
+                          spacing: AppSpaces.sm,
+                          children: [
+                            _BottomLink('شروط الاستخدام'),
+                            Text('|', style: TextStyle(color: Colors.white)),
+                            _BottomLink('سياسة الخصوصية'),
+                          ],
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            '© 2025 موسسة الوعل للمقاولات العامة والعقارات. جميع الحقوق محفوظة.',
+                            style: textTheme.labelLarge?.copyWith(color: Colors.white),
+                          ),
+                        ),
+                        const Wrap(
+                          spacing: AppSpaces.sm,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            _BottomLink('شروط الاستخدام'),
+                            Text('|', style: TextStyle(color: Colors.white)),
+                            _BottomLink('سياسة الخصوصية'),
+                          ],
+                        ),
+                      ],
                     ),
-                    if (!small)
-                      Wrap(
-                        spacing: AppSpaces.sm,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: const [
-                          _BottomLink('شروط الاستخدام'),
-                          Text('|', style: TextStyle(color: Colors.white)),
-                          _BottomLink('سياسة الخصوصية'),
-                        ],
-                      ),
-                  ],
-                );
-              }),
             ),
           ],
         ),

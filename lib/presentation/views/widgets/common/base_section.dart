@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/common/utils/responsive_helper.dart';
 import '../common/title_section.dart';
 
 /// Base section template providing consistent layout across all sections
@@ -42,14 +43,14 @@ class BaseSection extends StatelessWidget {
   /// Whether to constrain content width
   final bool constrainContent;
 
-  /// Maximum content width (default: 1100)
-  final double maxWidth;
+  /// Maximum content width (default: dynamic based on device)
+  final double? maxWidth;
 
-  /// Vertical padding
-  final double verticalPadding;
+  /// Vertical padding (default: dynamic based on device)
+  final double? verticalPadding;
 
-  /// Horizontal padding
-  final double horizontalPadding;
+  /// Horizontal padding (default: dynamic based on device)
+  final double? horizontalPadding;
 
   /// Spacing after title section
   final double titleSpacing;
@@ -82,7 +83,15 @@ class BaseSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: verticalPadding),
+      padding: EdgeInsets.symmetric(
+        vertical: verticalPadding ??
+            ResponsiveHelper.valueByDevice(
+              context,
+              mobile: 40.0,
+              tablet: 50.0,
+              desktop: 60.0,
+            ),
+      ),
       color: backgroundColor,
       child: Column(
         children: [
@@ -105,9 +114,14 @@ class BaseSection extends StatelessWidget {
           else if (constrainContent)
             Center(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: maxWidth),
+                constraints: BoxConstraints(
+                  maxWidth: maxWidth ?? ResponsiveHelper.getMaxWidth(context),
+                ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding ??
+                        ResponsiveHelper.getHorizontalPadding(context),
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: children,
@@ -117,7 +131,10 @@ class BaseSection extends StatelessWidget {
             )
           else
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              padding: EdgeInsets.symmetric(
+                horizontal: horizontalPadding ??
+                    ResponsiveHelper.getHorizontalPadding(context),
+              ),
               child: Column(children: children),
             ),
         ],
@@ -141,6 +158,7 @@ class DarkSection extends BaseSection {
     super.fullWidth,
     super.customTitle,
     super.constrainContent,
+    required Color titleColor1,
   }) : super(
           backgroundColor: AppColors.primaryDark,
           titleColor1: Colors.white,
@@ -162,7 +180,7 @@ class LightSection extends BaseSection {
     super.titleSpacing,
     super.fullWidth,
     super.customTitle,
-    super.constrainContent,
+    super.constrainContent, Color? backgroundColor,
   }) : super(
           backgroundColor: AppColors.bgG,
           titleColor1: AppColors.primaryDark,

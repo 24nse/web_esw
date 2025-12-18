@@ -4,6 +4,7 @@ import 'package:web_site/common/utils/responsive_helper.dart';
 import '../../sections/landing/footer_section.dart';
 import '../../widgets/common/page_hero_section.dart';
 import '../../sections/home/header.dart';
+import '../../widgets/common/app_drawer.dart';
 
 /// Base page template providing consistent layout across all pages
 /// Includes: Header (optional), Hero Section, Content, and Footer
@@ -66,11 +67,11 @@ class BasePage extends StatelessWidget {
     required this.title,
     required this.breadcrumbItems,
     required this.children,
-    this.showHeader = false,
+    this.showHeader = true,
     this.showFooter = true,
     this.constrainContent = true,
-    this.maxWidth = 1100,
-    this.contentPadding = const EdgeInsets.all(24),
+    this.maxWidth,
+    this.contentPadding,
     this.backgroundColor,
     this.customHeroSection,
     this.isLoading = false,
@@ -83,6 +84,7 @@ class BasePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor ?? AppColors.bgW,
       appBar: showHeader ? const Header() : null,
+      endDrawer: const AppDrawer(),
       body: SafeArea(
         child: _buildBody(context),
       ),
@@ -116,7 +118,7 @@ class BasePage extends StatelessWidget {
               ),
 
           // Content
-          _buildContent(),
+          _buildContent(context),
 
           // Footer
           if (showFooter) const FooterSection(),
@@ -125,7 +127,7 @@ class BasePage extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     if (!constrainContent) {
       return Column(children: children);
     }

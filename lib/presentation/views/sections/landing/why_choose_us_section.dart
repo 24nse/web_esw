@@ -5,130 +5,50 @@ import 'package:web_site/presentation/views/widgets/buttons/play_button.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class WhyChooseUsSection extends StatelessWidget {
   const WhyChooseUsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // زخرفة المسطرة أعلى/أسفل
-    final ticks = UnifiedRulerTicksPainter(
-      // أعلى أفقي
-      drawTop: true,
-      topMode: UnifiedRulerTicksMode.horizontal,
-      topStep: 10,
-      topPatternHeights: const [14, 6, 10, 6, 14],
-      topMargin: 0,
-      topStrokeWidth: 1,
-      topColor: const Color(0xFFD1D5DB),
-      // أسفل أفقي
-      drawBottom: true,
-      bottomMode: UnifiedRulerTicksMode.horizontal,
-      bottomStep: 10,
-      bottomPatternHeights: const [14, 6, 10, 6, 14],
-      bottomMargin: 0,
-      bottomStrokeWidth: 1,
-      bottomColor: const Color(0xFFD1D5DB),
-    );
+    final isMobile = ResponsiveHelper.isMobile(context);
+    final isTablet = ResponsiveHelper.isTablet(context);
 
-    return LayoutBuilder(
-      builder: (context, cons) {
-        final w = cons.maxWidth;
-        final isDesktop = w >= 1100;
-        final isTablet = w >= 800 && w < 1100;
-        // ارتفاع موحّد للعمودين على الشاشات العريضة
-        final double sectionHeight = isDesktop ? 360 : (isTablet ? 300 : 0);
-
-        // إعدادات الصورة العائمة
-        const double leftOffset = 24;
-        const double bottomOffset = -40;
-        const double floatSize = 100;
-
-        final sectionBody = Container(
-          padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
-          color: Colors.grey[50],
-          child: Column(
-            children: [
-              const SectionTitle(
-                title: "لماذا تختارنا",
-                subTitle: "بناء الثقة،",
-                subTitle1: 'تقديم خدمات ممتازة',
-              ),
-              const SizedBox(height: AppSpaces.lg),
-
-              // Responsive: صف على العريض، تكديس على الموبايل
-              if (isDesktop || isTablet)
-                SizedBox(
-                  height: sectionHeight, // ← ارتفاع موحّد
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.stretch, // ملء الارتفاع
-                    children: [
-                      // العمود الأيسر (الصورة)
-                      Expanded(
-                        flex: 5,
-                        child: _LeftImagePanel(),
-                      ),
-                      const SizedBox(width: 40),
-                      // العمود الأيمن (كرت الميزات) — يتمدد رأسيًا بالكامل
-                      Expanded(
-                        flex: 6,
-                        child: _RightFeaturesCard(stretch: true),
-                      ),
-                    ],
-                  ),
-                )
-              else
-              // موبايل: تكديس عمودي نظيف
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [
-                    _LeftImagePanel(mobileHeight: 260),
-                    SizedBox(height: 20),
-                    _RightFeaturesCard(stretch: false),
-                  ],
-                ),
+    return LightSection(
+      sectionTitle: "لماذا تختارنا",
+      titleDescription1: "بناء الثقة،",
+      titleDescription2: 'تقديم خدمات ممتازة',
+      children: [
+        if (isMobile)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: const [
+              _LeftImagePanel(mobileHeight: 260),
+              SizedBox(height: 24),
+              _RightFeaturesCard(stretch: false),
             ],
+          )
+        else
+          SizedBox(
+            height: isTablet ? 400 : 450,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: _LeftImagePanel(),
+                ),
+                const SizedBox(width: 40),
+                Expanded(
+                  flex: 6,
+                  child: _RightFeaturesCard(stretch: true),
+                ),
+              ],
+            ),
           ),
-        );
-
-        return Stack(
-          clipBehavior: Clip.none,
-          children: [
-            CustomPaint(foregroundPainter: ticks, child: sectionBody),
-            //
-            // // الصورة الدائرية العائمة
-            // Positioned(
-            //   left: leftOffset,
-            //   bottom: bottomOffset,
-            //   child: SizedBox(
-            //     width: floatSize,
-            //     height: floatSize,
-            //     child: DecoratedBox(
-            //       decoration: BoxDecoration(
-            //         boxShadow: [
-            //           BoxShadow(
-            //             color: Colors.black.withOpacity(0.12),
-            //             blurRadius: 12,
-            //             offset: const Offset(0, 6),
-            //           ),
-            //         ],
-            //       ),
-            //       child: ClipOval(
-            //         child: Image.asset(
-            //           "assets/images/p1.png",
-            //           fit: BoxFit.cover,
-            //           errorBuilder: (_, __, ___) => Icon(
-            //             Icons.person,
-            //             color: Colors.grey[400],
-            //             size: 40,
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-          ],
-        );
-      },
+      ],
     );
   }
 }

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class FaqSection extends StatefulWidget {
   final Color? backgroundColor;
   const FaqSection({super.key, this.backgroundColor});
@@ -13,124 +16,77 @@ class FaqSection extends StatefulWidget {
 }
 
 class _FaqSectionState extends State<FaqSection> {
-  int expandedIndex = 1; // لجعل البطاقة الثانية مفتوحة مثل الصورة
+  int expandedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.sizeOf(context).width >= 1000;
+    final isMobile = ResponsiveHelper.isMobile(context);
+    final isTablet = ResponsiveHelper.isTablet(context);
 
     final items = <_FaqItemData>[
-      _FaqItemData('ما الخدمات التي تقدمها مؤسستكم؟',
-          '—', false), // مجرد عنصر مغلق
-      _FaqItemData('هل توجد أي تكاليف خفية؟',
-          'لوريم إيبسوم نص تجريبي يشرح تفاصيل مختصرة عن الرسوم أو البنود المحتملة... هذا النص للعرض فقط.', true),
-      _FaqItemData('كيف يتم تحديد تكلفة المشروع؟', '—', false),
-      _FaqItemData('كيف يمكنني متابعة تقدّم مشروعي؟', '—', false),
-      _FaqItemData('هل تقدّمون استشارات أو تسعيرات مجانية؟', '—', false),
-      _FaqItemData('ما أنواع المشاريع التي تتخصصون بها؟', '—', false),
+      const _FaqItemData('ما الخدمات التي تقدمها مؤسستكم؟', '—', false),
+      const _FaqItemData('هل توجد أي تكاليف خفية؟', 'لوريم إيبسوم نص تجريبي يشرح تفاصيل مختصرة عن الرسوم أو البنود المحتملة... هذا النص للعرض فقط.', true),
+      const _FaqItemData('كيف يتم تحديد تكلفة المشروع؟', '—', false),
+      const _FaqItemData('كيف يمكنني متابعة تقدّم مشروعي؟', '—', false),
+      const _FaqItemData('هل تقدّمون استشارات أو تسعيرات مجانية؟', '—', false),
+      const _FaqItemData('ما أنواع المشاريع التي تتخصصون بها؟', '—', false),
     ];
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Container(
-        color:widget.backgroundColor?? AppColors.bgG,
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpaces.xl,
-          vertical: AppSpaces.xxl,
-        ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 1200),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // شارة صغيرة "FAQs"
-                // العنوان الفرعي
-                SectionTitle(
-                  title: 'الأسئلة الشائعة',
-                  subTitle: "سؤال؟",
-                  subTitle1: 'انظر هنا.',
-                ),
-
-
-                // const _AccentTag(text: 'الأسئلة الشائعة'),
-                // const SizedBox(height: AppSpaces.sm),
-                //
-                // // العنوان الكبير: "سؤال؟ انظر هنا."
-                // Wrap(
-                //   crossAxisAlignment: WrapCrossAlignment.center,
-                //   runSpacing: 8,
-                //   children: [
-                //     Text(
-                //       'سؤال؟ ',
-                //       style: TextStyle(
-                //,
-                //         fontSize: 40,
-                //         fontWeight: FontWeight.w800,
-                //         color: navy,
-                //         height: 1.1,
-                //       ),
-                //     ),
-                //     Text(
-                //       'انظر هنا.',
-                //       style: TextStyle(
-                //,
-                //         fontSize: 40,
-                //         fontWeight: FontWeight.w800,
-                //         color: AppColors.primary,
-                //         height: 1.1,
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                const SizedBox(height: AppSpaces.xl),
-
-                // تخطيط عمودين (قائمة يسار + جانبي يمين)
-                Flex(
-                  direction: isWide ? Axis.horizontal : Axis.vertical,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // القائمة (تأخذ المساحة الأكبر)
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        children: [
-                          for (int i = 0; i < items.length; i++) ...[
-                            _FaqItem(
-                              data: items[i],
-                              index: i,
-                              isExpanded: expandedIndex == i,
-                              onTap: () => setState(() {
-                                expandedIndex = expandedIndex == i ? -1 : i;
-                              }),
-                            ),
-                            const SizedBox(height: AppSpaces.md),
-                          ],
-                        ],
-                      ),
-                    ),
-                    SizedBox(width: isWide ? AppSpaces.xl : 0, height: isWide ? 0 : AppSpaces.xl),
-                    // العمود الجانبي
-                    SizedBox(
-                      width: isWide ? 360 : double.infinity,
-                      child: Column(
-                        children: const [
-                          _QuestionsCTA(),
-                          SizedBox(height: AppSpaces.lg),
-                          _ServiceCard(),
-                        ],
-                      ),
-                    ),
+    return LightSection(
+      backgroundColor: widget.backgroundColor,
+      sectionTitle: 'الأسئلة الشائعة',
+      titleDescription1: 'سؤال؟',
+      titleDescription2: 'انظر هنا.',
+      children: [
+        if (isMobile)
+          Column(
+            children: [
+              _buildFaqList(items),
+              const SizedBox(height: 32),
+              const _QuestionsCTA(),
+              const SizedBox(height: 16),
+              const _ServiceCard(),
+            ],
+          )
+        else
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(flex: 2, child: _buildFaqList(items)),
+              const SizedBox(width: 40),
+              SizedBox(
+                width: isTablet ? 300 : 360,
+                child: Column(
+                  children: const [
+                    _QuestionsCTA(),
+                    SizedBox(height: 24),
+                    _ServiceCard(),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),
-      ),
+      ],
+    );
+  }
+
+  Widget _buildFaqList(List<_FaqItemData> items) {
+    return Column(
+      children: [
+        for (int i = 0; i < items.length; i++) ...[
+          _FaqItem(
+            data: items[i],
+            index: i,
+            isExpanded: expandedIndex == i,
+            onTap: () => setState(() => expandedIndex = expandedIndex == i ? -1 : i),
+          ),
+          if (i < items.length - 1) const SizedBox(height: 16),
+        ],
+      ],
     );
   }
 }
+
 
 /* ======================= Widgets: Header Elements ======================= */
 

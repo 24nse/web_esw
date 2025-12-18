@@ -4,9 +4,13 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class ContactSection extends StatefulWidget {
-  const ContactSection({super.key, this.backgroundColor = AppColors.bgG,});
-  final Color backgroundColor;
+  const ContactSection({super.key, this.backgroundColor});
+  final Color? backgroundColor;
+
   @override
   State<ContactSection> createState() => _ContactSectionState();
 }
@@ -21,198 +25,181 @@ class _ContactSectionState extends State<ContactSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color:widget.backgroundColor,
-        padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 60),
+    final isMobile = ResponsiveHelper.isMobile(context);
 
-        child:  Column(
-        children: [
-          // Header
-
-          TitleSection(
-            title:     'تواصل معنا',
-            des1: 'هل لديك مشروع؟\n',
-            des2: 'لنتحدث!',
-
-          ),
-
-
-
-
-
-          const SizedBox(height: 50),
-          // Form and Contact Info
+    return LightSection(
+      backgroundColor: widget.backgroundColor,
+      sectionTitle: 'تواصل معنا',
+      titleDescription1: 'هل لديك مشروع؟\n',
+      titleDescription2: 'لنتحدث!',
+      children: [
+        if (isMobile)
+          Column(
+            children: [
+              _buildForm(context),
+              const SizedBox(height: 32),
+              _buildContactInfo(context),
+            ],
+          )
+        else
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Form Section
+              Expanded(flex: 3, child: _buildForm(context)),
+              const SizedBox(width: 40),
+              Expanded(flex: 2, child: _buildContactInfo(context)),
+            ],
+          ),
+      ],
+    );
+  }
+
+  Widget _buildForm(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
+    return Column(
+      children: [
+        if (isMobile) ...[
+          _buildTextField(
+            controller: _firstNameController,
+            label: 'الاسم الأول *',
+            hint: 'مثال: أحمد',
+          ),
+          const SizedBox(height: 20),
+          _buildTextField(
+            controller: _lastNameController,
+            label: 'اسم العائلة *',
+            hint: 'مثال: محمد',
+          ),
+        ] else
+          Row(
+            children: [
               Expanded(
-                flex: 3,
-                child: Column(
-                  children: [
-                    // First Name and Last Name
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildTextField(
-                            controller: _firstNameController,
-                            label: 'الاسم الأول *',
-                            hint: 'مثال: أحمد',
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: _buildTextField(
-                            controller: _lastNameController,
-                            label: 'اسم العائلة *',
-                            hint: 'مثال: محمد',
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    // Email and Phone
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildTextField(
-                            controller: _emailController,
-                            label: 'البريد الإلكتروني *',
-                            hint: 'example@domain.com',
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: _buildTextField(
-                            controller: _phoneController,
-                            label: 'رقم الهاتف *',
-                            hint: 'أدخل رقم الهاتف',
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    // Subject
-                    _buildTextField(
-                      controller: _subjectController,
-                      label: 'الموضوع *',
-                      hint: 'اختر موضوع هنا',
-                    ),
-                    const SizedBox(height: 20),
-                    // Message
-                    _buildTextField(
-                      controller: _messageController,
-                      label: 'رسالتك *',
-                      hint: 'أدخل هنا...',
-                      maxLines: 4,
-                    ),
-                    const SizedBox(height: 30),
-                    // Submit Button
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColors.primary.withOpacity(0.3),
-                              blurRadius: 15,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                        ),
-                        child: const Text(
-                          'إرسال الرسالة',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                child: _buildTextField(
+                  controller: _firstNameController,
+                  label: 'الاسم الأول *',
+                  hint: 'مثال: أحمد',
                 ),
               ),
-              const SizedBox(width: 30),
-              // Contact Info Card
+              const SizedBox(width: 20),
               Expanded(
-                flex: 4,
-                child: Container(
-                  padding: const EdgeInsets.all(28),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0A1F44),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xFF0A1F44).withOpacity(0.3),
-                        blurRadius: 30,
-                        offset: const Offset(0, 15),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Address
-                      _buildInfoSection(
-                        'العنوان',
-                        'شارع الملك فهد، الرياض\nالمملكة العربية السعودية 12345',
-                      ),
-                      Divider(height: 13,thickness: 1 ,color: Colors.grey,),
-                      const SizedBox(height: 22),
-                      // Contact
-                      _buildInfoSection(
-                        'التواصل',
-                        'الهاتف: 966-11-123-4567+\nالبريد: info@company.com',
-                      ),
-                      Divider(height: 13,thickness: 1 ,color: Colors.grey,),
-                      const SizedBox(height: 22),
-                      // Open Time
-                      _buildInfoSection(
-                        'أوقات العمل',
-                        'الأحد - الخميس: 10:00 - 20:00\nالسبت: 11:00 - 18:00',
-                      ),
-                      Divider(height: 13,thickness: 1 ,color: Colors.grey,),
-                      const SizedBox(height: 22),
-                      // Stay Connected
-                      Text(
-                        'تواصل معنا',
-                        textDirection: TextDirection.rtl,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          _buildSocialIcon(Icons.telegram),
-                          const SizedBox(width: 12),
-                          _buildSocialIcon(Icons.facebook),
-                          const SizedBox(width: 12),
-                          _buildSocialIcon(Icons.snapchat),
-                          const SizedBox(width: 12),
-                          _buildSocialIcon(Icons.location_on),
-                          const SizedBox(width: 12),
-                          _buildSocialIcon(Icons.apple),
-                        ],
-                      ),
-                    ],
-                  ),
+                child: _buildTextField(
+                  controller: _lastNameController,
+                  label: 'اسم العائلة *',
+                  hint: 'مثال: محمد',
                 ),
               ),
             ],
           ),
-    ],
-        ));
+        const SizedBox(height: 20),
+        if (isMobile) ...[
+          _buildTextField(
+            controller: _emailController,
+            label: 'البريد الإلكتروني *',
+            hint: 'example@domain.com',
+          ),
+          const SizedBox(height: 20),
+          _buildTextField(
+            controller: _phoneController,
+            label: 'رقم الهاتف *',
+            hint: 'أدخل رقم الهاتف',
+          ),
+        ] else
+          Row(
+            children: [
+              Expanded(
+                child: _buildTextField(
+                  controller: _emailController,
+                  label: 'البريد الإلكتروني *',
+                  hint: 'example@domain.com',
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: _buildTextField(
+                  controller: _phoneController,
+                  label: 'رقم الهاتف *',
+                  hint: 'أدخل رقم الهاتف',
+                ),
+              ),
+            ],
+          ),
+        const SizedBox(height: 20),
+        _buildTextField(
+          controller: _subjectController,
+          label: 'الموضوع *',
+          hint: 'اختر موضوع هنا',
+        ),
+        const SizedBox(height: 20),
+        _buildTextField(
+          controller: _messageController,
+          label: 'رسالتك *',
+          hint: 'أدخل هنا...',
+          maxLines: 4,
+        ),
+        const SizedBox(height: 32),
+        Align(
+          alignment: Alignment.centerRight,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              elevation: 4,
+            ),
+            child: const Text(
+              'إرسال الرسالة',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildContactInfo(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0A1F44),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF0A1F44).withOpacity(0.3),
+            blurRadius: 30,
+            offset: const Offset(0, 15),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildInfoSection('العنوان', 'شارع الملك فهد، الرياض\nالمملكة العربية السعودية 12345'),
+          const Divider(height: 32, color: Colors.white24),
+          _buildInfoSection('التواصل', 'الهاتف: 966-11-123-4567+\nالبريد: info@company.com'),
+          const Divider(height: 32, color: Colors.white24),
+          _buildInfoSection('أوقات العمل', 'الأحد - الخميس: 10:00 - 20:00\nالسبت: 11:00 - 18:00'),
+          const Divider(height: 32, color: Colors.white24),
+          const Text(
+            'تواصل معنا',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          const SizedBox(height: 16),
+          Wrap(
+            spacing: 12,
+            runSpacing: 12,
+            children: [
+              _buildSocialIcon(Icons.telegram),
+              _buildSocialIcon(Icons.facebook),
+              _buildSocialIcon(Icons.snapchat),
+              _buildSocialIcon(Icons.location_on),
+              _buildSocialIcon(Icons.apple),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildTextField({

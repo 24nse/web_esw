@@ -149,119 +149,85 @@ import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class WhoAreYou extends StatelessWidget {
   const WhoAreYou({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      foregroundPainter:  UnifiedRulerTicksPainter(
-        // أعلى أفقي
-        drawTop: true,
-        topMode: UnifiedRulerTicksMode.horizontal,
-        topStep: 10,
-        topPatternHeights: const [14, 6, 10, 6, 14],
-        topMargin: 0,
-        topStrokeWidth: 1,
-        topColor: Color(0xFFD1D5DB),
+    final isMobile = ResponsiveHelper.isMobile(context);
 
-        // أسفل أفقي (نفس الإعدادات)
-        drawBottom: true,
-        bottomMode: UnifiedRulerTicksMode.horizontal,
-        bottomStep: 10,
-        bottomPatternHeights: const [14, 6, 10, 6, 14],
-        bottomMargin: 0,
-        bottomStrokeWidth: 1,
-        bottomColor: Color(0xFFD1D5DB),
-      ),
+    return WhiteSection(
+      sectionTitle: 'من نحن',
+      titleDescription1: 'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية ',
+      titleDescription2: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
+      children: [
+        if (isMobile)
+          Column(
+            children: [
+              _buildImage(context),
+              const SizedBox(height: 24),
+              const MissionContainer(),
+            ],
+          )
+        else
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(child: _buildImage(context)),
+              const SizedBox(width: 32),
+              const Expanded(child: MissionContainer()),
+            ],
+          ),
+      ],
+    );
+  }
 
-      child: Container(
-        height: 600,
-        color: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 56, horizontal: 90),
-        child: Column(
-          // direction: Axis.vertical,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SectionTitle(
-              title: 'من نحن',
-              subTitle:'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية',
-              subTitle1: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
-              onTap:   () {
-      Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const AboutPage()),
-      );
-      },
+  Widget _buildImage(BuildContext context) {
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: TopRightCornerClipper(
+            clipSize: 70,
+            topRadius: 8,
+            rightRadius: 8,
+          ),
+          child: Container(
+            height: 300,
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage("assets/images/p.jpg"),
+                fit: BoxFit.cover,
+              ),
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(16),
             ),
-            Expanded(
-              child: Row(
-
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Stack(
-                      children: [
-                        ClipPath(
-                          clipper: TopRightCornerClipper(
-                            clipSize: 70, // حجم القص
-                            topRadius: 8, // نصف قطر النقطة العلوية
-                            rightRadius: 8, // نصف قطر النقطة اليسرى
-                          ),
-                          child: Container(
-                            height: 250,
-                            // width: 300,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage("assets/images/p.jpg"),
-                                fit: BoxFit.cover,
-                              ),
-                              color: AppColors.primary, // لون احتياطي
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 12,
-                          left: 12,
-                          child: Container(
-
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 6, horizontal: 12),
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Text(
-                              "25+ سنة خبرة",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 25),
-                  Expanded(child: MissionContainer())
-
-
-
-                ],
+          ),
+        ),
+        Positioned(
+          bottom: 12,
+          left: 12,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            decoration: BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: AppShadows.card,
+            ),
+            child: const Text(
+              "25+ سنة خبرة",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
               ),
             ),
-            // العمود الثاني (الصورة + الكارد)
-            // const SizedBox(width: 40, height: 40),
-          ],
-        )
-
-      ),
+          ),
+        ),
+      ],
     );
-
-
-
   }
 }
 
@@ -325,17 +291,16 @@ class MissionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 380,
-      height: 250,
-      // margin: EdgeInsets.all(16),
+      width: double.infinity,
+      constraints: const BoxConstraints(minHeight: 250),
       decoration: BoxDecoration(
-        color: Color(0xFF0A1E4D), // اللون الأزرق الداكن
+        color: const Color(0xFF0A1E4D),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
             blurRadius: 15,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),

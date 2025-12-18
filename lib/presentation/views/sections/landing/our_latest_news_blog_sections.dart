@@ -9,55 +9,21 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class OurLatestNewsBlogSections extends StatelessWidget {
   const OurLatestNewsBlogSections({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      foregroundPainter:  UnifiedRulerTicksPainter(
-        // أعلى أفقي
-        drawTop: true,
-        topMode: UnifiedRulerTicksMode.horizontal,
-        topStep: 10,
-        topPatternHeights: const [14, 6, 10, 6, 14],
-        topMargin: 0,
-        topStrokeWidth: 1,
-        topColor: Color(0xFFD1D5DB),
-
-        // أسفل أفقي (نفس الإعدادات)
-        drawBottom: true,
-        bottomMode: UnifiedRulerTicksMode.horizontal,
-        bottomStep: 10,
-        bottomPatternHeights: const [14, 6, 10, 6, 14],
-        bottomMargin: 0,
-        bottomStrokeWidth: 1,
-        bottomColor: Color(0xFFD1D5DB),
-      ),
-
-      child: Container(
-        color: AppColors.bgW,
-        padding: EdgeInsets.symmetric(vertical: 60, horizontal: 60),
-        child: Column(
-          children: [
-
-            TitleSection(
-              title:  'الأخبار والمدونات',
-              des1:'آخر الأخبار',
-              des2: '\nالمدونات',
-            ),
-
-
-            SizedBox(height: 50),
-
-
-            ServiceSlider(),
-            SizedBox(height: 40),
-
-
-          ],
-        ),
-      ),
+    return const WhiteSection(
+      sectionTitle: 'الأخبار والمدونات',
+      titleDescription1: 'آخر الأخبار',
+      titleDescription2: '\nالمدونات',
+      children: [
+        ServiceSlider(),
+      ],
     );
   }
 }

@@ -5,90 +5,55 @@ import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class ServicesSection extends StatelessWidget {
   const ServicesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return LightSection(
+      sectionTitle: 'الخدمات التي نقدمها',
+      titleDescription1: 'خدمات تلبي احتياجاتك',
+      titleDescription2: '\nوحلول مصممة خصيصًا لك',
       children: [
-        // Positioned(
-        //     height: 6777,
-        //     child:
-            Container(
-    width: 50,
-      height: 50,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: const Color(0xFFFF6B35),
-          width: 2,
-        ),
-        color: Colors.white.withOpacity(0.1),
-      ),
-      child: ClipOval(child:  Image.asset("assets/images/p1.png" , fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Icon(
-              Icons.person,
-              color: Colors.white.withOpacity(0.5),
-              size: 28,
-            );
-          },))
-    // )
-    ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 60, horizontal: 60),
-          color: AppColors.bgG,
-          child: Column(
+        const ServiceSlider(),
+        const SizedBox(height: 40),
+        Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              // العنوان الفرعي
-              TitleSection(
-                title:  'الخدمات التي نقدمها',
-                des1: 'خدمات تلبي احتياجاتك',
-                des2: '\nوحلول مصممة خصيصًا لك',
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'الاطلاع على جميع الخدمات',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
-
-
-              SizedBox(height: 50),
-
-
-              ServiceSlider(),
-              SizedBox(height: 40),
-
-              // زر "View All Services"
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 35, vertical: 16),
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Text(
-                      'الاطلاع على جميع الخدمات',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF0A1E4D),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                  ),
-                ],
+              const SizedBox(width: 15),
+              Container(
+                width: 50,
+                height: 50,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF0A1E4D),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                  size: 24,
+                ),
               ),
             ],
           ),

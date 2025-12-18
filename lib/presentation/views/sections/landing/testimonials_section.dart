@@ -7,6 +7,9 @@ import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 
 
 
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class TestimonialsSection extends StatefulWidget {
   const TestimonialsSection({super.key});
 
@@ -21,8 +24,7 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
     TestimonialData(
       rating: 5.0,
       title: 'فاق التوقعات!',
-      content:
-      'تجربة استثنائية في التعامل مع الشركة، حيث تم إنجاز المشروع بأعلى معايير الجودة وفي الوقت المحدد. فريق محترف ومتعاون للغاية',
+      content: 'تجربة استثنائية في التعامل مع الشركة، حيث تم إنجاز المشروع بأعلى معايير الجودة وفي الوقت المحدد. فريق محترف ومتعاون للغاية',
       clientName: 'عبدالله السعيد',
       clientPosition: 'مستثمر عقاري',
       clientImage: 'assets/images/c.png',
@@ -30,200 +32,122 @@ class _TestimonialsSectionState extends State<TestimonialsSection> {
     TestimonialData(
       rating: 5.0,
       title: 'خدمة من الدرجة الأولى!',
-      content:
-      'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
+      content: 'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
       clientName: ' نوح سعيد',
       clientPosition: 'مالك عقارات',
       clientImage: 'assets/images/c.png',
     ),
     TestimonialData(
       rating: 5.0,
-      title: 'خدمة من الدرجة الأولى!',
-      content:
-      'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
-      clientName: ' نوح سعيد',
-      clientPosition: 'مالك عقارات',
+      title: 'احترافية عالية',
+      content: 'فريق عمل متميز يمتلك خبرة واسعة في مجال المقاولات. تم تنفيذ المشروع بدقة متناهية وبجودة تفوق الوصف.',
+      clientName: 'سارة أحمد',
+      clientPosition: 'مديرة مشاريع',
       clientImage: 'assets/images/c.png',
     ),
     TestimonialData(
       rating: 5.0,
-      title: 'خدمة من الدرجة الأولى!',
-      content:
-      'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
-      clientName: ' نوح سعيد',
-      clientPosition: 'مالك عقارات',
-      clientImage: 'assets/images/c.png',
-    ),
-    TestimonialData(
-      rating: 5.0,
-      title: 'خدمة من الدرجة الأولى!',
-      content:
-      'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
-      clientName: ' نوح سعيد',
-      clientPosition: 'مالك عقارات',
-      clientImage: 'assets/images/c.png',
-    ),
-    TestimonialData(
-      rating: 5.0,
-      title: 'خدمة من الدرجة الأولى!',
-      content:
-      'نحن سعداء جداً بالنتيجة النهائية لمشروعنا السكني. الاهتمام بالتفاصيل والالتزام بالمواعيد كان رائعاً. أنصح بالتعامل معهم',
-      clientName: ' نوح سعيد',
-      clientPosition: 'مالك عقارات',
+      title: 'جودة لا تضاهى',
+      content: 'من أفضل الشركات التي تعاملت معها في مجال البناء. التزام تام بالمواعيد والمواصفات المتفق عليها.',
+      clientName: 'محمد العتيبي',
+      clientPosition: 'رجل أعمال',
       clientImage: 'assets/images/c.png',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      foregroundPainter: UnifiedRulerTicksPainter(
-        // أعلى مائل
-        drawTop: true,
-        topMode: UnifiedRulerTicksMode.diagonal,
-        topStep: 12,
-        topPatternHeights: const [20],
-        topAngleDeg: 60,
-        topDirection: DiagonalDirection.downLeft,
-        topMargin: 0,
-        topStrokeWidth: 1,
-        topColor: Color(0xFF5F83C8),
+    final isMobile = ResponsiveHelper.isMobile(context);
+    final isTablet = ResponsiveHelper.isTablet(context);
+    final itemsPerPage = isMobile ? 1 : 2;
+    final pageCount = (testimonials.length / itemsPerPage).ceil();
 
-        // أسفل مائل
-        drawBottom: true,
-        bottomMode: UnifiedRulerTicksMode.diagonal,
-        bottomStep: 12,
-        bottomPatternHeights: const [20],
-        bottomAngleDeg: 60,
-        bottomDirection: DiagonalDirection.downLeft,
-        bottomMargin: 0,
-        bottomStrokeWidth: 1,
-        bottomColor: Color(0xFF5F83C8),
-      ),
-      child: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0A1F44),
-              Color(0xFF132D5E),
+    return DarkSection(
+      sectionTitle: 'آراء العملاء',
+      titleDescription1: 'التجارب المشتركة من\n',
+      titleDescription2: 'عملائنا',
+      titleColor1: AppColors.bgG,
+      children: [
+        SizedBox(
+          height: isMobile ? 320 : 300,
+          child: PageView.builder(
+            onPageChanged: (index) => setState(() => _currentPage = index),
+            itemCount: pageCount,
+            itemBuilder: (context, pageIndex) {
+              int startIndex = pageIndex * itemsPerPage;
+              int endIndex = (startIndex + itemsPerPage > testimonials.length)
+                  ? testimonials.length
+                  : startIndex + itemsPerPage;
+
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  for (int i = startIndex; i < endIndex; i++) ...[
+                    Flexible(
+                      child: TestimonialCard(data: testimonials[i]),
+                    ),
+                    if (i < endIndex - 1) const SizedBox(width: 24),
+                  ],
+                ],
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 32),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            pageCount,
+            (index) => AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: index == _currentPage ? 32 : 8,
+              height: 8,
+              decoration: BoxDecoration(
+                color: index == _currentPage ? AppColors.primary : Colors.white24,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 48),
+        Center(
+          child: Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            alignment: WrapAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                ),
+                child: const Text('عرض جميع المشاريع', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TestimonialsPage()),
+                  );
+                },
+                icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color(0xFF0A1E4D),
+                  padding: const EdgeInsets.all(16),
+                ),
+              ),
             ],
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
-        child: Column(
-          children: [
-            TitleSection(
-              title:    'آراء العملاء',
-              des1: 'التجارب المشتركة من\n',
-              des2: 'عملائنا',
-              colordse1:  AppColors.bgG,
-            ),
-
-
-            const SizedBox(height: 60),
-            // Testimonials Cards
-            SizedBox(
-              height: 290,
-              child: PageView.builder(
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentPage = index;
-                  });
-                },
-                itemCount: (testimonials.length / 2).ceil(),
-                itemBuilder: (context, pageIndex) {
-                  int startIndex = pageIndex * 2;
-                  int endIndex = (startIndex + 2 > testimonials.length)
-                      ? testimonials.length
-                      : startIndex + 2;
-
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      for (int i = startIndex; i < endIndex; i++) ...[
-                        Flexible(
-                          child: TestimonialCard(
-                            data: testimonials[i],
-                          ),
-                        ),
-                        if (i < endIndex - 1) const SizedBox(width: 30),
-                      ],
-                    ],
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 40),
-            // Pagination Dots
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                (testimonials.length / 2).ceil(),
-                    (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: index == _currentPage ? 40 : 10,
-                  height: 10,
-                  decoration: BoxDecoration(
-                    color: index == _currentPage
-                        ? const Color(0xFFFF6B35)
-                        : Colors.white.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 40),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 35, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Text(
-                    'عرض جميع المشاريع',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 15),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const TestimonialsPage()),
-                    );
-                  },
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF0A1E4D),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      ],
     );
   }
 }
+
 
 class TestimonialData {
   final double rating;

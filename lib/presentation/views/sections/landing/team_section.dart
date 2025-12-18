@@ -9,59 +9,43 @@ import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks
 import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class TeamSection extends StatelessWidget {
   const TeamSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      foregroundPainter:  UnifiedRulerTicksPainter(
-        // أعلى أفقي
-        drawTop: true,
-        topMode: UnifiedRulerTicksMode.horizontal,
-        topStep: 10,
-        topPatternHeights: const [14, 6, 10, 6, 14],
-        topMargin: 0,
-        topStrokeWidth: 1,
-        topColor: Color(0xFFD1D5DB),
-
-        // أسفل أفقي (نفس الإعدادات)
-        drawBottom: true,
-        bottomMode: UnifiedRulerTicksMode.horizontal,
-        bottomStep: 10,
-        bottomPatternHeights: const [14, 6, 10, 6, 14],
-        bottomMargin: 0,
-        bottomStrokeWidth: 1,
-        bottomColor: Color(0xFFD1D5DB),
-      ),
-
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 60, horizontal: 60),
-        color: AppColors.bgW,
-        child: Column(
-          children: [
-            // العنوان الفرعي
-            SectionTitle(
-              title: 'تعرف على فريقنا',
-              subTitle: "",
-              subTitle1: '',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TeamsPage()),
-                );
-              },
+    return WhiteSection(
+      sectionTitle: 'تعرف على فريقنا',
+      titleDescription1: 'نخبة من\n',
+      titleDescription2: 'الخبراء والمبدعين',
+      children: [
+        const ServiceSlider(),
+        const SizedBox(height: 20),
+        Center(
+          child: TextButton.icon(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TeamsPage()),
+              );
+            },
+            icon: const Icon(Icons.arrow_back, size: 18),
+            label: const Text(
+              'عرض جميع أعضاء الفريق',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
             ),
-
-
-
-
-            ServiceSlider(),
-            SizedBox(height: 40),
-
-          ],
+            style: TextButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

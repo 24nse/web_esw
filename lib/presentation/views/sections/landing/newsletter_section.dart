@@ -4,121 +4,50 @@ import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks
 import 'package:web_site/common/constants/theme/tokens.dart';
 
 /// قسم النشرة البريدية - مطابق للتصميم
+import 'package:web_site/common/utils/responsive_helper.dart';
+import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+
 class NewsletterSection extends StatelessWidget {
   const NewsletterSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const Color navy = Color(0xFF0C2754); // الكحلي المستخدم في العنوان
-    final size = MediaQuery.sizeOf(context);
-    final isWide = size.width >= 1100;
+    final isDesktop = ResponsiveHelper.isDesktop(context);
 
-    return Directionality(
-      textDirection: TextDirection.rtl, // يمكنك تغييره إلى LTR إذا رغبت
-      child: CustomPaint(
-        foregroundPainter:  UnifiedRulerTicksPainter(
-          // أعلى أفقي
-          drawTop: true,
-          topMode: UnifiedRulerTicksMode.horizontal,
-          topStep: 10,
-          topPatternHeights: const [14, 6, 10, 6, 14],
-          topMargin: 0,
-          topStrokeWidth: 1,
-          topColor: Color(0xFFD1D5DB),
-
-          // أسفل أفقي (نفس الإعدادات)
-          drawBottom: true,
-          bottomMode: UnifiedRulerTicksMode.horizontal,
-          bottomStep: 10,
-          bottomPatternHeights: const [14, 6, 10, 6, 14],
-          bottomMargin: 0,
-          bottomStrokeWidth: 1,
-          bottomColor: Color(0xFFD1D5DB),
-        ),
-
-        child: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.symmetric(
-            vertical: AppSpaces.xxl,
-          ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              // صور زخرفية جانبية (اختيارية) — عدّل المسارات
-              if (isWide) ...[
-                Positioned(
-                  top: -20,
-                  right: null,
-                  left: 0,
-                  child: _DecorImage(
-                    path: 'assets/images/crane_hook.png',
-                    width: 140,
-                  ),
+    return WhiteSection(
+      sectionTitle: 'النشرة البريدية',
+      titleDescription1: 'انضم إلى نشرتنا للحصول على ',
+      titleDescription2: 'عروض حصرية ورؤى إنشائية!',
+      children: [
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            if (isDesktop) ...[
+              Positioned(
+                top: -100,
+                left: -150,
+                child: _DecorImage(
+                  path: 'assets/images/crane_hook.png',
+                  width: 140,
                 ),
-                Positioned(
-                  bottom: -10,
-                  left: null,
-                  right: 0,
-                  child: _DecorImage(
-                    path: 'assets/images/excavator.png',
-                    width: 260,
-                  ),
-                ),
-              ],
-
-              // المحتوى الأساسي
-              Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1100),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const _AccentTag(text: 'النشرة البريدية'),
-                      const SizedBox(height: AppSpaces.md),
-
-                      // العنوان الكبير سطرين، الكلمة الثانية بالبرتقالي
-                      Wrap(
-                        alignment: WrapAlignment.center,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        runSpacing: 8,
-                        children: [
-                          Text(
-                            'انضم إلى نشرتنا للحصول على ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: isWide ? 40 : 30,
-                              fontWeight: FontWeight.w800,
-                              color: navy,
-                              height: 1.15,
-                            ),
-                          ),
-                          Text(
-                            'عروض حصرية ورؤى إنشائية!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: isWide ? 40 : 30,
-                              fontWeight: FontWeight.w800,
-                              color: AppColors.primary,
-                              height: 1.15,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: AppSpaces.xl),
-
-                      // شريط الإدخال + زر الاشتراك
-                      const _SubscribeBar(),
-                    ],
-                  ),
+              ),
+              Positioned(
+                bottom: -50,
+                right: -150,
+                child: _DecorImage(
+                  path: 'assets/images/excavator.png',
+                  width: 260,
                 ),
               ),
             ],
-          ),
+            const Center(child: _SubscribeBar()),
+          ],
         ),
-      ),
+      ],
     );
   }
 }
+
 
 /* ======================= شارة العنوان ======================= */
 
