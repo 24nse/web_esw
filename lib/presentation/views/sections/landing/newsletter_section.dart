@@ -27,7 +27,7 @@ class NewsletterSection extends StatelessWidget {
                 top: -100,
                 left: -150,
                 child: _DecorImage(
-                  path: 'assets/images/crane_hook.png',
+                  path: 'assets/images/c.png',
                   width: 140,
                 ),
               ),
@@ -35,7 +35,7 @@ class NewsletterSection extends StatelessWidget {
                 bottom: -50,
                 right: -150,
                 child: _DecorImage(
-                  path: 'assets/images/excavator.png',
+                  path: 'assets/images/c.png',
                   width: 260,
                 ),
               ),

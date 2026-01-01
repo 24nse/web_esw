@@ -1,147 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:web_site/common/constants/theme/tokens.dart';
-//
-// class WhoAreYou extends StatelessWidget {
-//   const WhoAreYou({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: Colors.white,
-//       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 24),
-//       child: Center(
-//         child:Flex(
-//               // direction: isMobile ? Axis.vertical : Axis.horizontal,
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               direction: Axis.horizontal,
-//               children: [
-//                 // العمود النصي
-//                 Expanded(
-//                   flex: 1,
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text("من نحن",
-//                           // style: GoogleFonts.cairo(
-//                           //   fontSize: 16,
-//                           //   color: AppColors.primary,
-//                           // )
-//                       ),
-//                       const SizedBox(height: 8),
-//                       RichText(
-//                         text: TextSpan(
-//                           // style: GoogleFonts.cairo(
-//                           //   fontSize: 32,
-//                           //   fontWeight: FontWeight.w800,
-//                           // ),
-//                           children: [
-//                             TextSpan(
-//                                 text: "نصنع التميز ",
-//                                 style: TextStyle(color: AppColors.primary)),
-//                             TextSpan(
-//                                 text: "في كل مشروع",
-//                                 style: TextStyle(color: AppColors.text)),
-//                           ],
-//                         ),
-//                       ),
-//                       const SizedBox(height: 16),
-//                       Text(
-//                         "نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية "
-//                             "مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.",
-//                       //   style: GoogleFonts.cairo(
-//                       //       fontSize: 16, color: AppColors.textMuted),
-//                       ),
-//                       const SizedBox(height: 24),
-//                       ElevatedButton.icon(
-//                         onPressed: () {},
-//                         icon: const Icon(Icons.add, size: 18),
-//                         label: const Text("اعرف المزيد"),
-//                         style: ElevatedButton.styleFrom(
-//                           backgroundColor: AppColors.primary,
-//                           padding: const EdgeInsets.symmetric(
-//                               vertical: 14, horizontal: 28),
-//                           shape: RoundedRectangleBorder(
-//                               borderRadius: BorderRadius.circular(30)),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-//                 const SizedBox(width: 40, height: 40),
-//                 // العمود الثاني (الصورة + الكارد)
-//                 Expanded(
-//                   flex: 1,
-//                   child: Column(
-//                     children: [
-//                       Stack(
-//                         children: [
-//                           ClipRRect(
-//                             borderRadius: BorderRadius.circular(16),
-//                             child: Image.asset(
-//                               "assets/images/p.jpg",
-//                               height: 220,
-//                               width: double.infinity,
-//                               fit: BoxFit.cover,
-//                             ),
-//                           ),
-//                           Positioned(
-//                             bottom: 12,
-//                             right: 12,
-//                             child: Container(
-//                               padding: const EdgeInsets.symmetric(
-//                                   vertical: 6, horizontal: 12),
-//                               decoration: BoxDecoration(
-//                                 color: AppColors.primary,
-//                                 borderRadius: BorderRadius.circular(8),
-//                               ),
-//                               child: Text(
-//                                 "25+ سنة خبرة",
-//                                 // style: GoogleFonts.cairo(
-//                                 //   color: Colors.white,
-//                                 //   fontWeight: FontWeight.bold,
-//                                 // ),
-//                               ),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                       const SizedBox(height: 20),
-//                       Container(
-//                         padding: const EdgeInsets.all(24),
-//                         decoration: BoxDecoration(
-//                           color: AppColors.text, // خلفية غامقة
-//                           borderRadius: BorderRadius.circular(16),
-//                         ),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             Text(
-//                               "رسالتنا",
-//                               // style: GoogleFonts.cairo(
-//                               //     fontSize: 18,
-//                               //     fontWeight: FontWeight.bold,
-//                               //     color: AppColors.primary),
-//                             ),
-//                             const SizedBox(height: 12),
-//                             Text(
-//                               "نلتزم بتقديم حلول مبتكرة تلبي احتياجات عملائنا وتحقق أعلى مستويات الجودة.",
-//                             //   style: GoogleFonts.cairo(
-//                             //       color: Colors.white, fontSize: 14),
-//                             ),
-//                           ],
-//                         ),
-//                       )
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             )
-//         ),
-//
-//     );
-//   }
-// }
+
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 import 'package:web_site/presentation/views/pages/about/about_page.dart';
@@ -157,30 +14,40 @@ class WhoAreYou extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ResponsiveHelper.isMobile(context);
-
     return WhiteSection(
       sectionTitle: 'من نحن',
       titleDescription1: 'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية ',
       titleDescription2: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
       children: [
-        if (isMobile)
-          Column(
-            children: [
-              _buildImage(context),
-              const SizedBox(height: 24),
-              const MissionContainer(),
-            ],
-          )
-        else
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: _buildImage(context)),
-              const SizedBox(width: 32),
-              const Expanded(child: MissionContainer()),
-            ],
-          ),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final isMobile = constraints.maxWidth < ResponsiveHelper.mobileBreakpoint;
+
+            return Row(
+              // direction: isMobile ? Axis.vertical : Axis.horizontal,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Image Section
+                if (isMobile)
+                  Expanded(child: _buildImage(context))
+                else
+                  _buildImage(context),
+
+                // Spacing between Image and Mission
+                SizedBox(
+                  width: isMobile ? 0 : 32,
+                  height: isMobile ? 24 : 0,
+                ),
+
+                // Mission Section
+                if (isMobile)
+                  const Expanded(child: MissionContainer())
+                else
+                  const MissionContainer(),
+              ],
+            );
+          },
+        ),
       ],
     );
   }
@@ -196,6 +63,7 @@ class WhoAreYou extends StatelessWidget {
           ),
           child: Container(
             height: 300,
+            width: double.infinity,
             decoration: BoxDecoration(
               image: const DecorationImage(
                 image: AssetImage("assets/images/p.jpg"),
@@ -209,19 +77,22 @@ class WhoAreYou extends StatelessWidget {
         Positioned(
           bottom: 12,
           left: 12,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            decoration: BoxDecoration(
-              color: AppColors.primary,
-              borderRadius: BorderRadius.circular(8),
-              boxShadow: AppShadows.card,
-            ),
-            child: const Text(
-              "25+ سنة خبرة",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 14,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: AppShadows.card,
+              ),
+              child: const Text(
+                "25+ سنة خبرة",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
               ),
             ),
           ),
@@ -330,10 +201,11 @@ class MissionContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // النص الرئيسي
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(25, 30, 25, 20),
                 child: Text(
-                  'نحن شركة رائدة في مجال المقاولات العامة، نقدم حلولاً متكاملة لمشاريع البناء والتشييد. نلتزم بأعلى معايير الجودة والسلامة في تنفيذ المشاريع السكنية والتجارية والصناعية بكفاءة واحترافية عالية.',                  style: TextStyle(
+                  'نحن شركة رائدة في مجال المقاولات العامة، نقدم حلولاً متكاملة لمشاريع البناء والتشييد. نلتزم بأعلى معايير الجودة والسلامة في تنفيذ المشاريع السكنية والتجارية والصناعية بكفاءة واحترافية عالية.',
+                  style: TextStyle(
                     color: Colors.white70,
                     fontSize: 14,
                     height: 1.6,
@@ -344,25 +216,31 @@ class MissionContainer extends StatelessWidget {
 
               // قسم "Our Mission" مع الأزرار
               Container(
-                padding: EdgeInsets.fromLTRB(25, 15, 20, 25),
+                padding: const EdgeInsets.fromLTRB(25, 15, 20, 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // عنوان "Our Mission"
-                    Text(
-
-                      'مهمتنا',
-                      style: TextStyle(
-                        color: AppColors.primary, // اللون البرتقالي
-                        // color: Color(0xFFFF6B4A), // اللون البرتقالي
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 0.5,
+                    Flexible(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          'مهمتنا',
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
                       ),
                     ),
+                    const SizedBox(width: 12),
 
                     // الأزرار
                     Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         // زر Plus في دائرة مع حدود
                         Container(
@@ -375,7 +253,7 @@ class MissionContainer extends StatelessWidget {
                               width: 2,
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.add,
                               color: Colors.white,
@@ -384,7 +262,7 @@ class MissionContainer extends StatelessWidget {
                           ),
                         ),
 
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
 
                         // زر السهم في دائرة برتقالية
                         Container(
@@ -392,9 +270,9 @@ class MissionContainer extends StatelessWidget {
                           height: 40,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColors.primary, // اللون البرتقالي
+                            color: AppColors.primary,
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
