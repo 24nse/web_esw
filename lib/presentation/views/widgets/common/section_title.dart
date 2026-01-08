@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -32,13 +33,13 @@ class SectionTitle extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                   Text(
-                   title,
-                    style: textTheme.bodyMedium?.copyWith(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                   AppText(
+                    title,
+                     style: AppStyles.styleMedium16(context).copyWith(
+                       color: Colors.grey,
+                       fontWeight: FontWeight.w500,
+                     ),
+                   ),
                 ],
               ),
               const SizedBox(height: 30),
@@ -47,26 +48,30 @@ class SectionTitle extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    subTitle,
-                    style: textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF001F5C),
-                      height: 1.2,
-                    ),
-                  ),
+                   AppText(
+                     subTitle,
+                     useFittedBox: true,
+                     alignment: Alignment.centerRight,
+                     style: AppStyles.styleBold24(context).copyWith(
+                       color: const Color(0xFF001F5C),
+                       height: 1.2,
+                     ),
+                   ),
                   const SizedBox(height: 8),
-                  ShaderMask(
-                    shaderCallback: (bounds) => const LinearGradient(
-                      colors: [Color(0xFFFF6B2C), Color(0xFFFF8A5C)],
-                    ).createShader(bounds),
-                    child: Text(
-                      subTitle1,
-                      style: textTheme.headlineSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        height: 1.2,
-                      ),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.centerRight,
+                    child: ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [Color(0xFFFF6B2C), Color(0xFFFF8A5C)],
+                      ).createShader(bounds),
+                       child: AppText(
+                         subTitle1,
+                         style: AppStyles.styleBold24(context).copyWith(
+                           color: Colors.white,
+                           height: 1.2,
+                         ),
+                       ),
                     ),
                   ),
                 ],
@@ -84,13 +89,13 @@ class SectionTitle extends StatelessWidget {
                 color: AppColors.primary,
                 borderRadius: BorderRadius.circular(30),
               ),
-              child: Text(
-                "اعرف المزيد",
-                style: textTheme.labelLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+               child: AppText(
+                 "اعرف المزيد",
+                 style: AppStyles.styleSemiBold16(context).copyWith(
+                   fontWeight: FontWeight.bold,
+                   color: Colors.white,
+                 ),
+               ),
             ),
           ),
           SizedBox(width: 10,),

@@ -8,48 +8,54 @@ import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks
 
 import 'package:web_site/common/utils/responsive_helper.dart';
 import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
+
+import '../../../../core/responsive/responsive.dart';
+import '../../widgets/common/title_section.dart';
 
 class WhoAreYou extends StatelessWidget {
   const WhoAreYou({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return WhiteSection(
-      sectionTitle: 'من نحن',
-      titleDescription1: 'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية ',
-      titleDescription2: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
-      children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            final isMobile = constraints.maxWidth < ResponsiveHelper.mobileBreakpoint;
+    return ConstrainedBox(
+        constraints: BoxConstraints(
+        maxWidth: ResponsiveHelper.getMaxWidth(context),
+        ),
+        child: Padding(
+        padding: EdgeInsets.symmetric(
+        horizontal:
+        ResponsiveHelper.getHorizontalPadding(context),
+        ),
+            child: Column(
 
-            return Row(
-              // direction: isMobile ? Axis.vertical : Axis.horizontal,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Image Section
-                if (isMobile)
-                  Expanded(child: _buildImage(context))
-                else
-                  _buildImage(context),
+                SizedBox(height: 20,),
 
-                // Spacing between Image and Mission
-                SizedBox(
-                  width: isMobile ? 0 : 32,
-                  height: isMobile ? 24 : 0,
+                TitleSection(
+                  title:  'من نحن',
+                  des1: 'نحن شركة متخصصة في تنفيذ المشاريع السكنية والتجارية ',
+                  des2: 'مع التركيز على الجودة والابتكار لتقديم أفضل الحلول لعملائنا.',
+
+
+                  colordse1:  Colors.black,
+                  colordse2: AppColors.primary,
                 ),
 
-                // Mission Section
-                if (isMobile)
-                  const Expanded(child: MissionContainer())
-                else
-                  const MissionContainer(),
+                     SizedBox(height: 20,),
+                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: _buildImage(context)),
+                        const SizedBox(width: 32),
+                        const Expanded(child: MissionContainer()),
+                      ],
+                    )
               ],
-            );
-          },
-        ),
-      ],
-    );
+            ),
+          ),
+        );
+
   }
 
   Widget _buildImage(BuildContext context) {
@@ -62,7 +68,12 @@ class WhoAreYou extends StatelessWidget {
             rightRadius: 8,
           ),
           child: Container(
-            height: 300,
+            height: Responsive.value(
+              context: context,
+                mobile: 200,
+                tablet: 240,
+                desktop: 280,
+            ),
             width: double.infinity,
             decoration: BoxDecoration(
               image: const DecorationImage(
@@ -77,22 +88,19 @@ class WhoAreYou extends StatelessWidget {
         Positioned(
           bottom: 12,
           left: 12,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: AppShadows.card,
-              ),
-              child: const Text(
-                "25+ سنة خبرة",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            decoration: BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(8),
+              boxShadow: AppShadows.card,
+            ),
+            child: const AppText(
+              "25+ سنة خبرة",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
               ),
             ),
           ),
@@ -100,6 +108,7 @@ class WhoAreYou extends StatelessWidget {
       ],
     );
   }
+
 }
 
 class TopRightCornerClipper extends CustomClipper<Path> {
@@ -155,15 +164,70 @@ class TopRightCornerClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
-
 class MissionContainer extends StatelessWidget {
   const MissionContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final minHeight = Responsive.value<double>(
+      context: context,
+      mobile: 200,
+      tablet: 240,
+      desktop: 280,
+    );
+
+    final paddingMain = Responsive.value<EdgeInsets>(
+      context: context,
+      mobile: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+      tablet: const EdgeInsets.fromLTRB(25, 30, 25, 20),
+      desktop: const EdgeInsets.fromLTRB(32, 36, 32, 24),
+    );
+
+    final bottomPadding = Responsive.value<EdgeInsets>(
+      context: context,
+      mobile: const EdgeInsets.fromLTRB(16, 12, 14, 18),
+      tablet: const EdgeInsets.fromLTRB(25, 15, 20, 25),
+      desktop: const EdgeInsets.fromLTRB(32, 18, 28, 30),
+    );
+
+    final bodyFont = Responsive.value<double>(
+      context: context,
+      mobile: 13,
+      tablet: 14,
+      desktop: 15,
+    );
+
+    final titleFont = Responsive.value<double>(
+      context: context,
+      mobile: 18,
+      tablet: 20,
+      desktop: 22,
+    );
+
+    final circleSize = Responsive.value<double>(
+      context: context,
+      mobile: 36,
+      tablet: 40,
+      desktop: 44,
+    );
+
+    final iconAddSize = Responsive.value<double>(
+      context: context,
+      mobile: 20,
+      tablet: 22,
+      desktop: 24,
+    );
+
+    final iconArrowSize = Responsive.value<double>(
+      context: context,
+      mobile: 18,
+      tablet: 20,
+      desktop: 22,
+    );
+
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(minHeight: 250),
+      constraints: BoxConstraints(minHeight: minHeight),
       decoration: BoxDecoration(
         color: const Color(0xFF0A1E4D),
         borderRadius: BorderRadius.circular(16),
@@ -177,7 +241,6 @@ class MissionContainer extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // العمود البرتقالي على اليسار
           Positioned(
             right: 0.5,
             top: 16,
@@ -185,9 +248,8 @@ class MissionContainer extends StatelessWidget {
             child: Container(
               width: 6,
               decoration: BoxDecoration(
-                color: AppColors.primary,  // اللون البرتقالي
-                // color: Color(0xFFFF6B4A),  // اللون البرتقالي
-                borderRadius: BorderRadius.only(
+                color: AppColors.primary,
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
                   bottomLeft: Radius.circular(16),
                 ),
@@ -195,57 +257,50 @@ class MissionContainer extends StatelessWidget {
             ),
           ),
 
-          // المحتوى الرئيسي
           Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // النص الرئيسي
-              const Padding(
-                padding: EdgeInsets.fromLTRB(25, 30, 25, 20),
-                child: Text(
+              Padding(
+                padding: paddingMain,
+                child: AppText(
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
                   'نحن شركة رائدة في مجال المقاولات العامة، نقدم حلولاً متكاملة لمشاريع البناء والتشييد. نلتزم بأعلى معايير الجودة والسلامة في تنفيذ المشاريع السكنية والتجارية والصناعية بكفاءة واحترافية عالية.',
                   style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 14,
+                    fontSize: bodyFont,
                     height: 1.6,
                     letterSpacing: 0.3,
                   ),
                 ),
               ),
-
-              // قسم "Our Mission" مع الأزرار
               Container(
-                padding: const EdgeInsets.fromLTRB(25, 15, 20, 25),
+                padding: bottomPadding,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // عنوان "Our Mission"
                     Flexible(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
+                      child: AppText(
+                        'مهمتنا',
+                        useFittedBox: true,
                         alignment: Alignment.centerRight,
-                        child: Text(
-                          'مهمتنا',
-                          style: TextStyle(
-                            color: AppColors.primary,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5,
-                          ),
+                        style: TextStyle(
+                          color: AppColors.primary,
+                          fontSize: titleFont,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.5,
                         ),
                       ),
                     ),
                     const SizedBox(width: 12),
 
-                    // الأزرار
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        // زر Plus في دائرة مع حدود
                         Container(
-                          width: 40,
-                          height: 40,
+                          width: circleSize,
+                          height: circleSize,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
@@ -253,30 +308,28 @@ class MissionContainer extends StatelessWidget {
                               width: 2,
                             ),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Icon(
                               Icons.add,
                               color: Colors.white,
-                              size: 22,
+                              size: iconAddSize,
                             ),
                           ),
                         ),
-
                         const SizedBox(width: 12),
 
-                        // زر السهم في دائرة برتقالية
                         Container(
-                          width: 40,
-                          height: 40,
+                          width: circleSize,
+                          height: circleSize,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.primary,
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
-                              size: 20,
+                              size: iconArrowSize,
                             ),
                           ),
                         ),

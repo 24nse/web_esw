@@ -205,6 +205,7 @@ class MaterialTheme {
 
     return ThemeData(
       useMaterial3: true,
+      fontFamily: 'Cairo',
       brightness: colorScheme.brightness,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.surface,

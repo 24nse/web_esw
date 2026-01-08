@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class SidebarSearch extends StatelessWidget {
   const SidebarSearch({super.key});
@@ -21,12 +23,10 @@ class SidebarSearch extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          AppText(
             'بحث',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0A2463),
+            style: AppStyles.styleBold20(context).copyWith(
+              color: const Color(0xFF0A2463),
             ),
           ),
           const SizedBox(height: 16),
@@ -35,9 +35,8 @@ class SidebarSearch extends StatelessWidget {
           TextField(
             decoration: InputDecoration(
               hintText: 'ابحث...',
-              hintStyle: TextStyle(
+              hintStyle: AppStyles.styleRegular14(context).copyWith(
                 color: Colors.grey[400],
-                fontSize: 14,
               ),
               filled: true,
               fillColor: Colors.grey[50],

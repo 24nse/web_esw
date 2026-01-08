@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class PlanCard extends StatelessWidget {
   final String title;
@@ -38,23 +40,25 @@ class PlanCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          AppText(
             title,
-            style: textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w800,
+            useFittedBox: true,
+            alignment: Alignment.centerRight,
+            style: AppStyles.styleBold20(context).copyWith(
               color: titleColor,
             ),
           ),
           const SizedBox(height: 8),
-          Text(
+          AppText(
             description,
-            style: textTheme.bodyMedium?.copyWith(color: bodyColor),
+            style: AppStyles.styleRegular14(context).copyWith(color: bodyColor),
           ),
           const SizedBox(height: 16),
-          Text(
+          AppText(
             price,
-            style: textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.w800,
+            useFittedBox: true,
+            alignment: Alignment.centerRight,
+            style: AppStyles.styleBold24(context).copyWith(
               color: titleColor,
             ),
           ),
@@ -72,9 +76,9 @@ class PlanCard extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Expanded(
-                    child: Text(
+                    child: AppText(
                       feature,
-                      style: textTheme.bodyMedium?.copyWith(
+                      style: AppStyles.styleRegular14(context).copyWith(
                         color: highlighted ? Colors.white : AppColors.text,
                       ),
                     ),
@@ -92,10 +96,9 @@ class PlanCard extends StatelessWidget {
               minimumSize: const Size.fromHeight(48),
               shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
             ),
-            child: Text(
+            child: AppText(
               actionLabel,
-              style: textTheme.labelLarge?.copyWith(
-                fontWeight: FontWeight.w600,
+              style: AppStyles.styleSemiBold14(context).copyWith(
                 color: highlighted ? AppColors.primary : Colors.white,
               ),
             ),

@@ -54,6 +54,8 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class ServiceCard extends StatelessWidget {
   final String title;
@@ -84,19 +86,18 @@ class ServiceCard extends StatelessWidget {
             child: Icon(icon, color: Colors.white),
           ),
           const SizedBox(height: 12),
-          Text(
+          AppText(
             title,
-            style: const TextStyle( // Replace with your local font name
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
+            useFittedBox: true,
+            alignment: Alignment.centerRight,
+            style: AppStyles.styleBold18(context).copyWith(
               color: AppColors.text,
             ),
           ),
           const SizedBox(height: 8),
-          Text(
+          AppText(
             description,
-            style: const TextStyle( // Replace with your local font name
-              fontSize: 14,
+            style: AppStyles.styleRegular14(context).copyWith(
               color: AppColors.textMuted,
             ),
           ),

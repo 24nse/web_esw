@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 import 'package:web_site/presentation/views/pages/about/about_page.dart';
 import 'package:web_site/presentation/views/pages/blogs/news_blog_page.dart';
 import 'package:web_site/presentation/views/pages/contact_us/contact_us_page.dart';
@@ -35,12 +37,10 @@ class AppDrawer extends StatelessWidget {
                       child: const Icon(Icons.business, color: AppColors.primary, size: 30),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
+                    AppText(
                       'شركة الوعل',
-                      style: TextStyle(
+                      style: AppStyles.styleBold18(context).copyWith(
                         color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -100,7 +100,10 @@ class AppDrawer extends StatelessWidget {
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(borderRadius: AppRadii.sm),
                 ),
-                child: const Text('اطلب عرض سعر'),
+                child: AppText(
+                  'اطلب عرض سعر',
+                  style: AppStyles.styleBold16(context).copyWith(color: Colors.white),
+                ),
               ),
             ),
           ],
@@ -117,12 +120,9 @@ class AppDrawer extends StatelessWidget {
   }) {
     return ListTile(
       leading: Icon(icon, color: AppColors.primary),
-      title: Text(
+      title: AppText(
         title,
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-        ),
+        style: AppStyles.styleMedium16(context),
       ),
       onTap: () {
         Navigator.pop(context); // Close drawer

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 import '../../../../domain/entities/blog_post.dart';
 
 class PostCard extends StatelessWidget {
@@ -62,12 +64,10 @@ class PostCard extends StatelessWidget {
                       color: Color(int.parse(post.categoryColor)),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
+                    child: AppText(
                       post.category,
-                      style: const TextStyle(
+                      style: AppStyles.styleSemiBold12(context).copyWith(
                         color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -90,10 +90,10 @@ class PostCard extends StatelessWidget {
                         color: const Color(0xFFFF6B35),
                       ),
                       const SizedBox(width: 6),
-                      Text(
+                      AppText(
                         _formatDate(post.publishDate),
-                        style: TextStyle(
-                          fontSize: 13,
+                        style: AppStyles.styleRegular14(context).copyWith(
+                          fontSize: getResponsiveFontSize(context, fontSize: 13),
                           color: Colors.grey[600],
                         ),
                       ),
@@ -109,10 +109,10 @@ class PostCard extends StatelessWidget {
                         color: Colors.grey[500],
                       ),
                       const SizedBox(width: 6),
-                      Text(
+                      AppText(
                         '${post.readTimeMinutes} دقائق قراءة',
-                        style: TextStyle(
-                          fontSize: 13,
+                        style: AppStyles.styleRegular14(context).copyWith(
+                          fontSize: getResponsiveFontSize(context, fontSize: 13),
                           color: Colors.grey[600],
                         ),
                       ),
@@ -121,12 +121,10 @@ class PostCard extends StatelessWidget {
                   const SizedBox(height: 14),
 
                   // Title
-                  Text(
+                  AppText(
                     post.title,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF0A2463),
+                    style: AppStyles.styleBold18(context).copyWith(
+                      color: const Color(0xFF0A2463),
                       height: 1.4,
                     ),
                     maxLines: 2,
@@ -135,10 +133,9 @@ class PostCard extends StatelessWidget {
                   const SizedBox(height: 10),
 
                   // Excerpt
-                  Text(
+                  AppText(
                     post.excerpt,
-                    style: TextStyle(
-                      fontSize: 14,
+                    style: AppStyles.styleRegular14(context).copyWith(
                       color: Colors.grey[700],
                       height: 1.6,
                     ),
@@ -150,11 +147,9 @@ class PostCard extends StatelessWidget {
                   // Read More Link
                   Row(
                     children: [
-                      Text(
+                      AppText(
                         'اقرأ المزيد',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                        style: AppStyles.styleSemiBold14(context).copyWith(
                           color: const Color(0xFFFF6B35),
                         ),
                       ),

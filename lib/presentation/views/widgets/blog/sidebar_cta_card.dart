@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class SidebarCtaCard extends StatelessWidget {
   final VoidCallback? onContactPressed;
@@ -59,11 +61,10 @@ class SidebarCtaCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   AppText(
                     'نبني المستقبل\nاليوم',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
+                    style: AppStyles.styleBold24(context).copyWith(
+                      fontSize: getResponsiveFontSize(context, fontSize: 26),
                       color: Colors.white,
                       height: 1.3,
                     ),
@@ -85,11 +86,11 @@ class SidebarCtaCard extends StatelessWidget {
                       ),
                       elevation: 0,
                     ),
-                    child: const Text(
+                    child: AppText(
                       'تواصل معنا الآن',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
+                      style: AppStyles.styleSemiBold16(context).copyWith(
+                        fontSize: getResponsiveFontSize(context, fontSize: 15),
+                        color: Colors.white,
                       ),
                     ),
                   ),

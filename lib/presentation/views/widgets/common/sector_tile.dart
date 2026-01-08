@@ -53,6 +53,8 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class SectorTile extends StatelessWidget {
   final String title;
@@ -92,16 +94,15 @@ class SectorTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                AppText(
                   title,
-                  style: const TextStyle( // 👈 خط محلي
-                    fontWeight: FontWeight.w800,
+                  style: AppStyles.styleBold16(context).copyWith(
                     color: AppColors.text,
                   ),
                 ),
-                Text(
+                AppText(
                   meta,
-                  style: const TextStyle(
+                  style: AppStyles.styleRegular14(context).copyWith(
                     color: AppColors.textMuted,
                   ),
                 ),

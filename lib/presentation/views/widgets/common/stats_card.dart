@@ -1,5 +1,6 @@
-// بطاقة الإحصائيات
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 class StatsCard extends StatelessWidget {
   const StatsCard({super.key});
@@ -28,17 +29,17 @@ class StatsCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildStatItem('640+', 'مشروع مكتمل'),
+          _buildStatItem('640+', 'مشروع مكتمل',context ),
           _buildDivider(),
-          _buildStatItem('25+', 'سنة من الخبرة'),
+          _buildStatItem('25+', 'سنة من الخبرة',context ),
           _buildDivider(),
-          _buildStatItem('450+', 'عميل '),
+          _buildStatItem('450+', 'عميل ',context),
         ],
       ),
     );
   }
 
-  Widget _buildStatItem(String number, String label) {
+  Widget _buildStatItem(String number, String label,BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
@@ -54,24 +55,15 @@ class StatsCard extends StatelessWidget {
                 child: child,
               );
             },
-            child: Text(
+            child: AppText(
               number,
-              style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-
-              ),
+              style: AppStyles.styleBold16(context).copyWith(color: Colors.white),
             ),
           ),
           const SizedBox(height: 4),
-          Text(
+          AppText(
             label,
-            style: const TextStyle(
-                fontSize: 12,
-                color: Colors.white,
-                fontWeight: FontWeight.w500
-            ),
+            style: AppStyles.styleMedium16(context).copyWith(color: Colors.white),
           ),
         ],
       ),

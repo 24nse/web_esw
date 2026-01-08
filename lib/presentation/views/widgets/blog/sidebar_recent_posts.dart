@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 import '../../../../domain/entities/blog_post.dart';
 
 class SidebarRecentPosts extends StatelessWidget {
@@ -29,12 +31,10 @@ class SidebarRecentPosts extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          AppText(
             'آخر المقالات',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0A2463),
+            style: AppStyles.styleBold20(context).copyWith(
+              color: const Color(0xFF0A2463),
             ),
           ),
           const SizedBox(height: 20),
@@ -82,22 +82,21 @@ class SidebarRecentPosts extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          AppText(
                             post.title,
-                            style: const TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF0A2463),
+                            style: AppStyles.styleSemiBold14(context).copyWith(
+                              fontSize: getResponsiveFontSize(context, fontSize: 13),
+                              color: const Color(0xFF0A2463),
                               height: 1.4,
                             ),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
                           const SizedBox(height: 6),
-                          Text(
+                          AppText(
                             _formatDate(post.publishDate),
-                            style: TextStyle(
-                              fontSize: 11,
+                            style: AppStyles.styleRegular12(context).copyWith(
+                              fontSize: getResponsiveFontSize(context, fontSize: 11),
                               color: Colors.grey[500],
                             ),
                           ),

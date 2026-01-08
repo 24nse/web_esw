@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 import '../../../../domain/entities/blog_category.dart';
 
 class SidebarCategories extends StatelessWidget {
@@ -29,12 +31,10 @@ class SidebarCategories extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          AppText(
             'التصنيفات الشائعة',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF0A2463),
+            style: AppStyles.styleBold20(context).copyWith(
+              color: const Color(0xFF0A2463),
             ),
           ),
           const SizedBox(height: 20),
@@ -59,17 +59,16 @@ class SidebarCategories extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Text(
+                    AppText(
                       category.icon,
-                      style: const TextStyle(fontSize: 18),
+                      style: AppStyles.styleRegular18(context),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
+                      child: AppText(
                         category.name,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        style: AppStyles.styleMedium16(context).copyWith(
+                          fontSize: getResponsiveFontSize(context, fontSize: 14),
                           color: Colors.grey[800],
                         ),
                       ),

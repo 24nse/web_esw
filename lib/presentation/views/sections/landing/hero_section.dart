@@ -11,6 +11,8 @@ import 'package:web_site/presentation/views/widgets/graphics/diagonal_lines_pain
 import 'package:web_site/presentation/views/widgets/buttons/play_button.dart';
 import 'package:web_site/presentation/views/widgets/animations/rotating_contact_circle.dart';
 import 'package:web_site/presentation/views/widgets/common/stats_card.dart';
+import 'package:web_site/core/app_styles.dart';
+import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 // Enum for layout IDs
 enum HeroLayoutId {
@@ -139,6 +141,8 @@ class _HeroSectionState extends State<HeroSection>
                   ),
                   // Floating Cards (Image + Stats)
 
+                  // Floating Cards (Image + Stats)
+                  if (!isMobile)
                     LayoutId(
                       id: HeroLayoutId.floatingCards,
                       child: _buildFloatingCardsContent(context),
@@ -312,16 +316,12 @@ class _HeroSectionState extends State<HeroSection>
                               ),
                               const SizedBox(width: 12),
                               Expanded(
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
+                                child: AppText(
+                                  'التميز في البناء الحائز على الجوائز',
+                                  useFittedBox: true,
                                   alignment: Alignment.centerRight,
-                                  child: Text(
-                                    'التميز في البناء الحائز على الجوائز',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      fontSize: isMobile ? 14 : 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
+                                  style: AppStyles.styleMedium16(context).copyWith(
+                                    color: Colors.grey,
                                   ),
                                 ),
                               ),
@@ -335,38 +335,32 @@ class _HeroSectionState extends State<HeroSection>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
+                              AppText(
+                                'حيث يقود الابتكار إلى',
+                                useFittedBox: true,
                                 alignment: Alignment.centerRight,
-                                child: Text(
-                                  'حيث يقود الابتكار إلى',
-                                  style: TextStyle(
-                                    fontSize: isMobile ? 28 : (isTablet ? 36 : 44),
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color(0xFF001F5C),
-                                    height: 1.2,
-                                  ),
+                                style: AppStyles.styleBold40(context).copyWith(
+                                  color: const Color(0xFF001F5C),
+                                  height: 1.2,
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                alignment: Alignment.centerRight,
-                                child: ShaderMask(
-                                  shaderCallback: (bounds) => const LinearGradient(
-                                    colors: [Color(0xFFFF6B2C), Color(0xFFFF8A5C)],
-                                  ).createShader(bounds),
-                                  child: Text(
-                                    'الكمال الإنشائي',
-                                    style: TextStyle(
-                                      fontSize: isMobile ? 28 : (isTablet ? 36 : 44),
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      height: 1.2,
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  alignment: Alignment.centerRight,
+                                  child: ShaderMask(
+                                    shaderCallback: (bounds) => const LinearGradient(
+                                      colors: [Color(0xFFFF6B2C), Color(0xFFFF8A5C)],
+                                    ).createShader(bounds),
+                                    child: AppText(
+                                      'الكمال الإنشائي',
+                                      style: AppStyles.styleBold40(context).copyWith(
+                                        color: Colors.white,
+                                        height: 1.2,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
                             ],
                           ),
                         ),
@@ -402,11 +396,10 @@ class _HeroSectionState extends State<HeroSection>
                           const SizedBox(height: 20),
                           Flexible(
                             fit: FlexFit.loose,
-                            child: Text(
+                            child: AppText(
                               'نحن نقدم حلولاً متكاملة في مجال المقاولات والعقارات مع التزام كامل بالجودة والابتكار لتحقيق رؤيتكم الإنشائية بأعلى المعايير العالمية',
-                              style: TextStyle(
+                              style: AppStyles.styleRegular14(context).copyWith(
                                 color: Colors.grey[700],
-                                fontSize: 13,
                                 height: 1.6,
                               ),
                               maxLines: 4,
@@ -456,11 +449,10 @@ class _HeroSectionState extends State<HeroSection>
                           ),
                           Expanded(
                             flex: 3,
-                            child: Text(
+                            child: AppText(
                               'نحن نقدم حلولاً متكاملة في مجال المقاولات والعقارات مع التزام كامل بالجودة والابتكار لتحقيق رؤيتكم الإنشائية بأعلى المعايير العالمية',
-                              style: TextStyle(
+                              style: AppStyles.styleRegular16(context).copyWith(
                                 color: Colors.grey[700],
-                                fontSize: isTablet ? 14 : 15,
                                 height: 1.6,
                               ),
                               maxLines: 3,
