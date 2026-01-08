@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
             // Who Are You Section
             WhoAreYou(),
 
-            // Services Section
+            // Services Section (Using UniversalServiceCard)
             ServicesSection(),
 
             // Completed Projects Section
@@ -50,13 +50,13 @@ class HomePage extends StatelessWidget {
             // Contact Section
             ContactSection(),
 
-            // Team Section
+            // Team Section (Using UniversalServiceCard)
             TeamSection(),
 
             // Testimonials Section
             TestimonialsSection(),
 
-            // Latest News/Blog Section
+            // Latest News/Blog Section (Using UniversalServiceCard)
             OurLatestNewsBlogSections(),
 
             // FAQ Section

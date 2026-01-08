@@ -6,6 +6,8 @@ import 'package:web_site/presentation/views/widgets/common/section_title.dart';
 
 import 'package:web_site/common/utils/responsive_helper.dart';
 import 'package:web_site/presentation/views/widgets/common/base_section.dart';
+import 'package:web_site/domain/entities/service_card_entity.dart';
+import 'package:web_site/presentation/views/widgets/common/universal_service_card.dart';
 
 class FaqSection extends StatefulWidget {
   final Color? backgroundColor;
@@ -288,66 +290,18 @@ class _QuestionsCTA extends StatelessWidget {
   }
 }
 
+/// Refactored to use UniversalServiceCard with ServiceCardEntity.simple
 class _ServiceCard extends StatelessWidget {
   const _ServiceCard();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppSpaces.lg),
-      decoration: BoxDecoration(
-        color: AppColors.surface,
-        borderRadius: AppRadii.lg,
-        boxShadow: AppShadows.card,
-        border: Border.all(color: AppColors.border),
-      ),
-      child: Row(
-        children: [
-          // أيقونة هاتف داخل دائرة بخلفية خفيفة
-          Container(
-            width: 46,
-            height: 46,
-            decoration: BoxDecoration(
-              color: AppColors.bgG,
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.border),
-            ),
-            alignment: Alignment.center,
-            child: const Icon(Icons.support_agent, color: AppColors.primary),
-          ),
-          const SizedBox(width: AppSpaces.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  'راحتكم أولويتنا',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: AppColors.textMuted,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  'خدمة 24/7',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    color: AppColors.text,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  '(000) 000-0000',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppColors.textMuted,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+    return UniversalServiceCard(
+      entity: ServiceCardEntity.simple(
+        icon: Icons.support_agent,
+        title: 'خدمة 24/7',
+        subtitle: 'راحتكم أولويتنا',
+        phoneNumber: '(000) 000-0000',
       ),
     );
   }
