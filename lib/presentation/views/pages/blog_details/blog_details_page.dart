@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../sections/blog/blog_details/blog_page_header_section.dart';
 import '../../sections/blog/blog_details/blog_hero_section.dart';
 import '../../sections/blog/blog_details/blog_article_header.dart';
 import '../../sections/blog/blog_details/related_news_section.dart';

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:web_site/core/result/result.dart';
 import 'package:web_site/domain/entities/team_member.dart';
 import 'package:web_site/domain/usecases/team/get_all_team_members.dart';
 import 'package:web_site/domain/usecases/team/get_featured_team_members.dart';

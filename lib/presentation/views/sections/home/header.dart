@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
-import 'package:web_site/presentation/views/pages/FAQs/faqs_page.dart';
-import 'package:web_site/presentation/views/pages/about/about_page.dart';
 import 'package:web_site/presentation/views/pages/contact_us/contact_us_page.dart';
 import 'package:web_site/presentation/views/pages/projects/projects_page.dart';
 import 'package:web_site/presentation/views/widgets/common/nav_item.dart';
 
-import '../../pages/blog_details/blog_details_page.dart';
 import '../../pages/blogs/news_blog_page.dart';
-import '../../pages/project_details/project_details_page.dart';
 import '../../pages/team_details/team_details_page.dart';
 import '../../pages/testimonials/testimonials_page.dart';
-import '../landing/faq_section.dart';
 
 import 'package:web_site/common/utils/responsive_helper.dart';
 

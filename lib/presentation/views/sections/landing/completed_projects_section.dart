@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:web_site/common/constants/theme/tokens.dart';
-import 'package:web_site/presentation/views/widgets/common/title_section.dart';
 import 'package:web_site/presentation/views/widgets/graphics/clippers.dart';
-import 'package:web_site/presentation/views/widgets/graphics/diagonal_lines_painter.dart';
-import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 
 import '../../pages/project_details/project_details_page.dart';
 import '../../pages/projects/projects_page.dart';

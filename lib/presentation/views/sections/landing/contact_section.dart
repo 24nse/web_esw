@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
 
-import 'package:web_site/presentation/views/widgets/common/title_section.dart';
-
 
 import 'package:web_site/common/utils/responsive_helper.dart';
 import 'package:web_site/presentation/views/widgets/common/base_section.dart';

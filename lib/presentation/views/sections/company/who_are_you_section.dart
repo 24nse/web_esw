@@ -1,13 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:web_site/common/constants/theme/tokens.dart';
-import 'package:web_site/presentation/views/pages/about/about_page.dart';
-import 'package:web_site/presentation/views/widgets/common/section_title.dart';
-
-import 'package:web_site/presentation/views/widgets/graphics/unified_ruler_ticks_painter.dart';
 
 import 'package:web_site/common/utils/responsive_helper.dart';
-import 'package:web_site/presentation/views/widgets/common/base_section.dart';
 import 'package:web_site/presentation/views/widgets/common/app_text.dart';
 
 import '../../../../core/responsive/responsive.dart';

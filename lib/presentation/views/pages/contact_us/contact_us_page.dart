@@ -3,10 +3,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/constants/theme/tokens.dart';
-import '../../sections/company/who_are_you_section.dart';
 import '../../sections/landing/contact_section.dart';
 import '../../sections/landing/footer_section.dart';
-import '../../sections/landing/how_we_get_it_done_section.dart';
 import '../../widgets/common/page_hero_section.dart';
 
 /// Team Details page displaying team member profile, skills, and contact form

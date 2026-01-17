@@ -10,7 +10,6 @@ import '../../sections/project_details/cta_section.dart';
 import '../../sections/project_details/gallery_section.dart';
 import '../../sections/project_details/hero_image_section.dart';
 import '../../sections/project_details/other_projects_section.dart';
-import '../../sections/project_details/page_header_section.dart';
 import '../../sections/project_details/project_overview_section.dart';
 import '../../sections/project_details/result_section.dart';
 import '../../sections/project_details/scope_section.dart';

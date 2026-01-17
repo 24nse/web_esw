@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class AppBreakpoints {
   // Width breakpoints
   static const double mobile = 600;
